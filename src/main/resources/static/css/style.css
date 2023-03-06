@@ -10,17 +10,23 @@ header {
 }
 section {
 	width:1200px;
-	height:700px;
 }
 #tabMenu {
 	width:1200px;
-	height:100px;
+	height:50px;
 }
 #roomList {
 	width:1200px;
-	height:600px;
 }
-#card {
-	width:350px;
-	height:380px;
+.room {
+	width:25%;
+	margin:auto;
+}
+.relative {
+	position:relative;
+}
+.room-like{
+	position: relative;
+  	top: 30px;
+  	left: 220px;
 }
