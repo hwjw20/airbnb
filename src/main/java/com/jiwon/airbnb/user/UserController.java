@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
 	@GetMapping("/signin/email/view")
-	public String signinView() {
-		return "user/signin";
+	public String signinEmailView() {
+		return "user/signin_email";
+	}
+	@GetMapping("/signin/password/view")
+	public String signinPwView() {
+		return "user/signin_pw";
 	}
 }

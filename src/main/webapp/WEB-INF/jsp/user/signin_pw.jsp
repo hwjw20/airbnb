@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>signin</title>
+<title>find password</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<script
@@ -21,5 +21,17 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/include/header2.jsp" />
+	
+	<section>
+		<div id="signin-box">
+			<div class="container mt-3">
+				<div class="text-center">비밀번호를 잊으셨나요?</div>
+				<hr>
+				<input type="text" placeholder="비밀번호" class="form-control mt-4">
+				<button class="form-control mt-2 text-white" style="background-color:#f52a4f">로그인</button>
+				<a href="/user/find_pw/view"><div class="small mt-4" style="text-decoration: underline;">비밀번호를 잊으셨나요?</div></a>
+			</div>
+		</div>
+	</section>
 </body>
 </html>
