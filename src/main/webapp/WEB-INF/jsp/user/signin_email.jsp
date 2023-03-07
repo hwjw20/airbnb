@@ -23,18 +23,74 @@
 	<c:import url="/WEB-INF/jsp/include/header2.jsp" />
 	
 	<section>
-		<div id="signin-box">
+		<div id="signinBox">
 			<div class="container mt-3">
 				<div class="text-center">로그인</div>
 				<hr>
-				<input type="text" placeholder="이메일" class="form-control mt-4">
-				<button class="form-control mt-2 text-white" style="background-color:#f52a4f">계속</button>
+				<div class="small">에어비앤비에 오신 것을 환영합니다.</div>
+				<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput" name="email">
+				<div class="d-flex text-danger">
+					<i id="warningIcon" class="bi bi-exclamation d-none"></i>				
+					<div id="emailDiv" class="small pt-1 d-none">이메일을 입력하세요.</div>
+					<div id="emailContainsDiv" class="small pt-1 d-none">이메일 형식이 올바르지 않습니다.</div>
+				</div>
+				<button type="button" class="form-control mt-2 text-white" id="signinBtn" style="background-color:#f52a4f">계속</button>
 				<div class="text-center small text-secondary mt-4">또는</div>
-				
-				<button type="button" class="form-control mt-4"><div class="small">구글로 로그인하기</div></button>
-				<button class="form-control mt-2"><div class="small">전화번호로 로그인하기</div></button>
+				<button type="button" class="form-control mt-4 d-flex">
+					<i class="bi bi-google"></i>
+					<div class="small pl-5">구글로 로그인하기</div>
+				</button>
+				<button class="form-control mt-2 d-flex">
+					<i class="bi bi-telephone-fill"></i>
+					<div class="small pl-5">전화번호로 로그인하기</div>
+				</button>
 			</div>
 		</div>
 	</section>
+	<script>
+		$(document).ready(function() {
+			
+			$("#emailInput").on("input", function() {
+				
+				$("#warningIcon").addClass("d-none");
+				$("#emailDiv").addClass("d-none");
+				$("#emailContainsDiv").addClass("d-none");
+				
+			})
+			
+			$("#signinBtn").on("click", function() {
+				
+				let email = $("#emailInput").val();
+				if(email == "") {
+					$("#warningIcon").removeClass("d-none");
+					$("#emailDiv").removeClass("d-none");
+					return;
+				}
+				
+				if(email.indexOf("@") == -1) {
+					$("#emailContainsDiv").removeClass("d-none");
+					return;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/user/signin/email"
+					, data:{"email":email}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.href = "/user/signin/password/view";
+						} else {
+							location.href = "/user/signup/view";
+						}
+					}
+					, error:function() {
+						alert("로그인 에러");
+					}
+				})
+				
+			});
+			
+		});
+	</script>
 </body>
 </html>

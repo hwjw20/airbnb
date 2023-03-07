@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>signin</title>
+<title>signup</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<script
@@ -23,19 +23,35 @@
 	<c:import url="/WEB-INF/jsp/include/header2.jsp" />
 	
 	<section>
-		<div id="signinBox">
+		<div id="signupBox">
 			<div class="container mt-3">
-				<div class="text-center">비밀번호를 잊으셨나요?</div>
+				<div class="text-center">회원가입</div>
 				<hr>
-				<div class="small">계정으로 사용하는 이메일 주소를 입력하시면, 비밀번호 재설정 링크를 전송해 드립니다.</div>
+				<input type="text" placeholder="이름" class="form-control mt-4">
+				<input type="text" placeholder="생년월일" class="form-control mt-4">
 				<input type="text" placeholder="이메일" class="form-control mt-4">
+				<input type="password" placeholder="비밀번호" class="form-control mt-4">
+				<input type="text" placeholder="전화번호" class="form-control mt-4">
+				<hr>
+				<div class="d-flex justify-content-between">
+					<div class="small">개인 정보 수집 및 이용에 동의합니다.</div>
+					<input type="checkbox" value="check">
+				</div>
+				<div class="d-flex justify-content-between">
+					<div class="small">마케팅 이메일 수신을 원합니다.(선택)</div>
+					<input type="checkbox" >
+				</div>
 				<br>
-				<br>
-				<br>
-				<br>
-				<button class="form-control mt-2 text-white" style="background-color:#f52a4f">재설정 링크 전송하기</button>
+				<button id="signupBtn" class="form-control mt-2 text-white" style="background-color:#f52a4f">회원가입</button>
 			</div>
 		</div>
 	</section>
+	<script>
+		$(document).ready(function(){
+			$("#signupBtn").on("click", function() {
+				
+			})
+		});
+	</script>
 </body>
 </html>

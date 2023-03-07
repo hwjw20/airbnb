@@ -30,7 +30,7 @@ section {
   	top: 30px;
   	left: 220px;
 }
-#signin-box {
+#signinBox {
 	width:400px;
 	height:400px;
 	margin:auto;
@@ -39,4 +39,11 @@ section {
 }
 #login {
 	margin:auto;
+}
+#signupBox {
+	width:400px;
+	height:530px;
+	margin:auto;
+	border: 1px solid;
+	border-radius: 20px;
 }
