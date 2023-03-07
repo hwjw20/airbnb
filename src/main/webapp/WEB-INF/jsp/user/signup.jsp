@@ -35,11 +35,11 @@
 				<hr>
 				<div class="d-flex justify-content-between">
 					<div class="small">개인 정보 수집 및 이용에 동의합니다.</div>
-					<input type="checkbox" value="check">
+					<input type="checkbox" id="check" value="check">
 				</div>
 				<div class="d-flex justify-content-between">
 					<div class="small">마케팅 이메일 수신을 원합니다.(선택)</div>
-					<input type="checkbox" >
+					<input type="checkbox">
 				</div>
 				<br>
 				<button id="signupBtn" class="form-control mt-2 text-white" style="background-color:#f52a4f">회원가입</button>
@@ -49,7 +49,10 @@
 	<script>
 		$(document).ready(function(){
 			$("#signupBtn").on("click", function() {
-				
+				if(!$("#check").is(":checked")) {
+					alert("개인정보 수집 약관에 동의 해주세요.");
+					return;
+				}
 			})
 		});
 	</script>
