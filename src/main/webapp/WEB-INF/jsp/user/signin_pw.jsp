@@ -27,7 +27,7 @@
 			<div class="container mt-3">
 				<div class="text-center">비밀번호를 잊으셨나요?</div>
 				<hr>
-				<input type="text" placeholder="비밀번호" class="form-control mt-4" id="passwordInput" data-email="${email}">
+				<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput" data-email="${email}">
 				<div class="d-flex text-danger">
 					<i id="warningIcon" class="bi bi-exclamation d-none"></i>				
 					<div id="passwordDiv" class="small pt-1 d-none">비밀번호를 입력하세요.</div>
@@ -49,7 +49,7 @@
 			$("#signinBtn").on("click", function() {
 				let password = $("#passwordInput").val();
 				let email = $("#passwordInput").data("email");
-				
+				alert(email);
 				if(password == "") {
 					$("#warningIcon").removeClass("d-none");
 					$("#passwordDiv").removeClass("d-none");

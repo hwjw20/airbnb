@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		<header>
 			<div class="d-flex justify-content-between pt-3">
 				
@@ -16,29 +17,41 @@
 			  		</div>	
 				</div>
 				
-				<div class="dropdown">
-				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-				    Dropdown link
-				  </a>
-				
-				  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-				    <li><a class="dropdown-item" href="#">Action</a></li>
-				    <li><a class="dropdown-item" href="#">Another action</a></li>
-				    <li><a class="dropdown-item" href="#">Something else here</a></li>
-				  </ul>
-			</div>
-				
-				<div id="account" class="dropdown pr-3">
-				  	<a class="btn btn-outline-secondary dropdown-toggle" role="button" href="#">
+				<%-- 세션에 "userId"라는 키 값이 없다면 로그인이 안된 상태 --%>
+				<c:if test="${empty userId}">
+				<div id="account" class="dropdown">
+					<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown">
 						<i class="bi bi-list"></i>
 		    			<i class="bi bi-person-circle"></i>
-				  	</a>
-				  	<ul class="dropdown-menu">
-				  		<li><a class="dropdown-item" href="/user/signin/email/view">로그인</a></li>
-				  		<li><a class="dropdown-item" href="/user/signup/view">회원가입</a></li>
-				  		<li><hr class="dropdown-divider"></li>
-				  	</ul>
+				  	</button>
+				  <div class="dropdown-menu dropdown-menu-right">
+				    <a class="dropdown-item small" href="/user/signin/email/view">로그인</a>
+				    <a class="dropdown-item small" href="/user/signup/view">회원가입</a>
+				    <div class="dropdown-divider"></div>
+				    <br>
+				    <br>
+				  </div>
 				</div>
+				</c:if>
+				
+				<%-- 세션에 "userId"라는 키 값이 있다면 로그인이 된 상태 --%>
+				<c:if test="${not empty userId}">
+				<div id="account" class="dropdown">
+					<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+						<i class="bi bi-list"></i>
+		    			<i class="bi bi-person-circle"></i>
+				  	</button>
+				  <div class="dropdown-menu dropdown-menu-right">
+				    <a class="dropdown-item small" href="/user/reservation/view">여행</a>
+				    <a class="dropdown-item small" href="/user/wishlist/view">위시리스트</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item small" href="/host/view">숙소관리</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item small" href="/user/signout">로그아웃</a>
+				  </div>
+				</div>
+				</c:if>
+				
 			</div>
 			<hr>
 		</header>

@@ -6,13 +6,12 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jiwon.airbnb.common.EncryptUtils;
 import com.jiwon.airbnb.user.bo.UserBO;
 import com.jiwon.airbnb.user.model.User;
 
@@ -41,22 +40,22 @@ public class UserRestController {
 		return result;
 	}
 	
-	@GetMapping("/signin/password")
+	@PostMapping("/signin/password")
 	public Map<String, String> signinPw(
 			@RequestParam("email") String email
 			, @RequestParam("password") String password
 			, HttpSession session) {
 		
-		String encryptPassword = EncryptUtils.md5(password);
+//		String encryptPassword = EncryptUtils.md5(password);
 		
-		User user = userBO.getUser(email, encryptPassword);
+		User user = userBO.getUser(email, password);
 		
 		Map<String, String> result = new HashMap<>();
 		if(user != null) {
+			result.put("result", "success");
+			
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userEmail", user.getEmail());
-			
-			result.put("result", "success");
 		} else {
 			result.put("result", "fail");
 		}

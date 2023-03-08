@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 <title>signup</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
 	<script
 	  src="https://code.jquery.com/jquery-3.6.3.min.js"
 	  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
@@ -27,11 +31,11 @@
 			<div class="container mt-3">
 				<div class="text-center">회원가입</div>
 				<hr>
-				<input type="text" placeholder="이름" class="form-control mt-4">
-				<input type="text" placeholder="생년월일" class="form-control mt-4">
-				<input type="text" placeholder="이메일" class="form-control mt-4">
-				<input type="password" placeholder="비밀번호" class="form-control mt-4">
-				<input type="text" placeholder="전화번호" class="form-control mt-4">
+				<input type="text" placeholder="이름" class="form-control mt-4" id="nameInput">
+				<input type="text" placeholder="생년월일" class="form-control mt-4" id="birthdayInput">
+				<input type="text" placeholder="전화번호" class="form-control mt-4" id="phoneNumberInput">
+				<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput">
+				<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput">
 				<hr>
 				<div class="d-flex justify-content-between">
 					<div class="small">개인 정보 수집 및 이용에 동의합니다.</div>
@@ -48,7 +52,14 @@
 	</section>
 	<script>
 		$(document).ready(function(){
+			
+			$("#birthdayInput").datepicker({
+				
+			});
+			
+			
 			$("#signupBtn").on("click", function() {
+				
 				if(!$("#check").is(":checked")) {
 					alert("개인정보 수집 약관에 동의 해주세요.");
 					return;

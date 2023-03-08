@@ -1,5 +1,7 @@
 package com.jiwon.airbnb.user;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +28,12 @@ public class UserController {
 	@GetMapping("/signup/view")
 	public String signupView() {
 		return "user/signup";
+	}
+	
+	@GetMapping("/signout")
+	public String signout(HttpSession session) {
+		session.removeAttribute("userId");
+		session.removeAttribute("userEmail");
+		return "redirect:/rooms/list/view";
 	}
 }
