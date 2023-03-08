@@ -49,7 +49,7 @@
 			$("#signinBtn").on("click", function() {
 				let password = $("#passwordInput").val();
 				let email = $("#passwordInput").data("email");
-				alert(email);
+
 				if(password == "") {
 					$("#warningIcon").removeClass("d-none");
 					$("#passwordDiv").removeClass("d-none");
