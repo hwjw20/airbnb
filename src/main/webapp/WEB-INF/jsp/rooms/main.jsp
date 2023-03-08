@@ -53,6 +53,7 @@
 			
 			<div id="roomList" class="d-flex flex-wrap">
 			
+				<c:forEach var="room" items="${roomList}">
 				<div class="room">
 					<div class="relative">
 						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
@@ -66,45 +67,8 @@
 						<div><b>₩180,000 /박</b></div>
 					</div>
 				</div>
-				<div class="room">
-					<div class="relative">
-						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
-						<img class="room-img" src="https://cdn.pixabay.com/photo/2013/07/19/00/18/water-165219__340.jpg" class="rounded" width="250" height="200">
-					</div>
-					<div class="d-flex small">
-						<div>구좌읍, 제주시, 한국</div>
-						<div class="pl-2"><i class="bi bi-star-fill"></i>5.0</div>
-					</div>
-					<div class="small">
-						<div><b>₩180,000 /박</b></div>
-					</div>
-				</div>
-				<div class="room">
-					<div class="relative">
-						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
-						<img class="room-img" src="https://cdn.pixabay.com/photo/2013/07/19/00/18/water-165219__340.jpg" class="rounded" width="250" height="200">
-					</div>
-					<div class="d-flex small">
-						<div>구좌읍, 제주시, 한국</div>
-						<div class="pl-2"><i class="bi bi-star-fill"></i>5.0</div>
-					</div>
-					<div class="small">
-						<div><b>₩180,000 /박</b></div>
-					</div>
-				</div>
-				<div class="room">
-					<div class="relative">
-						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
-						<img class="room-img" src="https://cdn.pixabay.com/photo/2013/07/19/00/18/water-165219__340.jpg" class="rounded" width="250" height="200">
-					</div>
-					<div class="d-flex small">
-						<div>구좌읍, 제주시, 한국</div>
-						<div class="pl-2"><i class="bi bi-star-fill"></i>5.0</div>
-					</div>
-					<div class="small">
-						<div><b>₩180,000 /박</b></div>
-					</div>
-				</div>
+				</c:forEach>
+				
 				
 				
 			</div>

@@ -61,6 +61,7 @@
 			$("#signinBtn").on("click", function() {
 				
 				let email = $("#emailInput").val();
+				
 				if(email == "") {
 					$("#warningIcon").removeClass("d-none");
 					$("#emailDiv").removeClass("d-none");

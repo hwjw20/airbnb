@@ -20,4 +20,8 @@ public class UserBO {
 	public User getUser(String email, String password) {
 		return userDAO.selectUser(email, password);
 	}
+	
+	public int getUserCount(String email) {
+		return userDAO.selectUserCount(email);
+	}
 }

@@ -28,14 +28,64 @@
 				<div class="text-center">비밀번호를 잊으셨나요?</div>
 				<hr>
 				<div class="small">계정으로 사용하는 이메일 주소를 입력하시면, 비밀번호 재설정 링크를 전송해 드립니다.</div>
-				<input type="text" placeholder="이메일" class="form-control mt-4">
+				<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput">
+				<div class="d-flex text-danger">
+					<i id="warningIcon" class="bi bi-exclamation d-none"></i>				
+					<div id="emailDiv" class="small pt-1 d-none">이메일을 입력하세요.</div>
+					<div id="emailContainsDiv" class="small pt-1 d-none">이메일 형식이 올바르지 않습니다.</div>
+				</div>
 				<br>
 				<br>
 				<br>
 				<br>
-				<button class="form-control mt-2 text-white" style="background-color:#f52a4f">재설정 링크 전송하기</button>
+				<button class="form-control mt-2 text-white" style="background-color:#f52a4f" id="linkBtn">재설정 링크 전송하기</button>
 			</div>
 		</div>
 	</section>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$("#emailInput").on("input", function() {
+				$("#warningIcon").addClass("d-none");
+				$("#emailDiv").addClass("d-none");
+				$("#emailContainsDiv").addClass("d-none");
+			});
+			
+			$("#linkBtn").on("click", function() {
+				
+				let email = $("#emailInput").val();
+				
+				if(email == "") {
+					$("#warningIcon").removeClass("d-none");
+					$("#emailDiv").removeClass("d-none");
+					return;
+				}
+				
+				if(email.indexOf("@") == -1) {
+					$("#emailContainsDiv").removeClass("d-none");
+					return;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/user/find_pw"
+					, data:{"email":email}
+					, success:function(data) {
+						if(data.result == "success") {
+							alert("링크가 전송되었습니다.");
+							location.href="/user/signin/email/view";
+						} else {
+							alert("가입된 이메일이 없습니다.");
+						}
+					}
+					, error:function() {
+						alert("비밀번호 찾기 에러");
+					}
+				});
+			});
+			
+		});
+	</script>
 </body>
 </html>

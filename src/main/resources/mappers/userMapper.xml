@@ -35,4 +35,13 @@
 			`email` = #{email}
 			AND `password` = #{password}
 	</select>
+	
+	<select id="selectUserCount" parameterType="string" resultType="int">
+		SELECT 
+			count(1)
+		FROM
+			`user`
+		WHERE
+			`email` = #{email}
+	</select>
 </mapper>

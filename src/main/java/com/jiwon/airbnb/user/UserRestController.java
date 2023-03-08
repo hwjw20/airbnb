@@ -62,4 +62,19 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	
+	@GetMapping("/find_pw")
+	public Map<String, String> findPw(@RequestParam("email") String email) {
+		int count = userBO.getUserCount(email);
+		
+		Map<String, String> result =  new HashMap<>();
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
 }

@@ -11,4 +11,6 @@ public interface UserDAO {
 	public User selectUserByEmail(@Param("email") String email);
 	
 	public User selectUser(@Param("email") String email, @Param("password") String password);
+	
+	public int selectUserCount(@Param("email") String email);
 }
