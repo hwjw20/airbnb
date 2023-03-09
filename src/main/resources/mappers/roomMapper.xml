@@ -2,7 +2,29 @@
  <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jiwon.airbnb.room.dao">
-	<select id="selectRoomList">
+<mapper namespace="com.jiwon.airbnb.room.dao.RoomDAO">
+	<select id="selectRoomList" resultType="com.jiwon.airbnb.room.model.Room">
+		SELECT
+			`id`
+			, `userId` 
+		    , `type`
+		    , `privacy`
+		    , `address`
+		    , `headcount` 
+		    , `bed`
+		    , `bedroom`
+		    , `bathroom`
+		    , `selfCheckin`
+		    , `charge`
+		    , `rating`
+		    , `countReservation`
+		    , `roomName`
+		    , `roomDescription`
+		    , `createdAt`
+		    , `updatedAt`
+		FROM
+			`room`
+		ORDER BY
+			`countReservation` DESC
 	</select>
 </mapper>

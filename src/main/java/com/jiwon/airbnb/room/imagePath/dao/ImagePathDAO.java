@@ -1,4 +1,4 @@
-package com.jiwon.airbnb.room.dao;
+package com.jiwon.airbnb.room.imagePath.dao;
 
 import java.util.List;
 
@@ -6,11 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.jiwon.airbnb.room.imagePath.model.ImagePath;
-import com.jiwon.airbnb.room.model.Room;
 
 @Repository
-public interface RoomDAO {
+public interface ImagePathDAO {
 
-	public List<Room> selectRoomList();
-	
+	public String selectImagePath(@Param("roomId") int roomId);
 }

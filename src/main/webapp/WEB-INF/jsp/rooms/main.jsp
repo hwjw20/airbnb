@@ -25,7 +25,7 @@
 		
 		<section>
 			<div id="tabMenu" class="d-flex justify-content-around pt-2">
-				<a>
+				<a >
 					<div class="room-img pl-3"><img src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg" width="30"></div>
 					<div class="small">인기 급상승</div>
 				</a>
@@ -57,14 +57,14 @@
 				<div class="room">
 					<div class="relative">
 						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
-						<img class="room-img" src="https://cdn.pixabay.com/photo/2013/07/19/00/18/water-165219__340.jpg" class="rounded" width="250" height="200">
+						<img class="room-img" src="${room.imagePath}" class="rounded" width="250" height="200">
 					</div>
 					<div class="d-flex small">
-						<div>구좌읍, 제주시, 한국</div>
-						<div class="pl-2"><i class="bi bi-star-fill"></i>5.0</div>
+						<div>${room.address}</div>
+						<div class="pl-2"><i class="bi bi-star-fill"></i>${room.rating}</div>
 					</div>
 					<div class="small">
-						<div><b>₩180,000 /박</b></div>
+						<div><b>₩${room.charge} /박</b></div>
 					</div>
 				</div>
 				</c:forEach>

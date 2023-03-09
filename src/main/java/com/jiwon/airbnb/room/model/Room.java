@@ -15,6 +15,7 @@ public class Room {
 	private int bathroom;
 	private boolean selfCheckin;
 	private int charge;
+	private double rating;
 	private int countReservation;
 	private String roomName;
 	private String roomDescription;
@@ -86,6 +87,12 @@ public class Room {
 	}
 	public void setCharge(int charge) {
 		this.charge = charge;
+	}
+	public double getRating() {
+		return rating;
+	}
+	public void setRating(double rating) {
+		this.rating = rating;
 	}
 	public int getCountReservation() {
 		return countReservation;

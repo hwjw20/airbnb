@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiwon.airbnb.room.imagePath.dao.ImagePathDAO">
+	<select id="selectImagePath" parameterType="int" resultType="com.jiwon.airbnb.room.imagePath.model.ImagePath">
+		SELECT
+			`imagePath`
+		FROM
+			`Image_path`
+		WHERE
+			`roomId` = #{roomId}
+		ORDER BY
+			`id`
+		LIMIT 1
+	</select>
+</mapper>
