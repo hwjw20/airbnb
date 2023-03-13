@@ -37,7 +37,7 @@ public class RoomBO {
 			String address = room.getAddress();
 			int charge = room.getCharge();
 			double rating = room.getRating();
-			String imagePath = imagePathBO.getImagePath(roomId);
+			String imagePath = imagePathBO.getImagePath(roomId).get(0);
 			
 			roomInfo.setRoomId(roomId);
 			roomInfo.setType(type);

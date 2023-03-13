@@ -14,7 +14,7 @@ public class ImagePathBO {
 	@Autowired
 	private ImagePathDAO imagePathDAO;
 	
-	public String getImagePath(int roomId) {
+	public List<String> getImagePath(int roomId) {
 		return imagePathDAO.selectImagePath(roomId);
 	}
 }

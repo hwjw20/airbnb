@@ -10,5 +10,5 @@ import com.jiwon.airbnb.room.imagePath.model.ImagePath;
 @Repository
 public interface ImagePathDAO {
 
-	public String selectImagePath(@Param("roomId") int roomId);
+	public List<String> selectImagePath(@Param("roomId") int roomId);
 }
