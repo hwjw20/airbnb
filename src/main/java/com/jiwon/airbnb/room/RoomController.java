@@ -20,7 +20,6 @@ public class RoomController {
 	@Autowired
 	private RoomBO roomBO;
 	
-
 	
 	@GetMapping("/list/view")
 	public String roomView(
@@ -33,6 +32,19 @@ public class RoomController {
 		
 		return "rooms/main";
 	}
+	
+	@GetMapping("/detail/view")
+	public String roomDetail(
+			@RequestParam("roomId") int roomId
+			, Model model) {
+		
+		Room room = roomBO.getRoom(roomId);
+		
+		model.addAttribute("room", room);
+		
+		return "rooms/detail";
+	}
+	
 	
 
 }

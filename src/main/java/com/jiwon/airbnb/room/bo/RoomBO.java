@@ -55,7 +55,9 @@ public class RoomBO {
 		return roomInfoList;
 	}
 	
-	
+	public Room getRoom(int roomId) {
+		return roomDAO.selectRoom(roomId);
+	}
 	
 	
 }

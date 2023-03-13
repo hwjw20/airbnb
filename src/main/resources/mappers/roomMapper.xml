@@ -27,6 +27,7 @@
 		ORDER BY
 			`countReservation` DESC
 	</select>
+	
 	<select id="selectRoomListByType" parameterType="int" resultType="com.jiwon.airbnb.room.model.Room">
 		SELECT
 			`id`
@@ -52,5 +53,30 @@
 			`type` = #{type}
 		ORDER BY
 			`countReservation` DESC
+	</select>
+	
+	<select id="selectRoom" parameterType="int" resultType="com.jiwon.airbnb.room.model.Room">
+		SELECT
+			`id`
+			, `userId` 
+		    , `type`
+		    , `privacy`
+		    , `address`
+		    , `headcount` 
+		    , `bed`
+		    , `bedroom`
+		    , `bathroom`
+		    , `selfCheckin`
+		    , `charge`
+		    , `rating`
+		    , `countReservation`
+		    , `roomName`
+		    , `roomDescription`
+		    , `createdAt`
+		    , `updatedAt`
+		FROM
+			`room`
+		WHERE
+			`id` = #{roomId}
 	</select>
 </mapper>

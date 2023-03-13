@@ -7,9 +7,30 @@
 header {
 	width:1200px;
 	height:80px;
+	margin:auto;
+}
+#detailHeader {
+	width:900px;
+	margin:auto;
 }
 section {
 	width:1200px;
+	margin:auto;
+}
+.detailBox {
+	width:900px;
+	margin:auto;
+}
+aside > #descBox {
+	width:400px;
+}
+aside > #reservBox {
+	width:400px;
+}
+#mapBox {
+	width:800px;
+	height:400px;
+	margin:auto;
 }
 #tabMenu {
 	width:1200px;
@@ -46,6 +67,3 @@ section {
 	border: 1px solid;
 	border-radius: 20px;
 }
-/* a {
-  text-decoration: none;
-} */
