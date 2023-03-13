@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.jiwon.airbnb.room.bo.RoomBO;
+import com.jiwon.airbnb.room.model.Room;
 import com.jiwon.airbnb.room.model.RoomInfo;
 
 @Controller
@@ -20,12 +23,16 @@ public class RoomController {
 
 	
 	@GetMapping("/list/view")
-	public String roomView(Model model) {
+	public String roomView(
+			@RequestParam(value="type", required=false) Integer type 
+			, Model model) {
 		
-		List<RoomInfo> roomList = roomBO.getRoomList();
+		List<RoomInfo> roomList = roomBO.getRoomList(type);
 		
 		model.addAttribute("roomList", roomList);
 		
 		return "rooms/main";
 	}
+	
+
 }

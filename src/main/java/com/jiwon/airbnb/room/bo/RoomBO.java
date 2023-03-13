@@ -21,11 +21,16 @@ public class RoomBO {
 	@Autowired
 	private ImagePathBO imagePathBO;
 	
-	
-	public List<RoomInfo> getRoomList() {
+	public List<RoomInfo> getRoomList(Integer type) {
 		
-		List<Room> roomList = roomDAO.selectRoomList();
+		List<Room> roomList = new ArrayList<>();
 		
+		if(type == null) {
+			roomList = roomDAO.selectRoomList();
+		} else {
+			roomList = roomDAO.selectRoomListByType(type);
+		}
+		 
 		List<RoomInfo> roomInfoList = new ArrayList<>();
 		
 		for(Room room:roomList) {
@@ -33,14 +38,12 @@ public class RoomBO {
 			RoomInfo roomInfo = new RoomInfo();
 			
 			int roomId = room.getId();
-			String type = room.getType();
 			String address = room.getAddress();
 			int charge = room.getCharge();
 			double rating = room.getRating();
 			String imagePath = imagePathBO.getImagePath(roomId).get(0);
 			
 			roomInfo.setRoomId(roomId);
-			roomInfo.setType(type);
 			roomInfo.setAddress(address);
 			roomInfo.setCharge(charge);
 			roomInfo.setRating(rating);
@@ -48,9 +51,11 @@ public class RoomBO {
 			
 			roomInfoList.add(roomInfo);
 		}
-		
+		 
 		return roomInfoList;
 	}
+	
+	
 	
 	
 }

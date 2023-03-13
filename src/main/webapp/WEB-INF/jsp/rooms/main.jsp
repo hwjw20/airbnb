@@ -25,27 +25,27 @@
 		
 		<section>
 			<div id="tabMenu" class="d-flex justify-content-around pt-2">
-				<a >
+				<a href="/rooms/list/view">
 					<div class="room-img pl-3"><img src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg" width="30"></div>
 					<div class="small">인기 급상승</div>
 				</a>
-				<a>
+				<a href="/rooms/list/view?type=1">
 					<div><img src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg" width="30"></div>
 					<div class="small">해변</div>
 				</a>
-				<a>
+				<a href="/rooms/list/view?type=2">
 					<img src="https://a0.muscache.com/pictures/51f5cf64-5821-400c-8033-8a10c7787d69.jpg" width="30">
 					<div class="small">한옥</div>
 				</a>
-				<a>
+				<a href="/rooms/list/view?type=3">
 					<div class="pl-1"><img src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg" width="30"></div>
 					<div class="small">캠핑장</div>
 				</a>
-				<a >
+				<a href="/rooms/list/view?type=4">
 					<div class="pl-1"><img src="https://a0.muscache.com/pictures/eb7ba4c0-ea38-4cbb-9db6-bdcc8baad585.jpg" width="30"></div>
 					<div class="small">개인실</div>
 				</a>
-				<a >
+				<a href="/rooms/list/view?type=5">
 					<div class="pl-3"><img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" width="30"></div>
 					<div class="small">최고의 전망</div>
 				</a>
