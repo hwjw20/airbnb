@@ -44,4 +44,28 @@
 		WHERE
 			`email` = #{email}
 	</select>
+	
+	<insert id="insertUser" parameterType="map">
+		INSERT INTO
+			`user`
+		(
+			`name`
+			, `birthday`
+			, `phoneNumber`
+			, `email`
+			, `password`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUE
+		(
+			#{name}
+			, #{birthday}
+			, #{phoneNumber}
+			, #{email}
+			, #{password}
+			, now()
+			, now()
+		)
+	</insert>
 </mapper>

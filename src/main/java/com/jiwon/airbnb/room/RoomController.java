@@ -38,7 +38,7 @@ public class RoomController {
 			@RequestParam("roomId") int roomId
 			, Model model) {
 		
-		Room room = roomBO.getRoom(roomId);
+		RoomInfo room = roomBO.getRoom(roomId);
 		
 		model.addAttribute("room", room);
 		

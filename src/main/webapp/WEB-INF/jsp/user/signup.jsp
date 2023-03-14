@@ -31,10 +31,31 @@
 				<div class="text-center">회원가입</div>
 				<hr>
 				<input type="text" placeholder="이름" class="form-control mt-4" id="nameInput">
+				<div class="d-flex text-danger">
+					<i id="nameIcon" class="bi bi-exclamation d-none"></i>
+					<div class="small pt-1 d-none" id="nameDiv">이름을 입력하세요.</div>
+				</div>
 				<input type="text" placeholder="생년월일" class="form-control mt-4" id="birthdayInput">
+				<div class="d-flex text-danger">
+					<i id="birthdayIcon" class="d-none bi bi-exclamation"></i>
+					<div class="small d-none" id="birthdayDiv">생년월일을 입력하세요.</div>
+				</div>
 				<input type="text" placeholder="전화번호" class="form-control mt-4" id="phoneNumberInput">
+				<div class="d-flex text-danger">
+					<i id="phoneNumberIcon" class="d-none bi bi-exclamation"></i>
+					<div class="small d-none" id="phoneNumberDiv">전화번호를 입력하세요.</div>
+				</div>
 				<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput">
+				<div class="d-flex text-danger">
+					<i id="emailIcon" class="d-none bi bi-exclamation"></i>
+					<div class="small d-none" id="emailDiv">이메일을 입력하세요.</div>
+					<div id="emailContainsDiv" class="small pt-1 d-none">이메일 형식이 올바르지 않습니다.</div>
+				</div>
 				<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput">
+				<div class="d-flex text-danger">
+					<i id="passwordIcon" class="d-none bi bi-exclamation"></i>
+					<div class="small d-none" id="passwordDiv">비밀번호를 입력하세요.</div>
+				</div>
 				<hr>
 				<div class="d-flex justify-content-between">
 					<div class="small">개인 정보 수집 및 이용에 동의합니다.</div>
@@ -45,7 +66,7 @@
 					<input type="checkbox">
 				</div>
 				<br>
-				<button id="signupBtn" class="form-control mt-2 text-white" style="background-color:#f52a4f">회원가입</button>
+				<button id="signupBtn" class="form-control mt-2 mb-3 text-white" style="background-color:#f52a4f">회원가입</button>
 			</div>
 		</div>
 	</section>
@@ -58,24 +79,98 @@
 	            ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12']
 	            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
 				,dateFormat: "yy년 mm월 dd일"
-				,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-		        ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-		        ,changeYear: true //콤보박스에서 년 선택 가능
+				,showOtherMonths: true 
+		        ,showMonthAfterYear:true
+		        ,changeYear: true
 		        ,changeMonth: true 
 				,changeMonth:true
 				,changeYear:true
 				,maxDate: 0
-				,minDate: "-100Y"
+				,minDate: new Date("1900-01-01")
+				,yearRange:"1900:2023"
 			});
 			
+			$("#nameInput").on("input", function() {
+				$("#nameIcon").addClass("d-none");
+				$("#nameDiv").addClass("d-none");
+			})
+			$("#birthdayInput").on("input", function() {
+				$("#birthdayIcon").addClass("d-none");
+				$("#birthdayDiv").addClass("d-none");
+			})
+			$("#phoneNumberInput").on("input", function() {
+				$("#phoneNumberIcon").addClass("d-none");
+				$("#phoneNumberDiv").addClass("d-none");
+			})
+			$("#emailInput").on("input", function() {
+				$("#emailIcon").addClass("d-none");
+				$("#emailDiv").addClass("d-none");
+				$("#emailContainsDiv").addClass("d-none");
+			})
+			$("#passwordInput").on("input", function() {
+				$("#passwordIcon").addClass("d-none");
+				$("#passwordDiv").addClass("d-none");
+			})
 			
 			
 			$("#signupBtn").on("click", function() {
+				
+				let name = $("#nameInput").val();
+				let birthday = $("#birthdayInput").val();
+				let phoneNumber = $("#phoneNumberInput").val();
+				let email = $("#emailInput").val();
+				let password = $("#passwordInput").val();
+				
+				if(name == "") {
+					$("#nameIcon").removeClass("d-none");
+					$("#nameDiv").removeClass("d-none");
+					return;
+				}
+				if(birthday == "") {
+					$("#birthdayIcon").removeClass("d-none");
+					$("#birthdayDiv").removeClass("d-none");
+					return;
+				}
+				if(phoneNumber == "") {
+					$("#phoneNumberIcon").removeClass("d-none");
+					$("#phoneNumberDiv").removeClass("d-none");
+					return;
+				}
+				if(email == "") {
+					$("#emailIcon").removeClass("d-none");
+					$("#emailDiv").removeClass("d-none");
+					return;
+				}
+				if(email.indexOf("@") == -1) {
+					$("#emailContainsDiv").removeClass("d-none");
+					return;
+				}
+				if(password == "") {
+					$("#passwordIcon").removeClass("d-none");
+					$("#passwordDiv").removeClass("d-none");
+					return;
+				}
 				
 				if(!$("#check").is(":checked")) {
 					alert("개인정보 수집 약관에 동의 해주세요.");
 					return;
 				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/signup"
+					, data:{"name":name, "birthday":birthday, "phoneNumber":phoneNumber, "email":email, "password":password}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.href="/user/signin/email";
+						} else {
+							alert("회원가입 실패");
+						}
+					}
+					, error:function(){
+						alert("회원가입 에러");
+					}
+				});
 			})
 		});
 	</script>

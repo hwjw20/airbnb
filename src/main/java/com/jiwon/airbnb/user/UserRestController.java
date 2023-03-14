@@ -77,4 +77,24 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	@PostMapping("/signup")
+	public Map<String, String> signup(
+			@RequestParam("name") String name
+			, @RequestParam("birthday") String birthday
+			, @RequestParam("phoneNumber") String phoneNumber
+			, @RequestParam("email") String email
+			, @RequestParam("password") String password) {
+		
+		int count = userBO.addUser(name, birthday, phoneNumber, email, password);
+		
+		Map<String, String> result = new HashMap<>();
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
 }

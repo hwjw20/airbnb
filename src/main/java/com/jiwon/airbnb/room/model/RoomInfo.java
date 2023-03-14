@@ -1,5 +1,7 @@
 package com.jiwon.airbnb.room.model;
 
+import java.util.List;
+
 import com.jiwon.airbnb.room.imagePath.model.ImagePath;
 
 public class RoomInfo {
@@ -8,8 +10,8 @@ public class RoomInfo {
 	private String type;
 	private String address;
 	private int charge;
+	private List<String> imagePathList;
 	private double rating;
-	private String imagePath;
 	
 	public int getRoomId() {
 		return roomId;
@@ -35,17 +37,18 @@ public class RoomInfo {
 	public void setCharge(int charge) {
 		this.charge = charge;
 	}
+	public List<String> getImagePathList() {
+		return imagePathList;
+	}
+	public void setImagePathList(List<String> imagePathList) {
+		this.imagePathList = imagePathList;
+	}
 	public double getRating() {
 		return rating;
 	}
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	public String getImagePath() {
-		return imagePath;
-	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
+		
 	
 }

@@ -13,4 +13,11 @@ public interface UserDAO {
 	public User selectUser(@Param("email") String email, @Param("password") String password);
 	
 	public int selectUserCount(@Param("email") String email);
+	
+	public int insertUser(
+			@Param("name") String name
+			, @Param("birthday") String birthday
+			, @Param("phoneNumber") String phoneNumber
+			, @Param("email") String email
+			, @Param("password") String password);
 }

@@ -57,7 +57,7 @@
 				<div class="room">
 					<div class="relative">
 						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
-						<img class="room-img" src="${room.imagePath}" class="rounded" width="250" height="200">
+						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="room-img" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
 					</div>
 					<div class="d-flex small">
 						<div>${room.address}</div>

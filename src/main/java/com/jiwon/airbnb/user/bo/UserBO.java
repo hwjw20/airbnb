@@ -24,4 +24,8 @@ public class UserBO {
 	public int getUserCount(String email) {
 		return userDAO.selectUserCount(email);
 	}
+	
+	public int addUser(String name, String birthday, String phoneNumber, String email, String password) {
+		return userDAO.insertUser(name, birthday, phoneNumber, email, password);
+	}
 }

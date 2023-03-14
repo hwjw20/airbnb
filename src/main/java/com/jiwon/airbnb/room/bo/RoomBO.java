@@ -38,16 +38,11 @@ public class RoomBO {
 			RoomInfo roomInfo = new RoomInfo();
 			
 			int roomId = room.getId();
-			String address = room.getAddress();
-			int charge = room.getCharge();
-			double rating = room.getRating();
-			String imagePath = imagePathBO.getImagePath(roomId).get(0);
 			
 			roomInfo.setRoomId(roomId);
-			roomInfo.setAddress(address);
-			roomInfo.setCharge(charge);
-			roomInfo.setRating(rating);
-			roomInfo.setImagePath(imagePath);
+			roomInfo.setAddress(room.getAddress());
+			roomInfo.setCharge(room.getCharge());
+			roomInfo.setImagePathList(imagePathBO.getImagePathByRoomId(roomId));
 			
 			roomInfoList.add(roomInfo);
 		}
@@ -55,8 +50,20 @@ public class RoomBO {
 		return roomInfoList;
 	}
 	
-	public Room getRoom(int roomId) {
-		return roomDAO.selectRoom(roomId);
+	public RoomInfo getRoom(int roomId) {
+		Room room = roomDAO.selectRoom(roomId);
+		
+		RoomInfo roomInfo = new RoomInfo();
+		
+		roomInfo.setRoomId(roomId);
+		roomInfo.setType(room.getType());
+		roomInfo.setAddress(room.getAddress());
+		roomInfo.setCharge(room.getCharge());
+		roomInfo.setImagePathList(imagePathBO.getImagePathByRoomId(roomId));
+		
+		
+		
+	
 	}
 	
 	
