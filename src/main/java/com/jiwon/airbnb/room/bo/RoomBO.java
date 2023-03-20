@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.jiwon.airbnb.room.dao.RoomDAO;
 import com.jiwon.airbnb.room.imagePath.bo.ImagePathBO;
-import com.jiwon.airbnb.room.imagePath.model.ImagePath;
 import com.jiwon.airbnb.room.model.Room;
 import com.jiwon.airbnb.room.model.RoomInfo;
+import com.jiwon.airbnb.room.review.bo.ReviewBO;
+import com.jiwon.airbnb.user.bo.UserBO;
 
 @Service
 public class RoomBO {
@@ -19,7 +20,14 @@ public class RoomBO {
 	private RoomDAO roomDAO;
 	
 	@Autowired
+	private UserBO userBO;
+	
+	@Autowired
+	private ReviewBO reviewBO;
+	
+	@Autowired
 	private ImagePathBO imagePathBO;
+	
 	
 	public List<RoomInfo> getRoomList(Integer type) {
 		
@@ -56,14 +64,22 @@ public class RoomBO {
 		RoomInfo roomInfo = new RoomInfo();
 		
 		roomInfo.setRoomId(roomId);
+		roomInfo.setHostName(userBO.getUserName(room.getUserId()));
 		roomInfo.setType(room.getType());
+		roomInfo.setPrivacy(room.getPrivacy());
 		roomInfo.setAddress(room.getAddress());
+		roomInfo.setHeadcount(room.getHeadcount());
+		roomInfo.setBed(room.getBed());
+		roomInfo.setBathroom(room.getBathroom());
+		roomInfo.setRoomName(room.getRoomName());
+		roomInfo.setRoomDescription(room.getRoomDescription());
+		roomInfo.setSelfCheckin(room.getSelfCheckin());
 		roomInfo.setCharge(room.getCharge());
+		roomInfo.setRating(reviewBO.getRating(roomId));
+		roomInfo.setReviewCount(reviewBO.getReviewCount(roomId));
 		roomInfo.setImagePathList(imagePathBO.getImagePathByRoomId(roomId));
 		
-		
-		
-	
+		return roomInfo;
 	}
 	
 	

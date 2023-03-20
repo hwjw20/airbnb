@@ -20,4 +20,7 @@ public interface UserDAO {
 			, @Param("phoneNumber") String phoneNumber
 			, @Param("email") String email
 			, @Param("password") String password);
+	
+	public String selectUserName(@Param("userId") int userId);
+	
 }

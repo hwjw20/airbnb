@@ -70,3 +70,13 @@ aside > #reservBox {
 	border: 1px solid;
 	border-radius: 20px;
 }
+#reviewBox {
+	width:700px;
+	height:500px;
+	margin:auto;
+	border: 1px solid;
+	border-radius: 20px;
+}
+#reviewList {
+	width:400px;
+}

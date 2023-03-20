@@ -68,4 +68,13 @@
 			, now()
 		)
 	</insert>
+	
+	<select id="selectUserName" parameterType="int" resultType="string">
+		SELECT
+			`name`
+		FROM 
+			`user`
+		WHERE
+			`id` = #{userId}
+	</select>
 </mapper>

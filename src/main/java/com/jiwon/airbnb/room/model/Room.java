@@ -13,7 +13,7 @@ public class Room {
 	private int bed;
 	private int bedroom;
 	private int bathroom;
-	private boolean selfCheckin;
+	private int selfCheckin;
 	private int charge;
 	private double rating;
 	private int countReservation;
@@ -21,7 +21,6 @@ public class Room {
 	private String roomDescription;
 	private Date createdAt;
 	private Date updatedAt;
-	
 	public int getId() {
 		return id;
 	}
@@ -76,10 +75,10 @@ public class Room {
 	public void setBathroom(int bathroom) {
 		this.bathroom = bathroom;
 	}
-	public boolean isSelfCheckin() {
+	public int getSelfCheckin() {
 		return selfCheckin;
 	}
-	public void setSelfCheckin(boolean selfCheckin) {
+	public void setSelfCheckin(int selfCheckin) {
 		this.selfCheckin = selfCheckin;
 	}
 	public int getCharge() {
