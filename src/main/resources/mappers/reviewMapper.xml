@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiwon.airbnb.room.review.dao.ReviewDAO">
+	<select id="selectReviewCount" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`review`
+		WHERE
+			`roomId` = #{roomId}
+	</select>
+	
+	<select id="selectRating" parameterType="int" resultType="Double">
+		SELECT
+			`rating`
+		FROM
+			`review`
+		WHERE
+			`roomId` = #{roomId}
+	</select>
+	
+	<select id="selectReviewList" parameterType="int" resultType="com.jiwon.airbnb.room.review.model.Review">
+		SELECT
+			`id`
+			, `roomId`
+		    , `userId` 
+		    , `content` 
+		    , `rating` 
+		    , `createdAt` 
+		    , `updatedAt`
+		 FROM
+		 	`review`
+		 WHERE
+		 	`roomId` = #{roomId}
+	</select>
+</mapper>
