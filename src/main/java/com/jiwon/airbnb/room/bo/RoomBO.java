@@ -44,6 +44,10 @@ public class RoomBO {
 		return day;
 	}
 	
+	public Room getRoom(int roomId) {
+		return roomDAO.selectRoom(roomId);
+	}
+	
 	public List<RoomInfo> getRoomList(Integer type) {
 		
 		List<Room> roomList = new ArrayList<>();
@@ -74,7 +78,7 @@ public class RoomBO {
 		return roomInfoList;
 	}
 	
-	public RoomInfo getRoom(int roomId) {
+	public RoomInfo getRoomInfo(int roomId) {
 		Room room = roomDAO.selectRoom(roomId);
 		int userId = room.getUserId();
 		
@@ -100,4 +104,5 @@ public class RoomBO {
 		return roomInfo;
 	}
 	
+
 }

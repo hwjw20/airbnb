@@ -80,3 +80,13 @@ aside > #reservBox {
 #reviewList {
 	width:400px;
 }
+#reservationDiv {
+	width:1000px;
+	margin:auto;
+}
+#reservation {
+	width:900px;
+	height:150px;
+	margin:auto;
+	border: 1px solid;
+}

@@ -39,7 +39,7 @@ public class RoomController {
 			, Model model) {
 		
 		String date = roomBO.getDate();
-		RoomInfo room = roomBO.getRoom(roomId);
+		RoomInfo room = roomBO.getRoomInfo(roomId);
 		
 		model.addAttribute("date", date);
 		model.addAttribute("room", room);

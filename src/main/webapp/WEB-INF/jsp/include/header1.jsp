@@ -42,8 +42,8 @@
 		    			<i class="bi bi-person-circle"></i>
 				  	</button>
 				  <div class="dropdown-menu dropdown-menu-right">
-				    <a class="dropdown-item small" href="/user/reservation/view">여행</a>
-				    <a class="dropdown-item small" href="/user/wishlist/view">위시리스트</a>
+				    <a class="dropdown-item small" href="/mypage/reservation/view">여행</a>
+				    <a class="dropdown-item small" href="/mypage/wishlist/view">위시리스트</a>
 				    <div class="dropdown-divider"></div>
 				    <a class="dropdown-item small" href="/host/view">숙소관리</a>
 				    <div class="dropdown-divider"></div>

@@ -27,7 +27,7 @@ public class ReviewController {
 	@GetMapping("/review")
 	public String reviewView(@RequestParam("roomId") int roomId, Model model) {
 		List<ReviewInfo> reviewInfoList = reviewBO.getReviewList(roomId);
-		RoomInfo room = roomBO.getRoom(roomId);
+		RoomInfo room = roomBO.getRoomInfo(roomId);
 		
 		model.addAttribute("room", room);
 		model.addAttribute("reviewList", reviewInfoList);
