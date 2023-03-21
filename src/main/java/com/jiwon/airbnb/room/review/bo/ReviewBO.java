@@ -29,10 +29,11 @@ public class ReviewBO {
 		
 		double result = 0;
 		for(Double rating:ratingList) {
-			result += rating / ratingList.size();
+			result += rating;  
 		}
+		result /= ratingList.size();
 		
-		return result;
+		return Math.round(result * 10) / 10.0;
 	}
 	
 	public List<ReviewInfo> getReviewList(int roomId) {
@@ -47,7 +48,7 @@ public class ReviewBO {
 			reviewInfo.setUserId(review.getUserId());
 			reviewInfo.setUserName(userBO.getUserName(review.getUserId()));
 			reviewInfo.setContent(review.getContent());
-			reviewInfo.setRating(review.getRating());
+			reviewInfo.setRating(getRating(roomId));
 			reviewInfo.setReviewCount(getReviewCount(roomId));
 			reviewInfo.setCreatedAt(review.getCreatedAt());
 			reviewInfo.setUpdatedAt(review.getUpdatedAt());
@@ -58,5 +59,8 @@ public class ReviewBO {
 		return reviewInfoList;
 	}
 	
+	public int getCountReviewByUserId(int userId) {
+		return reviewDAO.selectReviewCount(userId);
+	}
 	
 }

@@ -15,4 +15,6 @@ public interface ReviewDAO {
 	public List<Double> selectRating(@Param("roomId") int roomId);
 			
 	public List<Review> selectReviewList(@Param("roomId") int roomId);
+	
+	public int selectCountReview(@Param("userId") int userId);
 }

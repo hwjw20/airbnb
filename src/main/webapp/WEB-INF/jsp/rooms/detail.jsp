@@ -74,18 +74,21 @@
 					</div>
 				</c:if>
 				
+				<c:if test="${room.superHost}">
 				<div class="d-flex mt-4">
 					<i class="bi bi-star"></i>
+					
 					<div class="small pl-4">
 						<div><b>경험이 풍부한 호스트</b></div>
 						<div>지원님은 다른 숙소에 대해 30개의 후기가 있습니다.</div>
 					</div>
 				</div>
+				</c:if>
 				
 				<div class="d-flex mt-4">
 					<i class="bi bi-calendar"></i>
 					<div class="small pl-4">
-						<div><b>4월 13일까지 무료 취소</b></div>
+						<div><b>${date }까지 무료 취소</b></div>
 					</div>
 				</div>
 				<hr>

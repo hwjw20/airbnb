@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jiwon.airbnb.room.bo.RoomBO;
+import com.jiwon.airbnb.room.model.RoomInfo;
 import com.jiwon.airbnb.room.review.bo.ReviewBO;
-import com.jiwon.airbnb.room.review.model.Review;
 import com.jiwon.airbnb.room.review.model.ReviewInfo;
-import com.jiwon.airbnb.user.bo.UserBO;
 
 @Controller
 @RequestMapping("/rooms/detail")
@@ -22,12 +22,14 @@ public class ReviewController {
 	private ReviewBO reviewBO;
 	
 	@Autowired
-	private UserBO userBO;
+	private RoomBO roomBO;
 	
 	@GetMapping("/review")
 	public String reviewView(@RequestParam("roomId") int roomId, Model model) {
 		List<ReviewInfo> reviewInfoList = reviewBO.getReviewList(roomId);
+		RoomInfo room = roomBO.getRoom(roomId);
 		
+		model.addAttribute("room", room);
 		model.addAttribute("reviewList", reviewInfoList);
 		
 		return "rooms/review";

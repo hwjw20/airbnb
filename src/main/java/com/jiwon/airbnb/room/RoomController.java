@@ -1,5 +1,6 @@
 package com.jiwon.airbnb.room;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jiwon.airbnb.room.bo.RoomBO;
-import com.jiwon.airbnb.room.model.Room;
 import com.jiwon.airbnb.room.model.RoomInfo;
 
 @Controller
@@ -38,8 +38,10 @@ public class RoomController {
 			@RequestParam("roomId") int roomId
 			, Model model) {
 		
+		String date = roomBO.getDate();
 		RoomInfo room = roomBO.getRoom(roomId);
 		
+		model.addAttribute("date", date);
 		model.addAttribute("room", room);
 		
 		return "rooms/detail";

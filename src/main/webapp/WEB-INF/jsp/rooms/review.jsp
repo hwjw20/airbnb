@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 		
 			<div class="d-flex ml-5 mt-4">
 				<h4><i class="bi bi-star-fill"></i></h4>
-				<h4 class="ml-1">${reviewList.rating} 후기 ${reviewList.reviewCount}개</h4>
+				<h4 class="ml-1">${room.rating} 후기 ${room.reviewCount}개</h4>
 			</div>
 			<div>
 				<div class="input-group pr-5 mr-5 mt-4">
@@ -39,12 +40,14 @@
 				
 				<div id="reviewList" class="mt-5 mr-5">
 					<c:forEach var="review" items="${reviewList}">
-						<div class="d-flex">
+						<div class="d-flex mt-3">
 							<div>${review.userName }</div>
-							<div class="small ml-2 mt-1">${review.createdAt}</div>
+							<div class="small ml-2 mt-1">
+								<fmt:formatDate value="${review.createdAt}" pattern="yyyy년 M월" />
+							</div>
 						</div>
-						<div>
-							너무 만족스러웠고 아늑한 공간이었습니다. 재방문 의사 200프로!
+						<div class="small">
+							${review.content }
 						</div>
 					</c:forEach>
 				</div>

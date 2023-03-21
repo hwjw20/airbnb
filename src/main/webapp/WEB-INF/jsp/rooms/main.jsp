@@ -59,10 +59,10 @@
 						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
 						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="room-img" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
 					</div>
-					<div class="d-flex small">
+					<a href="/rooms/detail/view?roomId=${room.roomId}"><div class="d-flex small">
 						<div>${room.address}</div>
 						<div class="pl-2"><i class="bi bi-star-fill"></i>${room.rating}</div>
-					</div>
+					</div></a>
 					<div class="small">
 						<div><b>₩${room.charge} /박</b></div>
 					</div>

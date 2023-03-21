@@ -1,6 +1,9 @@
 package com.jiwon.airbnb.room.bo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,18 @@ public class RoomBO {
 	@Autowired
 	private ImagePathBO imagePathBO;
 	
+	public String getDate() {
+		String day = "";
+		SimpleDateFormat format = new SimpleDateFormat("M월 d일");
+		
+		Calendar cal = Calendar.getInstance();
+		Date date = new Date();
+		cal.setTime(date);
+		
+		cal.add(Calendar.DATE, 10);
+		day = format.format(cal.getTime());
+		return day;
+	}
 	
 	public List<RoomInfo> getRoomList(Integer type) {
 		
@@ -51,6 +66,7 @@ public class RoomBO {
 			roomInfo.setAddress(room.getAddress());
 			roomInfo.setCharge(room.getCharge());
 			roomInfo.setImagePathList(imagePathBO.getImagePathByRoomId(roomId));
+			roomInfo.setRating(reviewBO.getRating(roomId));
 			
 			roomInfoList.add(roomInfo);
 		}
@@ -60,6 +76,7 @@ public class RoomBO {
 	
 	public RoomInfo getRoom(int roomId) {
 		Room room = roomDAO.selectRoom(roomId);
+		int userId = room.getUserId();
 		
 		RoomInfo roomInfo = new RoomInfo();
 		
@@ -78,9 +95,9 @@ public class RoomBO {
 		roomInfo.setRating(reviewBO.getRating(roomId));
 		roomInfo.setReviewCount(reviewBO.getReviewCount(roomId));
 		roomInfo.setImagePathList(imagePathBO.getImagePathByRoomId(roomId));
+		roomInfo.setSuperHost(reviewBO.getCountReviewByUserId(userId) >= 30);
 		
 		return roomInfo;
 	}
-	
 	
 }

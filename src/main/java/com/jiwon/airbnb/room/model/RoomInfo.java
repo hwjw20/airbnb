@@ -22,7 +22,15 @@ public class RoomInfo {
 	private double rating;
 	private int reviewCount;
 	private List<String> imagePathList;
+	private boolean superHost;
 	
+	
+	public boolean isSuperHost() {
+		return superHost;
+	}
+	public void setSuperHost(boolean superHost) {
+		this.superHost = superHost;
+	}
 	public int getRoomId() {
 		return roomId;
 	}

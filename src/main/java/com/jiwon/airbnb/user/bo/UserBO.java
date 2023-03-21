@@ -32,4 +32,5 @@ public class UserBO {
 	public String getUserName(int userId) {
 		return userDAO.selectUserName(userId);
 	}
+	
 }
