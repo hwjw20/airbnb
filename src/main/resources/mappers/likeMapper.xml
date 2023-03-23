@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiwon.airbnb.room.like.dao.LikeDAO">
+	<insert id="insertLike" parameterType="map">
+		INSERT INTO
+			`like`
+		(
+			`userId`
+			, `roomId`
+			, `createdAt`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{roomId}
+			, now()
+		)
+	</insert>
+	
+	<select id="selectCountLike" parameterType="map" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+			AND `roomId` = #{roomId}
+	</select>
+	
+	<delete id="deleteLike" parameterType="map">
+		DELETE FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+			AND `roomId` = #{roomId}
+	</delete>
+	
+</mapper>

@@ -37,10 +37,21 @@
 					<a href="/rooms/detail/review?roomId=${room.roomId }" class="ml-2">후기 ${room.reviewCount }개</a>
 					<div class="ml-1">· ${room.address }</div>
 				</div>
-				<button type="button" class="btn btn-link d-flex pr-3" id="likeBtn" data-roomId="${room.roomId}">
-					<i class="small bi bi-heart"></i>
-					<div class="ml-1 small">저장</div>
-				</button>
+				
+				<c:choose>
+					<c:when test="${isLike }">
+						<button type="button" class="btn btn-link d-flex pr-3" id="unlikeBtn" data-room-id="${room.roomId }">
+							<i class="small bi bi-heart-fill"></i>
+							<div class="ml-1 small">저장</div>
+						</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn btn-link d-flex pr-3" id="likeBtn" data-room-id="${room.roomId }">
+							<i class="small bi bi-heart"></i>
+							<div class="ml-1 small">저장</div>
+						</button>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<div class="d-flex">
 				<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(0)}" width="400" height="350"></a>
@@ -134,8 +145,30 @@
 	<script>
 		$(document).ready(function() {
 			
+			$("#unlikeBtn").on("click", function() {
+				let roomId = $(this).data("room-id");
+				
+				$.ajax({
+					type:"get"
+					, url:"/room/unlike"
+					, data:{"roomId":roomId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("위시리스트 저장 취소 실패");
+						}
+					}
+					, error:function() {
+						alert("위시리스트 저장 취소 에러");
+					}
+				});
+				
+			})
+			
+			
 			$("#likeBtn").on("click", function() {
-				let roomId = $(this).data("roomId");
+				let roomId = $(this).data("room-id");
 				
 				$.ajax({
 					type:"get"

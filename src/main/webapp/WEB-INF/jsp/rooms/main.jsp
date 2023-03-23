@@ -56,8 +56,11 @@
 				<c:forEach var="room" items="${roomList}">
 				<div class="room">
 					<div class="relative">
-						<div class="room-like"><i class="bi bi-heart text-white"></i></div>
+					<c:choose>
+						<div class="room-like"><i class="bi bi-heart text-white" id="likeIcon" data-room-id="${room.roomId}"></i></div>
+						<div class="room-like"><i class="bi bi-heart-fill text-white" id="unlikeIcon" data-room-id="${room.roomId}"></i></div>
 						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="room-img" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
+					</c:choose>
 					</div>
 					<a href="/rooms/detail/view?roomId=${room.roomId}"><div class="d-flex small">
 						<div>${room.address}</div>

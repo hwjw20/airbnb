@@ -34,7 +34,7 @@
 				<c:forEach var="reservation" items="reservationList">
 					<div id="reservation" class="mt-5">
 						<div><b>${reservation.address }</b></div>
-						<div>${reservation.roomName }</div>
+						<div>${reservation. }</div>
 						
 						
 					</div>
