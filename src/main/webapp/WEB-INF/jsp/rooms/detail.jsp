@@ -37,26 +37,27 @@
 					<a href="/rooms/detail/review?roomId=${room.roomId }" class="ml-2">후기 ${room.reviewCount }개</a>
 					<div class="ml-1">· ${room.address }</div>
 				</div>
-				<button type="button" class="btn btn-link d-flex pr-5">
+				<button type="button" class="btn btn-link d-flex pr-3" id="likeBtn" data-roomId="${room.roomId}">
 					<i class="small bi bi-heart"></i>
 					<div class="ml-1 small">저장</div>
 				</button>
 			</div>
 			<div class="d-flex">
-				<img src="${room.imagePathList.get(0)}" width="400" height="350">
+				<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(0)}" width="400" height="350"></a>
 				<div>
 					<div class="pl-2">
-						<img src="${room.imagePathList.get(1)}" width="220" height="170">
-						<img src="${room.imagePathList.get(1)}" width="220" height="170">
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(1)}" width="220" height="170"></a>
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(2)}" width="220" height="170"></a>
 					</div>
 					<div class="pt-2 pl-2">
-						<img src="${room.imagePathList.get(1)}" width="220" height="170">
-						<img src="${room.imagePathList.get(1)}" width="220" height="170">
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(3)}" width="220" height="170"></a>
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(4)}" width="220" height="170"></a>
 					</div>
 				</div>
 			</div>
+			<a href="/rooms/detail/view/photo?roomId=${room.roomId}" class="small mr-3" style="float:right">사진 모두 보기</a>
 		</article>
-		<aside class="d-flex mt-3">
+		<aside class="d-flex mt-5">
 			<div id="descBox">
 				<div>
 					<div><b>${room.hostName}님이 호스팅하는 숙소</b></div>
@@ -133,6 +134,26 @@
 	<script>
 		$(document).ready(function() {
 			
+			$("#likeBtn").on("click", function() {
+				let roomId = $(this).data("roomId");
+				
+				$.ajax({
+					type:"get"
+					, url:"/room/like"
+					, data:{"roomId":roomId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("위시리스트 저장 실패");
+						}
+					}
+					, error:function() {
+						alert("위시리스트 저장 에러");
+					}
+				});
+				
+			});
 			
 			$("#checkinInput").datepicker({
 				dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']

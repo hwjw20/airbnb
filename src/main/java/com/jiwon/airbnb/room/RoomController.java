@@ -1,6 +1,5 @@
 package com.jiwon.airbnb.room;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +46,18 @@ public class RoomController {
 		return "rooms/detail";
 	}
 	
+	@GetMapping("/detail/view/photo")
+	public String detailImgView(
+			@RequestParam("roomId") int roomId
+			, Model model)	{
 	
+		RoomInfo room = roomBO.getRoomInfo(roomId);
+		
+		model.addAttribute("room", room);
+		
+		return "rooms/detailImg";
+	}
 
+	
+	
 }

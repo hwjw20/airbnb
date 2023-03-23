@@ -90,3 +90,7 @@ aside > #reservBox {
 	margin:auto;
 	border: 1px solid;
 }
+#carouselExampleIndicators {
+	width:800px;
+	margin:auto;
+}
