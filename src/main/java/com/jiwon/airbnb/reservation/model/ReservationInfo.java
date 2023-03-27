@@ -9,7 +9,10 @@ public class ReservationInfo {
 	private int roomId;
 	private String roomName;
 	private String address;
+	private String imagePath;
 	private Date date;
+	private int days;
+	private String finDate;
 	
 	public int getReservationId() {
 		return reservationId;
@@ -41,11 +44,29 @@ public class ReservationInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public Date getDate() {
 		return date;
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public int getDays() {
+		return days;
+	}
+	public void setDays(int days) {
+		this.days = days;
+	}
+	public String getFinDate() {
+		return finDate;
+	}
+	public void setFinDate(String finDate) {
+		this.finDate = finDate;
 	}
 	
 }

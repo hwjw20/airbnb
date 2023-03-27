@@ -1,17 +1,13 @@
-package com.jiwon.airbnb.reservation.model;
+package com.jiwon.airbnb.room.like.model;
 
 import java.util.Date;
 
-public class Reservation {
+public class Like {
 
 	private int id;
 	private int userId;
 	private int roomId;
-	private Date date;
-	private int days;
-	private int headcount;
 	private Date createdAt;
-	
 	public int getId() {
 		return id;
 	}
@@ -29,24 +25,6 @@ public class Reservation {
 	}
 	public void setRoomId(int roomId) {
 		this.roomId = roomId;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public int getDays() {
-		return days;
-	}
-	public void setDays(int days) {
-		this.days = days;
-	}
-	public int getHeadcount() {
-		return headcount;
-	}
-	public void setHeadcount(int headcount) {
-		this.headcount = headcount;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

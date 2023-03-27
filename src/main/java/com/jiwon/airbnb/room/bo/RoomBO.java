@@ -1,14 +1,13 @@
 package com.jiwon.airbnb.room.bo;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jiwon.airbnb.common.GetDate;
 import com.jiwon.airbnb.room.dao.RoomDAO;
 import com.jiwon.airbnb.room.imagePath.bo.ImagePathBO;
 import com.jiwon.airbnb.room.model.Room;
@@ -32,16 +31,10 @@ public class RoomBO {
 	private ImagePathBO imagePathBO;
 	
 	public String getDate() {
-		String day = "";
-		SimpleDateFormat format = new SimpleDateFormat("M월 d일");
 		
-		Calendar cal = Calendar.getInstance();
 		Date date = new Date();
-		cal.setTime(date);
 		
-		cal.add(Calendar.DATE, 10);
-		day = format.format(cal.getTime());
-		return day;
+		return GetDate.getDate(date, 10).substring(6);
 	}
 	
 	public Room getRoom(int roomId) {

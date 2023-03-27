@@ -1,5 +1,6 @@
 package com.jiwon.airbnb.room.review;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,21 @@ public class ReviewController {
 	private RoomBO roomBO;
 	
 	@GetMapping("/review")
-	public String reviewView(@RequestParam("roomId") int roomId, Model model) {
-		List<ReviewInfo> reviewInfoList = reviewBO.getReviewList(roomId);
-		RoomInfo room = roomBO.getRoomInfo(roomId);
+	public String reviewView(
+			@RequestParam("roomId") int roomId
+			, Model model
+			, @RequestParam(value="searchWord", required=false) String searchWord) {
 		
+		List<ReviewInfo> reviewInfoList = new ArrayList<>();
+		RoomInfo room = new RoomInfo();
+		
+		if(searchWord == null) {
+			reviewInfoList = reviewBO.getReviewList(roomId);
+			room = roomBO.getRoomInfo(roomId);
+		} else {
+			reviewInfoList = reviewBO.getSearchReviewList(searchWord);
+			room = roomBO.getRoomInfo(roomId);
+		}
 		model.addAttribute("room", room);
 		model.addAttribute("reviewList", reviewInfoList);
 		

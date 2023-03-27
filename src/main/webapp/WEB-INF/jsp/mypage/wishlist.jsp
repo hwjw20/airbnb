@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약 확인</title>
+<title>위시리스트</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -27,25 +26,19 @@
 <body>
 	<c:import url="/WEB-INF/jsp/include/header1.jsp"></c:import>
 	<div id="reservationDiv">
-		<h5 class="mt-3"><b>여행</b></h5>
+		<h5 class="mt-3"><b>위시리스트</b></h5>
 		<hr>
 		<c:choose>
-			<c:when test="${fn:length(reservationList) != 0 }">
-				<c:forEach var="reservation" items="${reservationList}">
+			<c:when test="${fn:length(roomList) != 0 }">
+				<c:forEach var="room" items="${roomList}">
 					<div id="reservation" class="d-flex justify-content-between mt-5">
-						<div class="mt-4 ml-5">
-							<div><b>${reservation.address}</b></div>
-							
-							<div class="small">${reservation.roomName}</div>
-							<div class="d-flex mt-3">
-								<div class="small"><fmt:formatDate value="${reservation.date }" pattern="yyyy년 MM월 dd일" /></div>
-								<b><i class="bi bi-arrow-right-short ml-3 mr-3"></i></b>
-								<div class="small">${reservation.finDate }</div>
-							</div>
-							${reservation.days }
-						</div>
+						<a href="/rooms/detail/view?roomId=${room.roomId}"><div class="mt-4 ml-5">
+							<div><b>${room.address}</b></div>
+							<div class="small">${room.roomName}</div>
+							<div class="mt-3">₩${room.charge} /박</div>
+						</div></a>
 						<div>
-							<img width="300" height="150" src="${reservation.imagePath }">
+							<a href="/rooms/detail/view?roomId=${room.roomId}"><img width="300" height="150" src="${room.imagePathList.get(0) }"></a>
 						</div>
 						
 						

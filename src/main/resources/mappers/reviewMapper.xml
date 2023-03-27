@@ -44,4 +44,19 @@
 		WHERE
 			`userId` = #{userId}
 	</select>
+	
+	<select id="selectSearchReviewList" parameterType="string" resultType="com.jiwon.airbnb.room.review.model.ReviewInfo">
+		SELECT
+			`id`
+			, `roomId`
+		    , `userId` 
+		    , `content` 
+		    , `rating` 
+		    , `createdAt` 
+		    , `updatedAt`
+		 FROM
+		 	`review`
+		 WHERE
+		 	`content` LIKE '%#{searchWord}'
+	</select>
 </mapper>

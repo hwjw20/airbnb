@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jiwon.airbnb.reservation.bo.ReservationBO;
 import com.jiwon.airbnb.reservation.model.ReservationInfo;
+import com.jiwon.airbnb.room.like.bo.LikeBO;
+import com.jiwon.airbnb.room.model.RoomInfo;
 
 @Controller
 @RequestMapping("/mypage")
@@ -19,6 +21,9 @@ public class ReservationController {
 
 	@Autowired
 	private ReservationBO reservationBO;
+	
+	@Autowired
+	private LikeBO likeBO;
 	
 	@GetMapping("/reservation/view")
 	public String mypageView(
@@ -32,5 +37,19 @@ public class ReservationController {
 		model.addAttribute("reservationList", reservationList);
 		
 		return "mypage/travel";
+	}
+	
+	@GetMapping("/wishlist/view")
+	public String wishListView(
+			HttpSession session
+			, Model model) {
+		
+		int userId = (int) session.getAttribute("userId");
+		
+		List<RoomInfo> roomList = likeBO.getLikedRoom(userId);
+		
+		model.addAttribute("roomList", roomList);
+		
+		return "mypage/wishlist";
 	}
 }

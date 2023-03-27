@@ -34,8 +34,8 @@
 			</div>
 			<div>
 				<div class="input-group pr-5 mr-5 mt-4">
-				  <span class="input-group-text"><i class="bi bi-search"></i></span>
-				  <input type="text" class="form-control">
+				  <button type="button" class="input-group-text" id="searchBtn"><i class="bi bi-search"></i></button>
+				  <input type="text" class="form-control" id="searchInput">
 				</div>
 				
 				<div id="reviewList" class="mt-5 mr-5">
@@ -55,5 +55,34 @@
 		
 		</div>
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$("#searchBtn").on("click", function() {
+
+				let searchWord = $("#searchInput").val();
+
+				$.ajax({
+					type:"get"
+					, url:"/rooms/detail/review/search"
+					, data:{"searchWord":searchWord}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("검색 실패");
+						}
+					}
+					, error:function() {
+						alert("검색 에러");
+					}
+				});
+				
+				
+			})
+			
+		});
+	</script>
 </body>
 </html>

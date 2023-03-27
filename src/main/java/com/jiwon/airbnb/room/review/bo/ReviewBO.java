@@ -63,4 +63,8 @@ public class ReviewBO {
 		return reviewDAO.selectReviewCount(userId);
 	}
 	
+	public List<ReviewInfo> getSearchReviewList(String searchWord) {
+		return reviewDAO.selectSearchReviewList(searchWord);
+	}
+	
 }

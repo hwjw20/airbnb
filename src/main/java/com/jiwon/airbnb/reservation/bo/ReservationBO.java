@@ -1,15 +1,18 @@
 package com.jiwon.airbnb.reservation.bo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jiwon.airbnb.common.GetDate;
 import com.jiwon.airbnb.reservation.dao.ReservationDAO;
 import com.jiwon.airbnb.reservation.model.Reservation;
 import com.jiwon.airbnb.reservation.model.ReservationInfo;
 import com.jiwon.airbnb.room.bo.RoomBO;
+import com.jiwon.airbnb.room.imagePath.bo.ImagePathBO;
 import com.jiwon.airbnb.room.model.Room;
 
 @Service
@@ -21,6 +24,9 @@ public class ReservationBO {
 	@Autowired
 	private RoomBO roomBO;
 	
+	@Autowired
+	private ImagePathBO imagePathBO;
+	
 	
 	public List<ReservationInfo> getReservationList(int userId) {
 		List<Reservation> reservationList = reservationDAO.selectReservationList(userId);
@@ -31,6 +37,10 @@ public class ReservationBO {
 			ReservationInfo reservationInfo = new ReservationInfo();
 			
 			Room room = roomBO.getRoom(reservation.getRoomId());
+			String firstImagePath = imagePathBO.getImagePathByRoomId(reservation.getRoomId()).get(0);
+			int days = reservation.getDays();
+			Date date = reservation.getDate();
+			String finDate = GetDate.getDate(date, days);
 			
 			reservationInfo.setReservationId(reservation.getId());
 			reservationInfo.setUserId(userId);
@@ -38,6 +48,9 @@ public class ReservationBO {
 			reservationInfo.setRoomName(room.getRoomName());
 			reservationInfo.setAddress(room.getAddress());
 			reservationInfo.setDate(reservation.getDate());
+			reservationInfo.setDays(days);
+			reservationInfo.setImagePath(firstImagePath);
+			reservationInfo.setFinDate(finDate);
 			
 			reservationInfoList.add(reservationInfo);
 		}

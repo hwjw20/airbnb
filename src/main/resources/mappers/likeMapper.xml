@@ -37,4 +37,15 @@
 			AND `roomId` = #{roomId}
 	</delete>
 	
+	<select id="selectLikedRoom" parameterType="int" resultType="com.jiwon.airbnb.room.like.model.Like">
+		SELECT
+			`id`
+			, `userId`
+			, `roomId`
+			, `createdAt`
+		FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+	</select>
 </mapper>
