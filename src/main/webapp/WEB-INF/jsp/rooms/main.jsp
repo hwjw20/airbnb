@@ -64,7 +64,7 @@
 								<div class="room-like"><i class="bi bi-heart text-white" id="likeIcon" data-room-id="${room.roomId}"></i></div>
 							</c:otherwise>
 						</c:choose>
-						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="room-img" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
+						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="rounded room-img" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
 					</div>
 					<a href="/rooms/detail/view?roomId=${room.roomId}"><div class="d-flex small">
 						<div>${room.address}</div>

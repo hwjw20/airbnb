@@ -54,15 +54,15 @@
 				</c:choose>
 			</div>
 			<div class="d-flex">
-				<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(0)}" width="400" height="350"></a>
+				<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(0)}" width="400" height="350" class="rounded"></a>
 				<div>
 					<div class="pl-2">
-						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(1)}" width="220" height="170"></a>
-						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(2)}" width="220" height="170"></a>
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(1)}" width="220" height="170" class="rounded"></a>
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(2)}" width="220" height="170" class="rounded"></a>
 					</div>
 					<div class="pt-2 pl-2">
-						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(3)}" width="220" height="170"></a>
-						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(4)}" width="220" height="170"></a>
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(3)}" width="220" height="170" class="rounded"></a>
+						<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(4)}" width="220" height="170" class="rounded"></a>
 					</div>
 				</div>
 			</div>

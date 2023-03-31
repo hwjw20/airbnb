@@ -45,7 +45,7 @@
 							${reservation.days }
 						</div>
 						<div>
-							<img width="300" height="150" src="${reservation.imagePath }">
+							<a href="/rooms/detail/view?roomId=${reservation.roomId}"><img width="300" height="150" src="${reservation.imagePath }"></a>
 						</div>
 						
 						

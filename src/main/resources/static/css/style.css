@@ -4,10 +4,21 @@
 	height:800px;
 	margin:auto;
 }
+a:link {
+  color : black;
+  text-decoration-line: none;
+}
+a:visited {
+  color : black;
+}
 header {
 	width:1200px;
 	height:80px;
 	margin:auto;
+}
+#logoImg {
+	width:30px;
+	height:30px;
 }
 #detailHeader {
 	width:900px;
