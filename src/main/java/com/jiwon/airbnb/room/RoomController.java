@@ -68,6 +68,4 @@ public class RoomController {
 		return "rooms/detailImg";
 	}
 
-	
-	
 }

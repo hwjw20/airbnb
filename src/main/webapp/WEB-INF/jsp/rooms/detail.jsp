@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>숙소 디테일 화면</title>
+	<script type="text/javascript" 
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yzz1j3llgp"></script>
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -24,7 +27,7 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/include/detailHeader.jsp" />
-	
+	<hr>
 	<div class="container detailBox">
 		<article>
 			<h5><b>${room.roomName}</b></h5>
@@ -138,11 +141,15 @@
 			</div>
 		</aside>
 		<hr>
-		<div id="mapBox" class="bg-success">
+		<div id="map" class="mb-4">
 		</div>
 	</div>
+	<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
 	<script>
+			
+		var map = new naver.maps.Map('map');
+		
 		$(document).ready(function() {
 			
 			$("#unlikeBtn").on("click", function() {
