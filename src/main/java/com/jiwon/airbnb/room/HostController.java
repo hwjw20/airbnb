@@ -24,4 +24,10 @@ public class HostController {
 			) {
 		return "rooms/host/become_a_host/type";
 	}
+	@GetMapping("/privacy/view")
+	public String privacyView(
+			HttpSession session
+			) {
+		return "rooms/host/become_a_host/privacy";
+	}
 }
