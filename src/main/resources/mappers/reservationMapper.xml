@@ -9,6 +9,7 @@
 			, `userId`
 			, `roomId`
 			, `date`
+			, `days`
 			, `headcount`
 			, `createdAt`
 		FROM
@@ -16,4 +17,26 @@
 		WHERE
 			`userId` = #{userId}	
 	</select>
+	
+	<insert id="insertReservation" parameterType="map">
+		INSERT INTO
+			`reservation`
+		(
+			`userId`
+			, `roomId`
+			, `date`
+			, `days`
+			, `headcount`
+			, `createdAt`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{roomId}
+			, #{date}
+			, #{days}
+			, #{headcount}
+			, now()
+		)
+	</insert>
 </mapper>

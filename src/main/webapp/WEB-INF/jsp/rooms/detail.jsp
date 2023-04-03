@@ -128,11 +128,14 @@
 					<input type="text" placeholder="체크인" id="checkinInput" class="form-control">
 					<input type="text" placeholder="체크아웃" id="checkoutInput" class="form-control">
 				</div>
-				<select class="form-select" id="headcountSelect">
+				<select class="form-select" id="headcountSelect" name="heacountSelect">
 					<option selected>인원</option>
-					
+					<option value="1">1명</option>	
+					<option value="2">2명</option>	
+					<option value="3">3명</option>	
+					<option value="4">4명</option>	
 				</select>
-				<button type="button" class="btn form-control mt-4 mb-4 text-white" id="reservBtn" style="background-color:#f52a4f">예약하기</button>
+				<button type="button" class="btn form-control mt-4 mb-4 text-white" id="reservBtn" style="background-color:#f52a4f" data-room-id="${room.roomId}" data-room-charge="${room.charge}">예약하기</button>
 				<hr>
 				<div class="d-flex justify-content-between">
 					<b><div>총 합계</div></b>
@@ -151,6 +154,7 @@
 		var map = new naver.maps.Map('map');
 		
 		$(document).ready(function() {
+			
 			
 			$("#unlikeBtn").on("click", function() {
 				let roomId = $(this).data("room-id");
@@ -200,7 +204,7 @@
 	            ,dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
 	            ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12']
 	            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-				,dateFormat: "yy년 mm월 dd일"
+				,dateFormat: "yy-mm-dd"
 				,showOtherMonths: true 
 		        ,showMonthAfterYear:true
 		        ,changeYear: true
@@ -218,22 +222,47 @@
 	            ,dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
 	            ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12']
 	            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-				,dateFormat: "yy년 mm월 dd일"
+				,dateFormat: "yy-mm-dd"
 				,showOtherMonths: true 
 		        ,showMonthAfterYear:true
 		        ,changeYear: true
 		        ,changeMonth: true 
 				,changeMonth:true
 				,changeYear:true
+				,onSelect:function (dateText) {
+                    $("#checkoutInput").datepicker('option', 'minDate', dateText);
+                }
 			});
-			
 			
 			$("#reservBtn").on("click", function() {
+				
+				let roomId = $(this).data("room-id");
+				let headcount = $("select[name=heacountSelect]").val();
 				let checkin = $("#checkinInput").val();
 				let checkout = $("#checkoutInput").val();
-				alert(checkin);
-				
+				let checkinDate = new Date(checkin);
+				let checkoutDate = new Date(checkout);
+				let days = (checkoutDate.getTime() - checkinDate.getTime()) / (1000 * 60 * 60 * 24);
+				let charge = $(this).data("room-charge") * days;
+				 
+				$.ajax({
+					type:"get"
+					, url:"/room/detail/reservation"
+					, data:{"roomId":roomId, "date":checkin, "days":days, "headcount":headcount}
+					, success:function(data) {
+						if(data.result == "success") {
+							alert("예약이 완료 되었습니다.");
+							location.href="/rooms/list/view";
+						} else {
+							alert("예약 실패");
+						}
+					}
+					, error:function() {
+						alert("예약 에러");
+					}
+				});
 			});
+			
 		});
 	</script>
 </body>

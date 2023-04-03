@@ -44,7 +44,7 @@ public class RoomController {
 			, Model model
 			, HttpSession session) {
 		
-		int userId = (int)session.getAttribute("userId");
+		Integer userId = (int)session.getAttribute("userId");
 		String date = roomBO.getDate();
 		RoomInfo room = roomBO.getRoomInfo(roomId);
 		boolean isLike = likeBO.isLike(userId, roomId);
@@ -59,11 +59,15 @@ public class RoomController {
 	@GetMapping("/detail/view/photo")
 	public String detailImgView(
 			@RequestParam("roomId") int roomId
-			, Model model)	{
+			, Model model
+			, HttpSession session)	{
 	
+		int userId = (int) session.getAttribute("userId");
 		RoomInfo room = roomBO.getRoomInfo(roomId);
+		boolean isLike = likeBO.isLike(userId, roomId);
 		
 		model.addAttribute("room", room);
+		model.addAttribute("isLike", isLike);
 		
 		return "rooms/detailImg";
 	}

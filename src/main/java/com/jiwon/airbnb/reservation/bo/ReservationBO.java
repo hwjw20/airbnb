@@ -58,4 +58,7 @@ public class ReservationBO {
 		return reservationInfoList;
 	}
 	
+	public int addReservation(int userId, int roomId, String date, int days, int headcount) {
+		return reservationDAO.insertReservation(userId, roomId, date, days, headcount);
+	}
 }

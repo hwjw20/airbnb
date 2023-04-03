@@ -28,6 +28,7 @@
 				<div class="text-center">로그인</div>
 				<hr>
 				<div class="small">에어비앤비에 오신 것을 환영합니다.</div>
+				<form id="loginForm"></form>
 				<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput" name="email">
 				<div class="d-flex text-danger">
 					<i id="warningIcon" class="bi bi-exclamation d-none"></i>				

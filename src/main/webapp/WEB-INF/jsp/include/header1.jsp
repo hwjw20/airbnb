@@ -11,9 +11,9 @@
 				</div>
 				
 				<div class="input-group col-5">
-			  		<input type="text" class="form-control">
+			  		<input type="text" class="form-control" id="searchInput">
 			  		<div class="input-group-append">
-			    		<button class="btn" type="button" style="background-color:#f52a4f"><i class="bi bi-search text-white"></i></button>
+			    		<button id="searchBtn" class="btn" type="button" style="background-color:#f52a4f"><i class="bi bi-search text-white"></i></button>
 			  		</div>	
 				</div>
 				
@@ -55,3 +55,26 @@
 			</div>
 			<hr>
 		</header>
+		
+		<script>
+			$(document).ready(function() {
+				
+				$("#searchBtn").on("click", function() {
+					let searchWord = $("#searchInput").val();
+					
+					$.ajax({
+						type:"get"
+						, url:"/room/search"
+						, data:{"searchWord":searchWord}
+						, success:function(data) {
+							
+						}
+						, error:function() {
+							alert("검색 에러");
+						}
+					})
+					
+				});
+				
+			});
+		</script>

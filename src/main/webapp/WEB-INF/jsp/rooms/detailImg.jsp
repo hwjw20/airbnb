@@ -25,11 +25,21 @@
 <body>
 	<c:import url="/WEB-INF/jsp/include/header2.jsp" />
 	<div class="container">
-		<button type="button" class="btn btn-link d-flex float-right">
-			<i class="small bi bi-heart"></i>
-			<div class="ml-1 small">저장</div>
-		</button>
-		
+		<c:choose>
+			<c:when test="${isLike }">
+				<button type="button" class="btn btn-link d-flex pr-3 float-right" id="unlikeBtn" data-room-id="${room.roomId }">
+					<i class="small bi bi-heart-fill"></i>
+					<div class="ml-1 small">저장</div>
+				</button>
+			</c:when>
+			<c:otherwise>
+				<button type="button" class="btn btn-link d-flex pr-3 float-right" id="likeBtn" data-room-id="${room.roomId }">
+					<i class="small bi bi-heart"></i>
+					<div class="ml-1 small">저장</div>
+				</button>
+			</c:otherwise>
+		</c:choose>
+		<br>
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		  <ol class="carousel-indicators">
 		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
