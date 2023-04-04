@@ -245,6 +245,11 @@
 				let days = (checkoutDate.getTime() - checkinDate.getTime()) / (1000 * 60 * 60 * 24);
 				let charge = $(this).data("room-charge") * days;
 				 
+				if(headcount == "") {
+					alert("인원을 선택해주세요.");
+					return;
+				}
+				
 				$.ajax({
 					type:"get"
 					, url:"/room/detail/reservation"

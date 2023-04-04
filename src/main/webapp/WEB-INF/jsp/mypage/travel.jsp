@@ -42,7 +42,7 @@
 								<b><i class="bi bi-arrow-right-short ml-3 mr-3"></i></b>
 								<div class="small">${reservation.finDate }</div>
 							</div>
-							${reservation.days }
+							<a href="#" class="small text-primary">후기 작성하러 가기</a>
 						</div>
 						<div>
 							<a href="/rooms/detail/view?roomId=${reservation.roomId}"><img width="300" height="150" src="${reservation.imagePath }"></a>
