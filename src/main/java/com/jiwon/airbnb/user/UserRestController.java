@@ -97,4 +97,18 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	@GetMapping("/duplicate_email")
+	public Map<String, Boolean> duplicateEmail(@RequestParam("email") String email) {
+		User user = userBO.getUserByEmail(email);
+		
+		Map<String, Boolean> result = new HashMap<>();
+		if(user == null) {
+			result.put("duplicate", false);
+		} else {
+			result.put("duplicate", true);
+		}
+		
+		return result;
+	}
 }

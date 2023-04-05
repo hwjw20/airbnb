@@ -157,20 +157,36 @@
 				}
 				
 				$.ajax({
-					type:"post"
-					, url:"/user/signup"
-					, data:{"name":name, "birthday":birthday, "phoneNumber":phoneNumber, "email":email, "password":password}
+					type:"get"
+					, url:"/user/duplicate_email"
+					, data:{"email":email}
 					, success:function(data) {
-						if(data.result == "success") {
-							location.href="/user/signin/email";
+						if(data.duplicate) {
+							alert("이미 가입된 이메일입니다.");
 						} else {
-							alert("회원가입 실패");
+							
+							$.ajax({
+								type:"post"
+								, url:"/user/signup"
+								, data:{"name":name, "birthday":birthday, "phoneNumber":phoneNumber, "email":email, "password":password}
+								, success:function(data) {
+									if(data.result == "success") {
+										location.href="/user/signin/email/view";
+									} else {
+										alert("회원가입 실패");
+									}
+								}
+								, error:function(){
+									alert("회원가입 에러");
+								}
+							});
 						}
 					}
-					, error:function(){
-						alert("회원가입 에러");
+					, error:function() {
+						alert("중복확인 에러");
 					}
 				});
+				
 			})
 		});
 	</script>
