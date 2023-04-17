@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jiwon.airbnb.common.EncryptUtils;
 import com.jiwon.airbnb.user.bo.UserBO;
 import com.jiwon.airbnb.user.model.User;
 
@@ -46,9 +47,9 @@ public class UserRestController {
 			, @RequestParam("password") String password
 			, HttpSession session) {
 		
-//		String encryptPassword = EncryptUtils.md5(password);
+		String encryptPassword = EncryptUtils.md5(password);
 		
-		User user = userBO.getUser(email, password);
+		User user = userBO.getUser(email, encryptPassword);
 		
 		Map<String, String> result = new HashMap<>();
 		if(user != null) {
@@ -86,7 +87,9 @@ public class UserRestController {
 			, @RequestParam("email") String email
 			, @RequestParam("password") String password) {
 		
-		int count = userBO.addUser(name, birthday, phoneNumber, email, password);
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		int count = userBO.addUser(name, birthday, phoneNumber, email, encryptPassword);
 		
 		Map<String, String> result = new HashMap<>();
 		if(count == 1) {

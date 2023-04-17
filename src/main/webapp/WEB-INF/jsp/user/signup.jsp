@@ -30,43 +30,45 @@
 			<div class="container mt-3">
 				<div class="text-center">회원가입</div>
 				<hr>
-				<input type="text" placeholder="이름" class="form-control mt-4" id="nameInput">
-				<div class="d-flex text-danger">
-					<i id="nameIcon" class="bi bi-exclamation d-none"></i>
-					<div class="small pt-1 d-none" id="nameDiv">이름을 입력하세요.</div>
-				</div>
-				<input type="text" placeholder="생년월일" class="form-control mt-4" id="birthdayInput">
-				<div class="d-flex text-danger">
-					<i id="birthdayIcon" class="d-none bi bi-exclamation"></i>
-					<div class="small d-none" id="birthdayDiv">생년월일을 입력하세요.</div>
-				</div>
-				<input type="text" placeholder="전화번호" class="form-control mt-4" id="phoneNumberInput">
-				<div class="d-flex text-danger">
-					<i id="phoneNumberIcon" class="d-none bi bi-exclamation"></i>
-					<div class="small d-none" id="phoneNumberDiv">전화번호를 입력하세요.</div>
-				</div>
-				<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput">
-				<div class="d-flex text-danger">
-					<i id="emailIcon" class="d-none bi bi-exclamation"></i>
-					<div class="small d-none" id="emailDiv">이메일을 입력하세요.</div>
-					<div id="emailContainsDiv" class="small pt-1 d-none">이메일 형식이 올바르지 않습니다.</div>
-				</div>
-				<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput">
-				<div class="d-flex text-danger">
-					<i id="passwordIcon" class="d-none bi bi-exclamation"></i>
-					<div class="small d-none" id="passwordDiv">비밀번호를 입력하세요.</div>
-				</div>
-				<hr>
-				<div class="d-flex justify-content-between">
-					<div class="small">개인 정보 수집 및 이용에 동의합니다.</div>
-					<input type="checkbox" id="check" value="check">
-				</div>
-				<div class="d-flex justify-content-between">
-					<div class="small">마케팅 이메일 수신을 원합니다.(선택)</div>
-					<input type="checkbox">
-				</div>
-				<br>
-				<button id="signupBtn" class="form-control mt-2 mb-3 text-white" style="background-color:#f52a4f">회원가입</button>
+				<form id="signupForm">
+					<input type="text" placeholder="이름" class="form-control mt-4" id="nameInput">
+					<div class="d-flex text-danger">
+						<i id="nameIcon" class="bi bi-exclamation d-none"></i>
+						<div class="small pt-1 d-none" id="nameDiv">이름을 입력하세요.</div>
+					</div>
+					<input type="text" placeholder="생년월일" class="form-control mt-4" id="birthdayInput">
+					<div class="d-flex text-danger">
+						<i id="birthdayIcon" class="d-none bi bi-exclamation"></i>
+						<div class="small d-none" id="birthdayDiv">생년월일을 입력하세요.</div>
+					</div>
+					<input type="text" placeholder="전화번호" class="form-control mt-4" id="phoneNumberInput">
+					<div class="d-flex text-danger">
+						<i id="phoneNumberIcon" class="d-none bi bi-exclamation"></i>
+						<div class="small d-none" id="phoneNumberDiv">전화번호를 입력하세요.</div>
+					</div>
+					<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput">
+					<div class="d-flex text-danger">
+						<i id="emailIcon" class="d-none bi bi-exclamation"></i>
+						<div class="small d-none" id="emailDiv">이메일을 입력하세요.</div>
+						<div id="emailContainsDiv" class="small pt-1 d-none">이메일 형식이 올바르지 않습니다.</div>
+					</div>
+					<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput">
+					<div class="d-flex text-danger">
+						<i id="passwordIcon" class="d-none bi bi-exclamation"></i>
+						<div class="small d-none" id="passwordDiv">비밀번호를 입력하세요.</div>
+					</div>
+					<hr>
+					<div class="d-flex justify-content-between">
+						<div class="small">개인 정보 수집 및 이용에 동의합니다.</div>
+						<input type="checkbox" id="check" value="check">
+					</div>
+					<div class="d-flex justify-content-between">
+						<div class="small">마케팅 이메일 수신을 원합니다.(선택)</div>
+						<input type="checkbox">
+					</div>
+					<br>
+					<button type="submit" id="signupBtn" class="form-control mt-2 mb-3 text-white" style="background-color:#f52a4f">회원가입</button>
+				</form>
 			</div>
 		</div>
 	</section>
@@ -113,7 +115,9 @@
 			})
 			
 			
-			$("#signupBtn").on("click", function() {
+			$("#signupForm").on("submit", function(e) {
+				
+				e.preventDefault();
 				
 				let name = $("#nameInput").val();
 				let birthday = $("#birthdayInput").val();

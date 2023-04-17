@@ -28,23 +28,24 @@
 				<div class="text-center">로그인</div>
 				<hr>
 				<div class="small">에어비앤비에 오신 것을 환영합니다.</div>
-				<form id="loginForm"></form>
-				<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput" name="email">
-				<div class="d-flex text-danger">
-					<i id="warningIcon" class="bi bi-exclamation d-none"></i>				
-					<div id="emailDiv" class="small pt-1 d-none">이메일을 입력하세요.</div>
-					<div id="emailContainsDiv" class="small pt-1 d-none">이메일 형식이 올바르지 않습니다.</div>
-				</div>
-				<button type="button" class="form-control mt-2 text-white" id="signinBtn" style="background-color:#f52a4f">계속</button>
-				<div class="text-center small text-secondary mt-4">또는</div>
-				<button type="button" class="form-control mt-4 d-flex">
-					<i class="bi bi-google"></i>
-					<div class="small pl-5">구글로 로그인하기</div>
-				</button>
-				<button class="form-control mt-2 d-flex">
-					<i class="bi bi-telephone-fill"></i>
-					<div class="small pl-5">전화번호로 로그인하기</div>
-				</button>
+				<form id="loginForm">
+					<input type="text" placeholder="이메일" class="form-control mt-4" id="emailInput" name="email">
+					<div class="d-flex text-danger">
+						<i id="warningIcon" class="bi bi-exclamation d-none"></i>				
+						<div id="emailDiv" class="small pt-1 d-none">이메일을 입력하세요.</div>
+						<div id="emailContainsDiv" class="small pt-1 d-none">이메일 형식이 올바르지 않습니다.</div>
+					</div>
+					<button type="submit" class="form-control mt-2 text-white" id="signinBtn" style="background-color:#f52a4f">계속</button>
+				</form>
+					<div class="text-center small text-secondary mt-4">또는</div>
+					<button type="button" class="form-control mt-4 d-flex">
+						<i class="bi bi-google"></i>
+						<div class="small pl-5">구글로 로그인하기</div>
+					</button>
+					<button class="form-control mt-2 d-flex">
+						<i class="bi bi-telephone-fill"></i>
+						<div class="small pl-5">전화번호로 로그인하기</div>
+					</button>
 			</div>
 		</div>
 	</section>
@@ -59,7 +60,9 @@
 				
 			})
 			
-			$("#signinBtn").on("click", function() {
+			$("#loginForm").on("submit", function(e) {
+				
+				e.preventDefault();
 				
 				let email = $("#emailInput").val();
 				
