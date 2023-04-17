@@ -40,6 +40,7 @@
 						<a><div class="typeBtn rounded text-center pt-2" style="border:1px solid">아파트</div></a>
 					</div>	
 				</div>
+				<button class="btn btn-secondary float-right mt-5">다음</button>
 			</div>
 		</section>
 	</div>

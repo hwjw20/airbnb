@@ -26,7 +26,7 @@
 <body>
 	<c:import url="/WEB-INF/jsp/include/header1.jsp"></c:import>
 	<div id="reservationDiv">
-		<h5 class="mt-3"><b>위시리스트</b></h5>
+		<h5 class="mt-5"><b>위시리스트</b></h5>
 		<hr>
 		<c:choose>
 			<c:when test="${fn:length(roomList) != 0 }">

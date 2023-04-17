@@ -41,20 +41,29 @@
 					<div class="ml-1">· ${room.address }</div>
 				</div>
 				
-				<c:choose>
-					<c:when test="${isLike }">
-						<button type="button" class="btn btn-link d-flex pr-3" id="unlikeBtn" data-room-id="${room.roomId }">
-							<i class="small bi bi-heart-fill"></i>
-							<div class="ml-1 small">저장</div>
-						</button>
-					</c:when>
-					<c:otherwise>
-						<button type="button" class="btn btn-link d-flex pr-3" id="likeBtn" data-room-id="${room.roomId }">
-							<i class="small bi bi-heart"></i>
-							<div class="ml-1 small">저장</div>
-						</button>
-					</c:otherwise>
-				</c:choose>
+				<c:if test="${empty userId }" >
+					<button type="button" class="btn btn-link d-flex pr-3" onclick="location.href='/user/signin/email/view'">
+						<i class="small bi bi-heart"></i>
+						<div class="ml-1 small">저장</div>
+					</button>
+				</c:if>
+				<c:if test="${not empty userId }">
+					<c:choose>
+						<c:when test="${isLike }">
+							<button type="button" class="btn btn-link d-flex pr-3" id="unlikeBtn" data-room-id="${room.roomId }">
+								<i class="small bi bi-heart-fill"></i>
+								<div class="ml-1 small">저장</div>
+							</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn btn-link d-flex pr-3" id="likeBtn" data-room-id="${room.roomId }">
+								<i class="small bi bi-heart"></i>
+								<div class="ml-1 small">저장</div>
+							</button>
+						</c:otherwise>
+						
+					</c:choose>
+				</c:if>
 			</div>
 			<div class="d-flex">
 				<a href="/rooms/detail/view/photo?roomId=${room.roomId}"><img src="${room.imagePathList.get(0)}" width="400" height="350" class="rounded"></a>
@@ -135,7 +144,13 @@
 					<option value="3">3명</option>	
 					<option value="4">4명</option>	
 				</select>
-				<button type="button" class="btn form-control mt-4 mb-4 text-white" id="reservBtn" style="background-color:#f52a4f" data-room-id="${room.roomId}" data-room-charge="${room.charge}">예약하기</button>
+				
+				<c:if test="${empty userId }">
+					<button type="button" class="btn form-control mt-4 mb-4 text-white" style="background-color:#f52a4f" onclick="location.href='/user/signin/email/view'">예약하기</button>
+				</c:if>
+				<c:if test="${not empty userId }" >
+					<button type="button" class="btn form-control mt-4 mb-4 text-white" id="reservBtn" style="background-color:#f52a4f" data-room-id="${room.roomId}" data-room-charge="${room.charge}">예약하기</button>
+				</c:if>
 				<hr>
 				<div class="d-flex justify-content-between">
 					<b><div>총 합계</div></b>

@@ -60,14 +60,21 @@
 				
 				<div class="room">
 					<div class="relative">
-						<c:choose>
-							<c:when test="${isLike }">
-								<div class="room-like"><i class="bi bi-heart-fill text-white" id="unlikeIcon" data-room-id="${room.roomId}"></i></div>
-							</c:when>
-							<c:otherwise>
-								<div class="room-like"><i class="bi bi-heart text-white" id="likeIcon" data-room-id="${room.roomId}"></i></div>
-							</c:otherwise>
-						</c:choose>
+						<c:if test="${empty userId }">
+							<a>
+								<div class="room-like"><i class="bi bi-heart text-white" onclick="location.href='/user/signin/email/view'"></i></div>
+							</a>
+						</c:if>
+						<c:if test="${not empty userId }">
+							<c:choose>
+								<c:when test="${isLike }">
+									<div class="room-like"><i class="bi bi-heart-fill text-white" id="unlikeIcon" data-room-id="${room.roomId}"></i></div>
+								</c:when>
+								<c:otherwise>
+									<div class="room-like"><i class="bi bi-heart text-white" id="likeIcon" data-room-id="${room.roomId}"></i></div>
+								</c:otherwise>
+							</c:choose>
+						</c:if>
 						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="rounded room-img" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
 					</div>
 					<a href="/rooms/detail/view?roomId=${room.roomId}"><div class="d-flex small">
@@ -79,9 +86,6 @@
 					</div>
 				</div>
 				</c:forEach>
-				
-				
-				
 			</div>
 		</section>
 	</div>
