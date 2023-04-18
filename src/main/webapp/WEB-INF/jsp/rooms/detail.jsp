@@ -139,10 +139,9 @@
 				</div>
 				<select class="form-select" id="headcountSelect" name="heacountSelect">
 					<option selected>인원</option>
-					<option value="1">1명</option>	
-					<option value="2">2명</option>	
-					<option value="3">3명</option>	
-					<option value="4">4명</option>	
+					<%-- <c:forEach var="headcount" items="${room.headcount}" varStatus="count">
+						<option value="${status.count }">${status.count}명</option>	
+					</c:forEach> --%>
 				</select>
 				
 				<c:if test="${empty userId }">

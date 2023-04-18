@@ -60,24 +60,9 @@
 				
 				<div class="room">
 					<div class="relative">
-						<c:if test="${empty userId }">
-							<a>
-								<div class="room-like"><i class="bi bi-heart text-white" onclick="location.href='/user/signin/email/view'"></i></div>
-							</a>
-						</c:if>
-						<c:if test="${not empty userId }">
-							<c:choose>
-								<c:when test="${isLike }">
-									<div class="room-like"><i class="bi bi-heart-fill text-white" id="unlikeIcon" data-room-id="${room.roomId}"></i></div>
-								</c:when>
-								<c:otherwise>
-									<div class="room-like"><i class="bi bi-heart text-white" id="likeIcon" data-room-id="${room.roomId}"></i></div>
-								</c:otherwise>
-							</c:choose>
-						</c:if>
-						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="rounded room-img" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
+						<a href="/rooms/detail/view?roomId=${room.roomId}"><img class="rounded room-img mt-4" src="${room.imagePathList.get(0)}" class="rounded" width="250" height="200"></a>
 					</div>
-					<a href="/rooms/detail/view?roomId=${room.roomId}"><div class="d-flex small">
+					<a href="/rooms/detail/view?roomId=${room.roomId}"><div class="d-flex small mt-1">
 						<div>${room.address}</div>
 						<div class="pl-2"><i class="bi bi-star-fill"></i>${room.rating}</div>
 					</div></a>
@@ -91,5 +76,47 @@
 	</div>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
+	<script>
+		$(document).ready(function() {
+			
+			$("#unlikeBtn").on("click", function() {
+				let roomId = $(this).data("room-id");
+				
+				$.ajax({
+					type:"get"
+					, url:"/room/unlike"
+					, data:{"roomId":roomId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("위시리스트 저장 취소 실패");
+						}
+					}
+					, error:function() {
+						alert("위시리스트 저장 취소 에러");
+					}
+			});
+				
+			$("#likeBtn").on("click", function() {
+				let roomId = $(this).data("room-id");
+				
+				$.ajax({
+					type:"get"
+					, url:"/room/like"
+					, data:{"roomId":roomId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("위시리스트 저장 실패");
+						}
+					}
+					, error:function() {
+						alert("위시리스트 저장 에러");
+					}
+				});
+		});
+	</script>
 </body>
 </html>

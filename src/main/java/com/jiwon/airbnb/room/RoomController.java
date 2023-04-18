@@ -28,8 +28,7 @@ public class RoomController {
 	@GetMapping("/list/view")
 	public String roomView(
 			@RequestParam(value="type", required=false) Integer type 
-			, Model model
-			, HttpSession session) {
+			, Model model) {
 		
 		List<RoomInfo> roomList = roomBO.getRoomList(type);
 		
