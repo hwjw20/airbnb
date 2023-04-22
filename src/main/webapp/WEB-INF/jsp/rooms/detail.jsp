@@ -156,6 +156,7 @@
 					<b><div>₩230,000</div></b>
 				</div>
 			</div>
+			
 		</aside>
 		<hr>
 		<div id="map" class="mb-4">
@@ -165,7 +166,17 @@
 	
 	<script>
 			
-		var map = new naver.maps.Map('map');
+		/* var map = new naver.maps.Map('map'); */
+		
+		var map = new naver.maps.Map('map', {
+		    center: new naver.maps.LatLng(${room.lat}, ${room.lng}),
+		    zoom: 15
+		});
+		
+		var marker = new naver.maps.Marker({
+		    position: new naver.maps.LatLng(${room.lat}, ${room.lng}),
+		    map: map
+		});
 		
 		$(document).ready(function() {
 			

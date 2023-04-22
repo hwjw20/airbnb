@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>숙소등록</title>
+<title>���ҵ��</title>
+	<script type="text/javascript" 
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yzz1j3llgp"></script>
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -26,21 +29,19 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/hostheader.jsp" />
 		<section>
-			<div id="typeDiv">
-				<h2 class="font-weight-bold">게스트가 사용할 숙소 유형</h2><br>
-				<div id="typeBox" class="ml-3">
-					<div class="privacyBtn rounded pt-2" style="border:1px solid">
-						<div class="font-weight-bold ml-3">개인실</div>
-						<div class="small mt-3 ml-3">게스트는 개인실에서 숙박하지만, 일부 공간은 호스트나 다른 사람과 함께 사용할 수 있습니다.</div>
-					</div><br>
-					<div class="privacyBtn rounded pt-2" style="border:1px solid">
-						<div class="font-weight-bold ml-3">다인실</div>
-						<div class="small mt-3 ml-3">게스트가 개인 공간 없이 호스트나 다른 사람과 함께 쓰는 침실이나 공용 공간에서 숙박합니다.</div>
+			<div id="mapDiv">
+				<h2 class="font-weight-bold">���� ��ġ�� ����ΰ���?</h2><br>
+				<div id="mapBox">
+					<div id="map">
 					</div>
-					<button class="btn btn-secondary float-right mt-4" onclick="location.href='/host/become_a_host/address/view'">다음</button>
+					<button class="btn btn-secondary float-right mt-4" onclick="locaion.href='/host/become_a_host/address_datail/view">����</button>
 				</div>
 			</div>
 		</section>
 	</div>
+	
+	<script>
+		var map = new naver.maps.Map('map');
+	</script>
 </body>
 </html>

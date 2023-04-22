@@ -15,40 +15,11 @@ section {
 	margin:auto;
 	position: relative;
 }
-a:link {
-  color : black;
-  text-decoration-line: none;
-}
-a:visited {
-  color : black;
-}
-a:hover {
-  background-color : gray;
-}
-#hostDiv {
+#map {
 	width:800px;
-	position: absolute;
- 	top: 25%;
+	height:500px;
+	margin:auto;
 }
-#typeDiv {
-	width:800px;
-	position: absolute;
- 	top: 20%;
- 	left: 20%;
-}
-#typeBox {
-	width:600px;
-}
-.typeBtn {
-	width:100px;
-	height:50px;
-}
-.privacyBtn {
-	width:600px;
-	height:100px;
-}
-#nextBtn {
-	position: absolute;
-	bottom: 20%;
-	right: 4%;
+#addressDiv {
+	width: 700px;
 }

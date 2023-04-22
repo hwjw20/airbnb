@@ -9,6 +9,8 @@ public class Room {
 	private String type;
 	private String privacy;
 	private String address;
+	private String lat;
+	private String lng;
 	private int headcount;
 	private int bed;
 	private int bedroom;
@@ -50,6 +52,18 @@ public class Room {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLng() {
+		return lng;
+	}
+	public void setLng(String lng) {
+		this.lng = lng;
 	}
 	public int getHeadcount() {
 		return headcount;
@@ -123,5 +137,6 @@ public class Room {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 	
 }

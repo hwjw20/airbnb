@@ -82,6 +82,8 @@ public class RoomBO {
 		roomInfo.setType(room.getType());
 		roomInfo.setPrivacy(room.getPrivacy());
 		roomInfo.setAddress(room.getAddress());
+		roomInfo.setLat(room.getLat());
+		roomInfo.setLng(room.getLng());
 		roomInfo.setHeadcount(room.getHeadcount());
 		roomInfo.setBed(room.getBed());
 		roomInfo.setBathroom(room.getBathroom());

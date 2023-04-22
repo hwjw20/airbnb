@@ -62,6 +62,8 @@
 		    , `type`
 		    , `privacy`
 		    , `address`
+		    , `lat`
+		    , `lng`
 		    , `headcount` 
 		    , `bed`
 		    , `bedroom`

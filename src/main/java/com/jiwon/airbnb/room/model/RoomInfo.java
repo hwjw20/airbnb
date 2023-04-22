@@ -11,6 +11,8 @@ public class RoomInfo {
 	private String type;
 	private String privacy;
 	private String address;
+	private String lat;
+	private String lng;
 	private int headcount;
 	private int bed;
 	private int bedroom;
@@ -24,13 +26,6 @@ public class RoomInfo {
 	private List<String> imagePathList;
 	private boolean superHost;
 	
-	
-	public boolean isSuperHost() {
-		return superHost;
-	}
-	public void setSuperHost(boolean superHost) {
-		this.superHost = superHost;
-	}
 	public int getRoomId() {
 		return roomId;
 	}
@@ -60,6 +55,18 @@ public class RoomInfo {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLng() {
+		return lng;
+	}
+	public void setLng(String lng) {
+		this.lng = lng;
 	}
 	public int getHeadcount() {
 		return headcount;
@@ -127,6 +134,11 @@ public class RoomInfo {
 	public void setImagePathList(List<String> imagePathList) {
 		this.imagePathList = imagePathList;
 	}
-	
+	public boolean isSuperHost() {
+		return superHost;
+	}
+	public void setSuperHost(boolean superHost) {
+		this.superHost = superHost;
+	}
 	
 }
