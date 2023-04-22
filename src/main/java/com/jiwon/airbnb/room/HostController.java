@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/become_a_host")
+@RequestMapping("/host/become_a_host")
 public class HostController {
 
 	@GetMapping("/view")
@@ -16,7 +16,7 @@ public class HostController {
 	}
 	@GetMapping("/host/view")
 	public String hostView(HttpSession session) {
-		return "rooms/host/become_a_host/host";
+		return "rooms/host/become_a_host/addRoom";
 	}
 	@GetMapping("/type/view")
 	public String typeView(
@@ -30,4 +30,11 @@ public class HostController {
 			) {
 		return "rooms/host/become_a_host/privacy";
 	}
+	@GetMapping("/address/view")
+	public String addressView(
+			HttpSession session
+			) {
+		return "rooms/host/become_a_host/address";
+	}
+	
 }

@@ -27,7 +27,7 @@
 	<section>
 		<h4 class="font-weight-bold">지원 님, 반갑습니다!</h4><br>
 		<div class="mt-3">
-			<button type="button" class="btn float-right" onclick="location.href='/become_a_host/host/view'">숙소 등록하기</button>
+			<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button>
 			<h5 class="font-weight-bold">예약</h5>
 		</div>
 	</section>

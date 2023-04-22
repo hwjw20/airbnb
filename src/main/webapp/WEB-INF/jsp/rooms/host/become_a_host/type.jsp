@@ -28,21 +28,28 @@
 		<section>
 			<div id="typeDiv">
 				<h2 class="font-weight-bold">다음 중 숙소를 가장 잘 설명하는 것은 무엇인가요?</h2><br>
-				<div id="typeBox" class="ml-3">
+
+				<div id="typeBox" class="mt-5 ml-3">
 					<div class="d-flex justify-content-around">
-						<a href="#"><div class="typeBtn rounded text-center pt-2" style="border:1px solid">해변</div></a>
-						<a><div class="typeBtn rounded text-center pt-2" style="border:1px solid">한옥</div></a>
-						<a><div class="typeBtn rounded text-center pt-2" style="border:1px solid">캠핑장</div></a>
+						<div class="typeBtn rounded text-center pt-2" style="border:1px solid">해변</div>
+						<div class="typeBtn rounded text-center pt-2" style="border:1px solid">한옥</div>
+						<div class="typeBtn rounded text-center pt-2" style="border:1px solid">캠핑장</div>
 					</div>
 					<div class="d-flex justify-content-around mt-3">
-						<a><div class="typeBtn rounded text-center pt-2" style="border:1px solid">최고의 전망</div></a>
-						<a><div class="typeBtn rounded text-center pt-2" style="border:1px solid">주택</div></a>
-						<a><div class="typeBtn rounded text-center pt-2" style="border:1px solid">아파트</div></a>
-					</div>	
+						<div class="typeBtn rounded text-center pt-2" style="border:1px solid">최고의 전망</div>
+						<div class="typeBtn rounded text-center pt-2" style="border:1px solid">주택</div>
+						<div class="typeBtn rounded text-center pt-2" style="border:1px solid">아파트</div>
+					</div>
+					<button id="nextBtn" class="btn btn-secondary float-right mt-5" onclick="location.href='/host/become_a_host/privacy/view'">다음</button>
 				</div>
-				<button class="btn btn-secondary float-right mt-5">다음</button>
 			</div>
 		</section>
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+		});
+	</script>
 </body>
 </html>
