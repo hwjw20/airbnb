@@ -48,6 +48,7 @@ public class RoomController {
 		String date = roomBO.getDate();
 		RoomInfo room = roomBO.getRoomInfo(roomId);
 		
+		
 		if(userId != null) {
 			boolean isLike = likeBO.isLike(userId, roomId);
 			model.addAttribute("isLike", isLike);
