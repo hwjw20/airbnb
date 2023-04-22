@@ -27,12 +27,14 @@
 			<div class="container mt-3">
 				<div class="text-center">비밀번호를 잊으셨나요?</div>
 				<hr>
-				<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput" data-email="${email}">
-				<div class="d-flex text-danger">
-					<i id="warningIcon" class="bi bi-exclamation d-none"></i>				
-					<div id="passwordDiv" class="small pt-1 d-none">비밀번호를 입력하세요.</div>
-				</div>
-				<button class="form-control mt-2 text-white" style="background-color:#f52a4f" id="signinBtn">로그인</button>
+				<form id="loginForm">
+					<input type="password" placeholder="비밀번호" class="form-control mt-4" id="passwordInput" data-email="${email}">
+					<div class="d-flex text-danger">
+						<i id="warningIcon" class="bi bi-exclamation d-none"></i>				
+						<div id="passwordDiv" class="small pt-1 d-none">비밀번호를 입력하세요.</div>
+					</div>
+					<button type="submit" class="form-control mt-2 text-white" style="background-color:#f52a4f" id="signinBtn">로그인</button>
+				</form>
 				<a href="/user/find_pw/view"><div class="small mt-4" style="text-decoration: underline;">비밀번호를 잊으셨나요?</div></a>
 			</div>
 		</div>
@@ -46,7 +48,10 @@
 			})
 			
 			
-			$("#signinBtn").on("click", function() {
+			$("#loginForm").on("submit", function(e) {
+				
+				e.preventDefault();
+				
 				let password = $("#passwordInput").val();
 				let email = $("#passwordInput").data("email");
 

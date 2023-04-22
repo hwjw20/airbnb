@@ -31,7 +31,7 @@
 				<h2 class="font-weight-bold">숙소 정보를 알려주세요.</h2><br>
 				<div>먼저 숙소 유형을 선택하고, 게스트가 예약할 수 있는 숙소가 공간 전체인지 개인실 또는 다인실인지 알려주세요. 그런 다음 숙소 위치와 수용 가능 인원을 알려주세요.</div>
 			</div>
-			<button type="button" onclick="location.href='/become_a_host/type/view'" id="nextBtn" class="btn btn-secondary">다음</button>
+			<button type="button" onclick="location.href='/host/become_a_host/type/view'" id="nextBtn" class="btn btn-secondary">다음</button>
 		</section>
 	</div>
 </body>

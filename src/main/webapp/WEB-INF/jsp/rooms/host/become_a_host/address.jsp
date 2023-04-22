@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>í˜¸ìŠ¤íŠ¸ ëª¨ë“œ</title>
+<title>¼÷¼Òµî·Ï</title>
+	<script type="text/javascript" 
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yzz1j3llgp"></script>
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -23,13 +26,22 @@
   	<link rel="stylesheet" href="/static/css/host_style.css" type="text/css">
 </head>
 <body>
-	<c:import url="/WEB-INF/jsp/include/hostheader.jsp" />
-	<section>
-		<h4 class="font-weight-bold">ì§€ì› ë‹˜, ë°˜ê°‘ìŠµë‹ˆë‹¤!</h4><br>
-		<div class="mt-3">
-			<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">ìˆ™ì†Œ ë“±ë¡í•˜ê¸°</button>
-			<h5 class="font-weight-bold">ì˜ˆì•½</h5>
-		</div>
-	</section>
+	<div id="wrap">
+		<c:import url="/WEB-INF/jsp/include/hostheader.jsp" />
+		<section>
+			<div id="mapDiv">
+				<h2 class="font-weight-bold">¼÷¼Ò À§Ä¡´Â ¾îµðÀÎ°¡¿ä?</h2><br>
+				<div id="mapBox">
+					<div id="map">
+					</div>
+					<button class="btn btn-secondary float-right mt-4" onclick="locaion.href='/host/become_a_host/address_datail/view">´ÙÀ½</button>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<script>
+		var map = new naver.maps.Map('map');
+	</script>
 </body>
 </html>

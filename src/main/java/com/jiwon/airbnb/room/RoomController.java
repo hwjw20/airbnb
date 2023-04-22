@@ -28,8 +28,7 @@ public class RoomController {
 	@GetMapping("/list/view")
 	public String roomView(
 			@RequestParam(value="type", required=false) Integer type 
-			, Model model
-			, HttpSession session) {
+			, Model model) {
 		
 		List<RoomInfo> roomList = roomBO.getRoomList(type);
 		
@@ -44,14 +43,19 @@ public class RoomController {
 			, Model model
 			, HttpSession session) {
 		
-		Integer userId = (int)session.getAttribute("userId");
+		Integer userId = (Integer)session.getAttribute("userId");
+		
 		String date = roomBO.getDate();
 		RoomInfo room = roomBO.getRoomInfo(roomId);
-		boolean isLike = likeBO.isLike(userId, roomId);
+		
+		
+		if(userId != null) {
+			boolean isLike = likeBO.isLike(userId, roomId);
+			model.addAttribute("isLike", isLike);
+		}
 		
 		model.addAttribute("date", date);
 		model.addAttribute("room", room);
-		model.addAttribute("isLike", isLike);
 		
 		return "rooms/detail";
 	}

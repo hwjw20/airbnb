@@ -30,17 +30,14 @@
 				<h2 class="font-weight-bold">게스트가 사용할 숙소 유형</h2><br>
 				<div id="typeBox" class="ml-3">
 					<div class="privacyBtn rounded pt-2" style="border:1px solid">
-						<a href="#">
-							<div class="font-weight-bold ml-3">개인실</div>
-							<div class="small mt-3 ml-3">게스트는 개인실에서 숙박하지만, 일부 공간은 호스트나 다른 사람과 함께 사용할 수 있습니다.</div>
-						</a>
+						<div class="font-weight-bold ml-3">개인실</div>
+						<div class="small mt-3 ml-3">게스트는 개인실에서 숙박하지만, 일부 공간은 호스트나 다른 사람과 함께 사용할 수 있습니다.</div>
 					</div><br>
 					<div class="privacyBtn rounded pt-2" style="border:1px solid">
-						<a href="#">
-							<div class="font-weight-bold ml-3">다인실</div>
-							<div class="small mt-3 ml-3">게스트가 개인 공간 없이 호스트나 다른 사람과 함께 쓰는 침실이나 공용 공간에서 숙박합니다.</div>
-						</a>
+						<div class="font-weight-bold ml-3">다인실</div>
+						<div class="small mt-3 ml-3">게스트가 개인 공간 없이 호스트나 다른 사람과 함께 쓰는 침실이나 공용 공간에서 숙박합니다.</div>
 					</div>
+					<button class="btn btn-secondary float-right mt-4" onclick="location.href='/host/become_a_host/address/view'">다음</button>
 				</div>
 			</div>
 		</section>

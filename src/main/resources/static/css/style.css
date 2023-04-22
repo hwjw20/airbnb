@@ -53,9 +53,6 @@ aside > #reservBox {
 .room {
 	width:25%;
 }
-.relative {
-	position:relative;
-}
 .room-like{
 	position: relative;
   	top: 30px;
@@ -110,3 +107,4 @@ footer {
 	margin:auto;
 	background-color:#f0f0f0;
 }
+
