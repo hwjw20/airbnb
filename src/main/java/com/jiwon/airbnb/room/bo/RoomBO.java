@@ -99,5 +99,16 @@ public class RoomBO {
 		return roomInfo;
 	}
 	
+	public List<Integer> getHeadcountList(int roomId) {
+		
+		int headcount = roomDAO.selectRoom(roomId).getHeadcount();
+		
+		List<Integer> headcountList = new ArrayList<>();
+		for(int i = 1; i <= headcount; i++) {
+			headcountList.add(i);
+		}
+		
+		return headcountList;
+	}
 
 }

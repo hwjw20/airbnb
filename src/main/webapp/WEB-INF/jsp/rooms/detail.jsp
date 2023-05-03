@@ -13,6 +13,11 @@
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   
+  	<!-- fullcalender -->
+  	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js"></script>
+	<!-- <link href='/resources/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+	<script src='/resources/fullcalendar-5.6.0/lib/main.js'></script> -->
+  
 	<script
 	  src="https://code.jquery.com/jquery-3.6.3.min.js"
 	  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
@@ -139,9 +144,9 @@
 				</div>
 				<select class="form-select" id="headcountSelect" name="heacountSelect">
 					<option selected>인원</option>
-					<%-- <c:forEach var="headcount" items="${room.headcount}" varStatus="count">
-						<option value="${status.count }">${status.count}명</option>	
-					</c:forEach> --%>
+					<c:forEach var="headcount" items="${headcountList}" varStatus="status">
+						<option value=${status.count }>${status.count }명</option>	
+					</c:forEach>
 				</select>
 				
 				<c:if test="${empty userId }">
@@ -151,10 +156,10 @@
 					<button type="button" class="btn form-control mt-4 mb-4 text-white" id="reservBtn" style="background-color:#f52a4f" data-room-id="${room.roomId}" data-room-charge="${room.charge}">예약하기</button>
 				</c:if>
 				<hr>
-				<div class="d-flex justify-content-between">
+				<!-- <div class="d-flex justify-content-between">
 					<b><div>총 합계</div></b>
 					<b><div>₩230,000</div></b>
-				</div>
+				</div> -->
 			</div>
 			
 		</aside>
