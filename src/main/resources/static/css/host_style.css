@@ -24,8 +24,8 @@ section {
 	width: 700px;
 }
 #fileInput {
-	width:300px;
-	height:300px;
+	width:400px;
+	height:400px;
 	margin:auto;
 }
 #preview {
@@ -33,4 +33,9 @@ section {
 	height:300px;
 	margin:auto;
 	border:1px dashed sliver;
+}
+#calendar {
+	width:1200px;
+	height:700px;
+	margin:auto;
 }

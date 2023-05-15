@@ -103,7 +103,7 @@
 			</div>
 			<div id="fileInput">
 				<input type="file" onchange="readURL(this);">
-				<img id="preview" width="300"  onchange="readURL(this);">
+				<img id="preview" width="300" onchange="readURL(this);">
 			</div>	
 		</div>
 		
@@ -125,19 +125,8 @@
 			  }
 		}	
 	
-		$(document).ready9function() {
-			$("#preview").on("click", function readURL(input) {
-				if (input.files && input.files[0]) {
-			    	var reader = new FileReader();
-			    	
-			    	reader.onload = function(e) {
-			      		document.getElementById('preview').src = e.target.result;
-			    	};
-			    	
-			    	reader.readAsDataURL(input.files[0]);
-				  } else {
-				  	document.getElementById('preview').src = "";
-				  }
+		$(document).ready(function() {
+			
 			})
 		}
 
