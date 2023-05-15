@@ -18,23 +18,6 @@ public class HostController {
 	public String hostView(HttpSession session) {
 		return "rooms/host/become_a_host/addRoom";
 	}
-	@GetMapping("/type/view")
-	public String typeView(
-			HttpSession session
-			) {
-		return "rooms/host/become_a_host/type";
-	}
-	@GetMapping("/privacy/view")
-	public String privacyView(
-			HttpSession session
-			) {
-		return "rooms/host/become_a_host/privacy";
-	}
-	@GetMapping("/address/view")
-	public String addressView(
-			HttpSession session
-			) {
-		return "rooms/host/become_a_host/address";
-	}
+	
 	
 }

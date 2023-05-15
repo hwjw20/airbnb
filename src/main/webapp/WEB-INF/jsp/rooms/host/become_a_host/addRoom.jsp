@@ -100,9 +100,11 @@
 			<div class="d-flex">
 				<i class="bi bi-check-circle"></i>
 				<h4 class="font-weight-bold ml-2">b&b 사진 추가하기</h4>
+			</div>
+			<div id="fileInput">
+				<input type="file" onchange="readURL(this);">
+				<img id="preview" width="300" onchange="readURL(this);">
 			</div>	
-			<input type="file" id="fileInput"  onchange="readURL(this);">
-			<img id="preview" width="300">
 		</div>
 		
 	</div>
@@ -123,6 +125,10 @@
 			  }
 		}	
 	
+		$(document).ready(function() {
+			
+			})
+		}
 
 	</script>
 </body>

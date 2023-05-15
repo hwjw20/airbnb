@@ -47,7 +47,7 @@ public class RoomController {
 		
 		String date = roomBO.getDate();
 		RoomInfo room = roomBO.getRoomInfo(roomId);
-		
+		List<Integer> headcountList = roomBO.getHeadcountList(roomId);
 		
 		if(userId != null) {
 			boolean isLike = likeBO.isLike(userId, roomId);
@@ -56,6 +56,7 @@ public class RoomController {
 		
 		model.addAttribute("date", date);
 		model.addAttribute("room", room);
+		model.addAttribute("headcountList", headcountList);
 		
 		return "rooms/detail";
 	}

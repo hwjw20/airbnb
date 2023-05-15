@@ -18,7 +18,11 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	
+	<!-- 부트스트랩 아이콘 -->
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  	
+  	<!-- 풀캘린더 -->
+  	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js"></script>
   	
   	<link rel="stylesheet" href="/static/css/host_style.css" type="text/css">
 </head>
@@ -27,9 +31,20 @@
 	<section>
 		<h4 class="font-weight-bold">지원 님, 반갑습니다!</h4><br>
 		<div class="mt-3">
-			<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button>
+			<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button><br>
 			<h5 class="font-weight-bold">예약</h5>
+			<div id="calendar" class="mt-5"></div>
 		</div>
 	</section>
+	
+	<script>
+    	document.addEventListener('DOMContentLoaded', function() {
+			var calendarEl = document.getElementById('calendar');
+	        var calendar = new FullCalendar.Calendar(calendarEl, {
+	        	initialView: 'dayGridMonth'
+	        });
+	        calendar.render();
+	      });
+	</script>
 </body>
 </html>
