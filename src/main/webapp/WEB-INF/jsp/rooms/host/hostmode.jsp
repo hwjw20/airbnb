@@ -30,10 +30,17 @@
 	<c:import url="/WEB-INF/jsp/include/hostheader.jsp" />
 	<section>
 		<h4 class="font-weight-bold">지원 님, 반갑습니다!</h4><br>
-		<div class="mt-3">
-			<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button><br>
-			<h5 class="font-weight-bold">예약</h5>
-			<div id="calendar" class="mt-5"></div>
+		<div>
+			<c:choose>
+				<c:when test="${isHost }">
+				<button type="button" class="btn" onclick="location.href='/host/become_a_host/host/view'">숙소 정보 수정하기</button><br>
+				<h5 class="font-weight-bold mt-5">예약</h5>
+				<div id="calendar" class="mt-3"></div>
+				</c:when>
+				<c:otherwise>
+				<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button><br>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</section>
 	

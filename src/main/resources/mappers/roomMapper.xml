@@ -81,4 +81,13 @@
 		WHERE
 			`id` = #{roomId}
 	</select>
+	
+	<select id="selectCountRoomByUserId" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`room`
+		WHERE
+			`userId` = #{userId}
+	</select>
 </mapper>
