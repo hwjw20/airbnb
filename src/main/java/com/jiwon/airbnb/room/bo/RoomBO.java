@@ -111,4 +111,10 @@ public class RoomBO {
 		return headcountList;
 	}
 
+	public boolean isHost(int userId) {
+		if(roomDAO.selectCountRoomByUserId(userId) == 1) {
+			return true;
+		}
+		return false;
+	}
 }

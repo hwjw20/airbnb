@@ -4,6 +4,11 @@
 	height:800px;
 	margin:auto;
 }
+#addRoomPage {
+	width:1200px;
+	height:1400px;
+	margin:auto;
+}
 header {
 	width:1200px;
 	height:60px;
@@ -23,7 +28,7 @@ section {
 #addressDiv {
 	width: 700px;
 }
-#fileInput {
+#fileInputDiv {
 	width:400px;
 	height:400px;
 	margin:auto;

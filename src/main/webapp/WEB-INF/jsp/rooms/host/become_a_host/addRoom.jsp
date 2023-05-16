@@ -25,7 +25,7 @@
   	<link rel="stylesheet" href="/static/css/host_style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap">
+	<div id="addRoomPage">
 		
 		<div id="typeDiv" class="mt-5">
 		
@@ -101,10 +101,11 @@
 				<i class="bi bi-check-circle"></i>
 				<h4 class="font-weight-bold ml-2">b&b 사진 추가하기</h4>
 			</div>
-			<div id="fileInput">
-				<input type="file" onchange="readURL(this);">
-				<img id="preview" width="300" onchange="readURL(this);">
+			<div id="fileInputDiv">
+				<input type="file" id="fileInput" onchange="readURL(this);">
+				<img id="preview" width="200" onchange="readURL(this);">
 			</div>	
+			<button type="button" class="btn float-right">등록하기</button><br>
 		</div>
 		
 	</div>
@@ -127,8 +128,11 @@
 	
 		$(document).ready(function() {
 			
-			})
-		}
+			$("#preview").on("click", function() {
+				$("#fileInput").click();
+			});
+		});
+		
 
 	</script>
 </body>

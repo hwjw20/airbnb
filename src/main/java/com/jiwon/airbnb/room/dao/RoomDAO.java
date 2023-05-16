@@ -15,4 +15,6 @@ public interface RoomDAO {
 	public List<Room> selectRoomListByType(@Param("type") int type);
 	
 	public Room selectRoom(@Param("roomId") int roomId);
+	
+	public int selectCountRoomByUserId(@Param("userId") int userId);
 }
