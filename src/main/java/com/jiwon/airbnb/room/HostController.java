@@ -29,7 +29,14 @@ public class HostController {
 		return "rooms/host/hostmode";
 	}
 	@GetMapping("/host/view")
-	public String hostView(HttpSession session) {
+	public String hostView(
+			HttpSession session
+			, Model model) {
+		
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		model.addAttribute("userId", userId);
+		
 		return "rooms/host/become_a_host/addRoom";
 	}
 	

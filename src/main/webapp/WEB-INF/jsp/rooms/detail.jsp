@@ -13,11 +13,6 @@
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   
-  	<!-- fullcalender -->
-  	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js"></script>
-	<!-- <link href='/resources/fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
-	<script src='/resources/fullcalendar-5.6.0/lib/main.js'></script> -->
-  
 	<script
 	  src="https://code.jquery.com/jquery-3.6.3.min.js"
 	  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
@@ -142,7 +137,7 @@
 					<input type="text" placeholder="체크인" id="checkinInput" class="form-control">
 					<input type="text" placeholder="체크아웃" id="checkoutInput" class="form-control">
 				</div>
-				<select class="form-select" id="headcountSelect" name="heacountSelect">
+				<select class="form-control" id="headcountSelector">
 					<option selected>인원</option>
 					<c:forEach var="headcount" items="${headcountList}" varStatus="status">
 						<option value=${status.count }>${status.count }명</option>	
@@ -267,7 +262,7 @@
 			$("#reservBtn").on("click", function() {
 				
 				let roomId = $(this).data("room-id");
-				let headcount = $("select[name=heacountSelect]").val();
+				let headcount = $("#headcountSelector").val();
 				let checkin = $("#checkinInput").val();
 				let checkout = $("#checkoutInput").val();
 				let checkinDate = new Date(checkin);
@@ -279,6 +274,15 @@
 					alert("인원을 선택해주세요.");
 					return;
 				}
+				if(checkin == "") {
+					alert("체크인 날짜를 선택해주세요.");
+					return;
+				}
+				if(checkout == "") {
+					alert("체크아웃 날짜를 선택해주세요.");
+					return;
+				}
+				
 				
 				$.ajax({
 					type:"get"

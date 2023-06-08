@@ -52,4 +52,15 @@ public class ReservationController {
 		
 		return "mypage/wishlist";
 	}
+	
+	@GetMapping("/reservation/modal/view")
+	public String modalPopUp(
+			HttpSession session
+			, Model model) {
+		
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		return "modal_popup/reservation";
+	}
+	
 }

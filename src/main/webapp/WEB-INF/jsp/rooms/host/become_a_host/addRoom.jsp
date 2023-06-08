@@ -64,13 +64,19 @@
 					<i class="bi bi-check-circle"></i>
 					<h4 class="font-weight-bold ml-2">숙소 위치는 어디인가요?</h4>
 				</div>
+				
+				<div>
+					<input type="text" value="37.376169984445575, 126.95978944062628" id="latlng">
+					<
+				</div>
+				
 				<div id="addressDiv" class="mt-2 ml-4">
 					<input type="text" class="form-control" placeholder="주소" id="addressInput">
 					<input type="text" class="form-control" placeholder="위도" id="latInput">
 					<input type="text" class="form-control" placeholder="경도" id="lngInput">
 				</div>
 			</div>			
-			<div class="pt-4">
+			<div class="pt-4 pb-3">
 				<div class="d-flex">
 					<i class="bi bi-check-circle"></i>
 					<h4 class="font-weight-bold ml-2">숙소 기본정보를 알려주세요.</h4>
@@ -93,7 +99,7 @@
 						<span class="input-group-text">개</span>
 					</div>
 				</div>
-			</div><hr class="mt-5">
+			</div><hr class="mt-5 pb-3">
 					
 			<div class="font-weight-bold">2단계</div>
 			<h2 class="font-weight-bold">숙소 매력을 돋보이게 하세요.</h2><br>
@@ -102,10 +108,17 @@
 				<h4 class="font-weight-bold ml-2">b&b 사진 추가하기</h4>
 			</div>
 			<div id="fileInputDiv">
-				<input type="file" id="fileInput" onchange="readURL(this);">
-				<img id="preview" width="200" onchange="readURL(this);">
+				<input type="file" id="fileInput" class="d-none" onchange="readURL(this);">
+				<img id="preview" width="200">
 			</div>	
-			<button type="button" class="btn float-right">등록하기</button><br>
+			
+			<!-- <div class="d-flex justify-content-between">
+				<input type="file" id="fileInput" class="d-none" onchange="readURL(this);">
+				<img id="preview" width="160"/>
+				
+			</div> -->
+			
+			<button type="button" id="uploadBtn" class="btn float-right">등록하기</button><br>
 		</div>
 		
 	</div>
@@ -131,9 +144,48 @@
 			$("#preview").on("click", function() {
 				$("#fileInput").click();
 			});
+			
+			$("#uploadBtn").on("click", function() {
+				
+				// 파일이 선택되지 않았을때
+				if($("#fileInput")[0].files.length == 0) {
+					alert("파일을 선택해주세요");
+					return;
+				}
+				
+				
+				var formData = new FormData();
+				/* formData.append("content", content); */
+				for(let i = 0; i < files.length; i++) {
+					formData.append("file", $("#fileInput")[i].files[i]);
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:""
+					, data:formData
+					, enctype:"multipart/form-data"
+					, processData:false
+					, contentType:false
+					, success:function(data) {
+						if(data.result == "success") {
+							location.href="/mypage/reservation/modal/view";
+						} else {
+							alert("예약에 실패했습니다.");
+						}
+					}
+					, error:function() {
+						alert("예약 에러");
+					}
+				});s
+				
+				
+			});
 		});
 		
 
 	</script>
+
+
 </body>
 </html>
