@@ -41,15 +41,15 @@
 					<div class="pl-1"><img src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg" width="30"></div>
 					<div class="small">캠핑장</div>
 				</a>
-				<a href="/rooms/list/view?type=5">
+				<a href="/rooms/list/view?type=4">
 					<div class="pl-3"><img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" width="30"></div>
 					<div class="small">최고의 전망</div>
 				</a>
-				<a href="/rooms/list/view?type=4">
+				<a href="/rooms/list/view?type=5">
 					<div class="pl-1"><img src="https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg" width="30"></div>
 					<div class="small">주택</div>
 				</a>
-				<a href="/rooms/list/view?type=4">
+				<a href="/rooms/list/view?type=6">
 					<div class="pl-1"><img src="https://a0.muscache.com/pictures/eb7ba4c0-ea38-4cbb-9db6-bdcc8baad585.jpg" width="30"></div>
 					<div class="small">아파트</div>
 				</a>

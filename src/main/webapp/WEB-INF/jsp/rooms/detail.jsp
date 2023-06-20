@@ -262,7 +262,7 @@
 			$("#reservBtn").on("click", function() {
 				
 				let roomId = $(this).data("room-id");
-				let headcount = $("#headcountSelector").val();
+				let headcount = Number($("#headcountSelector").val());
 				let checkin = $("#checkinInput").val();
 				let checkout = $("#checkoutInput").val();
 				let checkinDate = new Date(checkin);
@@ -287,7 +287,7 @@
 				$.ajax({
 					type:"get"
 					, url:"/room/detail/reservation"
-					, data:{"roomId":roomId, "date":checkin, "days":days, "headcount":headcount}
+					, data:{"roomId":roomId, "date":checkin, "endDate":checkout, "days":days, "headcount":headcount}
 					, success:function(data) {
 						if(data.result == "success") {
 							alert("예약이 완료 되었습니다.");

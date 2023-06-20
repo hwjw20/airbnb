@@ -8,6 +8,7 @@ public class Reservation {
 	private int userId;
 	private int roomId;
 	private Date date;
+	private Date endDate;
 	private int days;
 	private int headcount;
 	private Date createdAt;
@@ -35,6 +36,12 @@ public class Reservation {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	public int getDays() {
 		return days;
