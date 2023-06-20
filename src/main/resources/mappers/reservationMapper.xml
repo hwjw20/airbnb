@@ -9,6 +9,7 @@
 			, `userId`
 			, `roomId`
 			, `date`
+			, `endDate`
 			, `days`
 			, `headcount`
 			, `createdAt`
@@ -25,6 +26,7 @@
 			`userId`
 			, `roomId`
 			, `date`
+			, `endDate`
 			, `days`
 			, `headcount`
 			, `createdAt`
@@ -34,6 +36,7 @@
 			#{userId}
 			, #{roomId}
 			, #{date}
+			, #{endDate}
 			, #{days}
 			, #{headcount}
 			, now()

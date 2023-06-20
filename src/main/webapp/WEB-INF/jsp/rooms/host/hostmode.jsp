@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.jiwon.airbnb.reservation.model.Reservation" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,6 +51,19 @@
 			var calendarEl = document.getElementById('calendar');
 	        var calendar = new FullCalendar.Calendar(calendarEl, {
 	        	initialView: 'dayGridMonth'
+	        	, events : [ 
+	        	    <%List<Reservation> calendarList = (List<Reservation>) request.getAttribute("reservCal");%>
+	                <%if (calendarList != null) {%>
+	                <%for (Reservation vo : calendarList) {%>
+	                {
+	                	title : '<%=vo.getCalendarTitle()%>',
+	                    start : '<%=vo.getCalendarStart()%>',
+	                    end : '<%=vo.getCalendarEnd()%>',
+	                    color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+	                 },
+	    	<%}
+	    }%>
+	    				]
 	        });
 	        calendar.render();
 	      });

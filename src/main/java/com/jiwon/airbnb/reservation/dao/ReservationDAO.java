@@ -1,6 +1,5 @@
 package com.jiwon.airbnb.reservation.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -17,6 +16,8 @@ public interface ReservationDAO {
 			@Param("userId") int userId
 			, @Param("roomId") int roomId
 			, @Param("date") String date
+			, @Param("endDate") String endDate
 			, @Param("days") int days
 			, @Param("headcount") int headcount);
+	
 }

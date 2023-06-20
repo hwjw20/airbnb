@@ -11,6 +11,7 @@ public class ReservationInfo {
 	private String address;
 	private String imagePath;
 	private Date date;
+	private Date endDate;
 	private int days;
 	private String finDate;
 	
@@ -56,6 +57,12 @@ public class ReservationInfo {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 	public int getDays() {
 		return days;
 	}
@@ -68,5 +75,7 @@ public class ReservationInfo {
 	public void setFinDate(String finDate) {
 		this.finDate = finDate;
 	}
+	
+	
 	
 }

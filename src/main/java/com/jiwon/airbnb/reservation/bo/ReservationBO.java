@@ -40,6 +40,7 @@ public class ReservationBO {
 			String firstImagePath = imagePathBO.getImagePathByRoomId(reservation.getRoomId()).get(0);
 			int days = reservation.getDays();
 			Date date = reservation.getDate();
+			Date endDate = reservation.getEndDate();
 			String finDate = GetDate.getDate(date, days);
 			
 			reservationInfo.setReservationId(reservation.getId());
@@ -47,7 +48,8 @@ public class ReservationBO {
 			reservationInfo.setRoomId(reservation.getRoomId());
 			reservationInfo.setRoomName(room.getRoomName());
 			reservationInfo.setAddress(room.getAddress());
-			reservationInfo.setDate(reservation.getDate());
+			reservationInfo.setDate(date);
+			reservationInfo.setEndDate(endDate);
 			reservationInfo.setDays(days);
 			reservationInfo.setImagePath(firstImagePath);
 			reservationInfo.setFinDate(finDate);
@@ -58,7 +60,11 @@ public class ReservationBO {
 		return reservationInfoList;
 	}
 	
-	public int addReservation(int userId, int roomId, String date, int days, int headcount) {
-		return reservationDAO.insertReservation(userId, roomId, date, days, headcount);
+	public int addReservation(int userId, int roomId, String date, String endDate, int days, int headcount) {
+		return reservationDAO.insertReservation(userId, roomId, date, endDate, days, headcount);
+	}
+	
+	public List<Reservation> getReservationCal(int userId) {
+		return reservationDAO.selectReservationList(userId);
 	}
 }
