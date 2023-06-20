@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jiwon.airbnb.reservation.bo.ReservationBO;
 import com.jiwon.airbnb.reservation.model.ReservationInfo;
+import com.jiwon.airbnb.room.bo.RoomBO;
 import com.jiwon.airbnb.room.like.bo.LikeBO;
 import com.jiwon.airbnb.room.model.RoomInfo;
 
@@ -53,5 +54,5 @@ public class ReservationController {
 		return "mypage/wishlist";
 	}
 	
-	
+
 }

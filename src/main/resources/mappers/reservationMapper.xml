@@ -19,6 +19,22 @@
 			`userId` = #{userId}	
 	</select>
 	
+	<select id="selectReservationListByRoomId" parameterType="int" resultType="com.jiwon.airbnb.reservation.model.Reservation">
+		SELECT
+			`id`
+			, `userId`
+			, `roomId`
+			, `date`
+			, `endDate`
+			, `days`
+			, `headcount`
+			, `createdAt`
+		FROM
+			`reservation`
+		WHERE
+			`roomId` = #{roomId}	
+	</select>
+	
 	<insert id="insertReservation" parameterType="map">
 		INSERT INTO
 			`reservation`

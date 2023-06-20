@@ -47,26 +47,51 @@
 	</section>
 	
 	<script>
-    	document.addEventListener('DOMContentLoaded', function() {
+		
 			var calendarEl = document.getElementById('calendar');
-	        var calendar = new FullCalendar.Calendar(calendarEl, {
-	        	initialView: 'dayGridMonth'
-	        	, events : [ 
-	        	    <%List<Reservation> calendarList = (List<Reservation>) request.getAttribute("reservCal");%>
-	                <%if (calendarList != null) {%>
-	                <%for (Reservation vo : calendarList) {%>
-	                {
-	                	title : '<%=vo.getCalendarTitle()%>',
-	                    start : '<%=vo.getCalendarStart()%>',
-	                    end : '<%=vo.getCalendarEnd()%>',
-	                    color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
-	                 },
-	    	<%}
-	    }%>
-	    				]
-	        });
+			var request = $.ajax({
+				url:"/calendar"
+			});
+			request.done(function(data) {
+		        var calendar = new FullCalendar.Calendar(calendarEl, {
+	        		initialView: 'dayGridMonth',
+	        		events: data
+				});
+	        
 	        calendar.render();
-	      });
+	      };
+	      
+	      
+/* 			var calendarEl = document.getElementById('calendar');
+			var request = $.ajax({
+				url:"/calendar"
+			});
+			request.done(function(data) {
+		        var calendar = new FullCalendar.Calendar(calendarEl, {
+	        		initialView: 'dayGridMonth',
+	        		events: data
+				});
+	        
+	        calendar.render();
+	      }; */
+	      
+	      
+	      
+	      
+	      /* document.addEventListener('DOMContentLoaded', function() {
+	          var calendarEl = document.getElementById('calendar');
+	          var calendar = new FullCalendar.Calendar(calendarEl, {
+	              initialView: 'dayGridMonth',
+	              events : [
+	                          {
+	                          title: '물주기',
+	                          start: '2023-06-01'
+	                          }
+	                      ]
+	              });
+	          calendar.render();
+	        }); */
+	      
 	</script>
 </body>
 </html>

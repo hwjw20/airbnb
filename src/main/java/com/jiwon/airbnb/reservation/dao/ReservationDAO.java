@@ -12,6 +12,8 @@ public interface ReservationDAO {
 
 	public List<Reservation> selectReservationList(@Param("userId") int userId); 
 	
+	public List<Reservation> selectReservationListByRoomId(@Param("roomId") int roomId);
+	
 	public int insertReservation(
 			@Param("userId") int userId
 			, @Param("roomId") int roomId
