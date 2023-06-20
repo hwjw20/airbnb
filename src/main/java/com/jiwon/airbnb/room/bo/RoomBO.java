@@ -112,7 +112,7 @@ public class RoomBO {
 	}
 
 	public boolean isHost(int userId) {
-		if(roomDAO.selectCountRoomByUserId(userId) == 1) {
+		if(roomDAO.selectCountRoomByUserId(userId) != 0) {
 			return true;
 		}
 		return false;

@@ -7,19 +7,21 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jiwon.airbnb.reservation.bo.CalendarService;
 import com.jiwon.airbnb.reservation.bo.ReservationBO;
-import com.jiwon.airbnb.reservation.model.Reservation;
 
 @RestController
 public class ReservationRestController {
 
 	@Autowired
 	private ReservationBO reservationBO;
+	
+	@Autowired
+	CalendarService calendarService;
 	
 	@GetMapping("/room/detail/reservation")
 	public Map<String, String> reservation(
@@ -44,14 +46,8 @@ public class ReservationRestController {
 	}
 	
 	@GetMapping("/calendar")
-	public void getCalendar(
-			HttpSession session
-			, Model model) {
-		
-		int userId = (int) session.getAttribute("userId");
-		List<Reservation> reservCal = reservationBO.getReservationCal(userId);
-		
-		model.addAttribute("reservCal", reservCal);
+	public List<Map<String, Object>> getEvent(HttpSession session) {
+		return calendarService.getEventList(session);
 	}
 	
 }

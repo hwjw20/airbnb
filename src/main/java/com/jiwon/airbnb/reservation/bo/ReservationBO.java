@@ -14,6 +14,7 @@ import com.jiwon.airbnb.reservation.model.ReservationInfo;
 import com.jiwon.airbnb.room.bo.RoomBO;
 import com.jiwon.airbnb.room.imagePath.bo.ImagePathBO;
 import com.jiwon.airbnb.room.model.Room;
+import com.jiwon.airbnb.user.bo.UserBO;
 
 @Service
 public class ReservationBO {
@@ -26,6 +27,9 @@ public class ReservationBO {
 	
 	@Autowired
 	private ImagePathBO imagePathBO;
+	
+	@Autowired
+	private UserBO userBO;
 	
 	
 	public List<ReservationInfo> getReservationList(int userId) {
@@ -64,7 +68,23 @@ public class ReservationBO {
 		return reservationDAO.insertReservation(userId, roomId, date, endDate, days, headcount);
 	}
 	
-	public List<Reservation> getReservationCal(int userId) {
-		return reservationDAO.selectReservationList(userId);
+	public List<ReservationInfo> getReservationCal(int roomId) {
+		List<Reservation> reservationList = reservationDAO.selectReservationListByRoomId(roomId);
+		
+		List<ReservationInfo> reservList = new ArrayList<>();
+		
+		for(Reservation reservation:reservationList) {
+			ReservationInfo reservationInfo = new ReservationInfo();
+			
+			reservationInfo.setReservationId(reservation.getId());
+			reservationInfo.setUserName(userBO.getUserName(reservation.getUserId()));
+			reservationInfo.setHeadcount(reservation.getHeadcount());
+			reservationInfo.setDate(reservation.getDate());
+			reservationInfo.setEndDate(reservation.getEndDate());
+			
+			reservList.add(reservationInfo);
+		}
+		
+		return reservList;
 	}
 }

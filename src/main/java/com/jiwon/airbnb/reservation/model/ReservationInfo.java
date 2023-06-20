@@ -6,6 +6,8 @@ public class ReservationInfo {
 
 	private int reservationId;
 	private int userId;
+	private String userName;
+	private int headcount;
 	private int roomId;
 	private String roomName;
 	private String address;
@@ -14,7 +16,6 @@ public class ReservationInfo {
 	private Date endDate;
 	private int days;
 	private String finDate;
-	
 	public int getReservationId() {
 		return reservationId;
 	}
@@ -26,6 +27,18 @@ public class ReservationInfo {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public int getHeadcount() {
+		return headcount;
+	}
+	public void setHeadcount(int headcount) {
+		this.headcount = headcount;
 	}
 	public int getRoomId() {
 		return roomId;
@@ -75,7 +88,6 @@ public class ReservationInfo {
 	public void setFinDate(String finDate) {
 		this.finDate = finDate;
 	}
-	
 	
 	
 }
