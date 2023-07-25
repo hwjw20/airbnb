@@ -31,67 +31,59 @@
 <body>
 	<c:import url="/WEB-INF/jsp/include/hostheader.jsp" />
 	<section>
-		<h4 class="font-weight-bold">지원 님, 반갑습니다!</h4><br>
+		<h4 class="font-weight-bold" style="display:inline">지원 </h4><h6 style="display:inline">(${email })</h6><h4 class="font-weight-bold" style="display:inline"> 님, 반갑습니다!</h4><br>
 		<div>
 			<c:choose>
 				<c:when test="${isHost }">
 				<button type="button" class="btn" onclick="location.href='/host/become_a_host/host/view'">숙소 정보 수정하기</button><br>
 				<h5 class="font-weight-bold mt-5">예약</h5>
-				<div id="calendar" class="mt-3"></div>
+				<div id="calendar" class="mt-3" data-user-id="${userId }" data-room-id="${roomId }"></div>
 				</c:when>
 				<c:otherwise>
 				<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button><br>
 				</c:otherwise>
 			</c:choose>
+			<div id="calendar"></div>
 		</div>
 	</section>
-	
+	<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	<script>
 		
+		document.addEventListener('DOMContentLoaded', function() {
+			
+			var userId = $("#calendar").data("user-id");
+			var roomId = $("#calendar").data("room-id");
+			
 			var calendarEl = document.getElementById('calendar');
-			var request = $.ajax({
-				url:"/calendar"
-			});
-			request.done(function(data) {
-		        var calendar = new FullCalendar.Calendar(calendarEl, {
-	        		initialView: 'dayGridMonth',
-	        		events: data
-				});
-	        
+	        var calendar = new FullCalendar.Calendar(calendarEl, {
+
+	        	expandRows: true, // 화면에 맞게 높이 재설정
+	            initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+	            navLinks: false, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+	            editable: false, // 수정 가능?
+	            selectable: false, // 달력 일자 드래그 설정가능
+	            nowIndicator: true, // 현재 시간 마크
+	            dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+	            locale: 'ko', // 한국어 설정
+	            events:function(info, successCallback, failureCallback){
+	                
+	            	$.ajax({
+	            		url: ""
+	            		, data: {}
+	            		, success: function(data) {
+	            			successCallback(data);
+	            		}
+	            	});
+	            	
+	            }    		
+	        }); //fullcalendar end
+	      
 	        calendar.render();
-	      };
-	      
-	      
-/* 			var calendarEl = document.getElementById('calendar');
-			var request = $.ajax({
-				url:"/calendar"
-			});
-			request.done(function(data) {
-		        var calendar = new FullCalendar.Calendar(calendarEl, {
-	        		initialView: 'dayGridMonth',
-	        		events: data
-				});
+		});
+		
+		
 	        
-	        calendar.render();
-	      }; */
-	      
-	      
-	      
-	      
-	      /* document.addEventListener('DOMContentLoaded', function() {
-	          var calendarEl = document.getElementById('calendar');
-	          var calendar = new FullCalendar.Calendar(calendarEl, {
-	              initialView: 'dayGridMonth',
-	              events : [
-	                          {
-	                          title: '물주기',
-	                          start: '2023-06-01'
-	                          }
-	                      ]
-	              });
-	          calendar.render();
-	        }); */
-	      
+	        
 	</script>
 </body>
 </html>

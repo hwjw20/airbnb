@@ -291,7 +291,7 @@
 					, success:function(data) {
 						if(data.result == "success") {
 							alert("예약이 완료 되었습니다.");
-							location.href="/rooms/list/view";
+							location.href="/mypage/reservation/view";
 						} else {
 							alert("예약 실패");
 						}
