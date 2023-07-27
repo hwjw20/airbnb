@@ -23,4 +23,6 @@ public interface UserDAO {
 	
 	public String selectUserName(@Param("userId") int userId);
 	
+	public String selectEmailByUserId(@Param("userId") int userId);
+	
 }

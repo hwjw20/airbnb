@@ -90,4 +90,13 @@
 		WHERE
 			`userId` = #{userId}
 	</select>
+	
+	<select id="selectRoomIdByUserId" parameterType="int" resultType="int">
+		SELECT
+			`userId`
+		FROM
+			`room`
+		WHERE
+			`userId` = #{userId}
+	</select>
 </mapper>

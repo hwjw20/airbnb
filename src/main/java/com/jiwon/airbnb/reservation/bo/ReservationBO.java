@@ -49,6 +49,7 @@ public class ReservationBO {
 			
 			reservationInfo.setReservationId(reservation.getId());
 			reservationInfo.setUserId(userId);
+			reservationInfo.setUserName(userBO.getUserName(userId));
 			reservationInfo.setRoomId(reservation.getRoomId());
 			reservationInfo.setRoomName(room.getRoomName());
 			reservationInfo.setAddress(room.getAddress());
