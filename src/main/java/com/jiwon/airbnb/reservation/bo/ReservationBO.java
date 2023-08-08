@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import com.jiwon.airbnb.reservation.model.Reservation;
 import com.jiwon.airbnb.reservation.model.ReservationInfo;
 import com.jiwon.airbnb.room.bo.RoomBO;
 import com.jiwon.airbnb.room.imagePath.bo.ImagePathBO;
+import com.jiwon.airbnb.room.model.Calendar;
 import com.jiwon.airbnb.room.model.Room;
 import com.jiwon.airbnb.user.bo.UserBO;
 
@@ -69,23 +72,9 @@ public class ReservationBO {
 		return reservationDAO.insertReservation(userId, roomId, date, endDate, days, headcount);
 	}
 	
-	public List<ReservationInfo> getReservationCal(int roomId) {
-		List<Reservation> reservationList = reservationDAO.selectReservationListByRoomId(roomId);
-		
-		List<ReservationInfo> reservList = new ArrayList<>();
-		
-		for(Reservation reservation:reservationList) {
-			ReservationInfo reservationInfo = new ReservationInfo();
-			
-			reservationInfo.setReservationId(reservation.getId());
-			reservationInfo.setUserName(userBO.getUserName(reservation.getUserId()));
-			reservationInfo.setHeadcount(reservation.getHeadcount());
-			reservationInfo.setDate(reservation.getDate());
-			reservationInfo.setEndDate(reservation.getEndDate());
-			
-			reservList.add(reservationInfo);
-		}
-		
-		return reservList;
-	}
+
+//	public List<ReservationInfo> getReservationSchedule(int userId) {
+//		
+//	}
+
 }

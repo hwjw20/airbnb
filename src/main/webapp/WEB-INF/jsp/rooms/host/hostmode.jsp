@@ -35,7 +35,7 @@
 		<div>
 			<c:choose>
 				<c:when test="${isHost }">
-				<button type="button" class="btn" onclick="location.href='/host/become_a_host/host/view'">숙소 정보 수정하기</button><br>
+				<button type="button" class="btn mt-2" onclick="location.href='/host/become_a_host/host/view'">숙소 정보 수정하기</button><br>
 				<h5 class="font-weight-bold mt-5">예약</h5>
 				<div id="calendar" class="mt-3" data-user-id="${userId }" data-room-id="${roomId }"></div>
 				</c:when>
@@ -68,7 +68,7 @@
 	            events:function(info, successCallback, failureCallback){
 	                
 	            	$.ajax({
-	            		url: ""
+	            		url: "/host/reservation/getSchedule"
 	            		, data: {}
 	            		, success: function(data) {
 	            			successCallback(data);

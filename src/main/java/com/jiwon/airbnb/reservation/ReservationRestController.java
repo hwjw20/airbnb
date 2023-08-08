@@ -44,26 +44,5 @@ public class ReservationRestController {
 		return result;
 	}
 	
-	@GetMapping("/calendar")
-	public List<Map<String, Object>> getEvent(HttpSession session) {
-//		return calendarService.getEventList(session);
-		int userId = (int) session.getAttribute("userId");
 		
-		List<ReservationInfo> reservList = reservationBO.getReservationCal(userId);
-		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		Map<String, Object> map = new HashMap<>();
-		
-		for(int i = 0; i < list.size(); i++) {
-			map.put("guest", reservList.get(i).getUserName());
-			map.put("start", reservList.get(i).getDate());
-			map.put("end", reservList.get(i).getFinDate());
-			map.put("headcount", reservList.get(i).getHeadcount());
-			
-			list.add(map);
-		}		
-		
-		return list;
-		
-	}
-	
 }
