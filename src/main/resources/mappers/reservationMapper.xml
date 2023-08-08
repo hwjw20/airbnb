@@ -6,7 +6,7 @@
 	<select id="selectReservationList" parameterType="int" resultType="com.jiwon.airbnb.reservation.model.Reservation">
 		SELECT
 			`id`
-			, `userId`
+			, `guestId`
 			, `roomId`
 			, `date`
 			, `endDate`
@@ -16,30 +16,14 @@
 		FROM
 			`reservation`
 		WHERE
-			`userId` = #{userId}	
-	</select>
-	
-	<select id="selectReservationListByRoomId" parameterType="int" resultType="com.jiwon.airbnb.reservation.model.Reservation">
-		SELECT
-			`id`
-			, `userId`
-			, `roomId`
-			, `date`
-			, `endDate`
-			, `days`
-			, `headcount`
-			, `createdAt`
-		FROM
-			`reservation`
-		WHERE
-			`roomId` = #{roomId}	
+			`guestId` = #{userId}	
 	</select>
 	
 	<insert id="insertReservation" parameterType="map">
 		INSERT INTO
 			`reservation`
 		(
-			`userId`
+			`guestId`
 			, `roomId`
 			, `date`
 			, `endDate`
