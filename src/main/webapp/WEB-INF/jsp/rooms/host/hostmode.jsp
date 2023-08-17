@@ -51,31 +51,25 @@
 		
 		document.addEventListener('DOMContentLoaded', function() {
 			
-			var userId = $("#calendar").data("user-id");
-			var roomId = $("#calendar").data("room-id");
+		/* 	var userId = $("#calendar").data("user-id");
+			var roomId = $("#calendar").data("room-id"); */
 			
 			var calendarEl = document.getElementById('calendar');
 	        var calendar = new FullCalendar.Calendar(calendarEl, {
-
-	        	expandRows: true, // 화면에 맞게 높이 재설정
 	            initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-	            navLinks: false, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
-	            editable: false, // 수정 가능?
-	            selectable: false, // 달력 일자 드래그 설정가능
-	            nowIndicator: true, // 현재 시간 마크
-	            dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+	        	
+	            
 	            locale: 'ko', // 한국어 설정
 	            events:function(info, successCallback, failureCallback){
-	                
+	            	
 	            	$.ajax({
-	            		url: "/host/reservation/getSchedule"
-	            		, data: {}
+	            		type:"get"
+	            		, url: "/host/reservation/schedule"
 	            		, success: function(data) {
 	            			successCallback(data);
 	            		}
 	            	});
-	            	
-	            }    		
+	            }
 	        }); //fullcalendar end
 	      
 	        calendar.render();

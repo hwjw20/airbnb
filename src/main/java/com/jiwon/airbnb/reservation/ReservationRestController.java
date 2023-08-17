@@ -1,8 +1,6 @@
 package com.jiwon.airbnb.reservation;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jiwon.airbnb.reservation.bo.ReservationBO;
-import com.jiwon.airbnb.reservation.model.ReservationInfo;
 
 @RestController
 public class ReservationRestController {

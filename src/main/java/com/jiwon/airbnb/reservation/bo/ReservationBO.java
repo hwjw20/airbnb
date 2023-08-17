@@ -1,10 +1,9 @@
 package com.jiwon.airbnb.reservation.bo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +14,8 @@ import com.jiwon.airbnb.reservation.model.Reservation;
 import com.jiwon.airbnb.reservation.model.ReservationInfo;
 import com.jiwon.airbnb.room.bo.RoomBO;
 import com.jiwon.airbnb.room.imagePath.bo.ImagePathBO;
-import com.jiwon.airbnb.room.model.Calendar;
 import com.jiwon.airbnb.room.model.Room;
+import com.jiwon.airbnb.room.model.ScheduleCalendar;
 import com.jiwon.airbnb.user.bo.UserBO;
 
 @Service
@@ -72,9 +71,41 @@ public class ReservationBO {
 		return reservationDAO.insertReservation(userId, roomId, date, endDate, days, headcount);
 	}
 	
+	public Date modifyEndDate(Date date) {
+		Calendar cal = Calendar.getInstance();
+		
+		cal.setTime(date);
+		cal.add(Calendar.DATE, 1);
+		
+		return cal.getTime();
+	}
+	
+	public List<ScheduleCalendar> roomSchedule(int userId) {
+		
+		List<ReservationInfo> reservList = this.getReservationList(userId);
+		List<ScheduleCalendar> list = new ArrayList<>();
+		
+		for(ReservationInfo reserv: reservList) {
+			String title = reserv.getUserName();
+			Date end = this.modifyEndDate(reserv.getEndDate());
+			int count = reserv.getHeadcount() - 1;
+			
+			// title은 [user의 이름 + 외 n명], 예약인원이 한 명일 경우 [user의 이름]만 표기
+			if(count != 0) {
+				title += " 외 " + count +"명";
+			}
+			
+			ScheduleCalendar schCalendar = new ScheduleCalendar();
+			schCalendar.setId(reserv.getReservationId());
+			schCalendar.setTitle(title);
+			schCalendar.setStart(reserv.getDate());
+			schCalendar.setEnd(end);
+		
+			list.add(schCalendar);
+		}
+		
+		return list;
+	}
 
-//	public List<ReservationInfo> getReservationSchedule(int userId) {
-//		
-//	}
 
 }
