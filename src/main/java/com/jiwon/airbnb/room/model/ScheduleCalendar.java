@@ -2,11 +2,10 @@ package com.jiwon.airbnb.room.model;
 
 import java.util.Date;
 
-public class Calendar {
+public class ScheduleCalendar {
 
 	private int id;
 	private String title;
-	private String content;
 	private Date start;
 	private Date end;
 	
@@ -21,12 +20,6 @@ public class Calendar {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
 	}
 	public Date getStart() {
 		return start;
