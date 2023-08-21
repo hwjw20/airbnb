@@ -6,30 +6,29 @@ public class Reservation {
 
 	private int id;
 	private int roomId;
-	private int userId;
+	private int guestId;
 	private Date date;
 	private Date endDate;
 	private int days;
 	private int headcount;
 	private Date createdAt;
-	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
 	public int getRoomId() {
 		return roomId;
 	}
 	public void setRoomId(int roomId) {
 		this.roomId = roomId;
+	}
+	public int getGuestId() {
+		return guestId;
+	}
+	public void setGuestId(int guestId) {
+		this.guestId = guestId;
 	}
 	public Date getDate() {
 		return date;
@@ -61,5 +60,7 @@ public class Reservation {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+
 	
 }

@@ -72,35 +72,29 @@ public class ReservationBO {
 		return reservationDAO.insertReservation(userId, roomId, date, endDate, days, headcount);
 	}
 	
-	public Date modifyEndDate(Date date) {
-		Calendar cal = Calendar.getInstance();
+	public List<ScheduleCalendar> getReservationListByRoomId(int roomId) {
+		List<Reservation> reservationList = reservationDAO.selectReservationByRoomId(roomId);
 		
-		cal.setTime(date);
-		cal.add(Calendar.DATE, 1);
-		
-		return cal.getTime();
-	}
-	
-	public List<ScheduleCalendar> getSchedule(int userId) {
-		List<ReservationInfo> reservList = this.getReservationList(userId);
 		List<ScheduleCalendar> calendarList = new ArrayList<>();
-
-		for(ReservationInfo reserv:reservList) {
+		
+		for(Reservation reserv:reservationList) {
 			ScheduleCalendar scheduleCalendar = new ScheduleCalendar();
 			
-			String title = "'" + reserv.getUserName() + "'" + " 님";
+			// title: '예약자 이름님' + 외 n명의 예약
+			String guestName = userBO.getUserName(reserv.getGuestId());
+			String title = "'" + guestName + "'" + " 님";
 			int substractHeadcount = reserv.getHeadcount() - 1;
 			if(substractHeadcount != 0) {
 				title += " 외 " + substractHeadcount + "명"; 
 			}
-			// fullCalendar의 end 날짜가 하루 일찍 끝나는 현상 보정
+			
+			// fullCalendar의 end 날짜가 하루 일찍 끝나는 특징을 보완
 			Date end = reserv.getEndDate();
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(end);
 			cal.add(Calendar.DATE, 1);
 			end = cal.getTime();
 			
-			scheduleCalendar.setId(reserv.getReservationId());
 			scheduleCalendar.setTitle(title + "의 예약");
 			scheduleCalendar.setStart(reserv.getDate());
 			scheduleCalendar.setEnd(end);
@@ -110,6 +104,10 @@ public class ReservationBO {
 		
 		return calendarList;
 	}
+	
+	
+	
+	
 
 
 }
