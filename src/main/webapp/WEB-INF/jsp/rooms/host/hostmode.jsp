@@ -48,33 +48,28 @@
 	</section>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	<script>
-		
-		document.addEventListener('DOMContentLoaded', function() {
-			
-		/* 	var userId = $("#calendar").data("user-id");
-			var roomId = $("#calendar").data("room-id"); */
-			
-			var calendarEl = document.getElementById('calendar');
-	        var calendar = new FullCalendar.Calendar(calendarEl, {
-	            initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-	        	
-	            
-	            locale: 'ko', // 한국어 설정
-	            events:function(info, successCallback, failureCallback){
-	            	
-	            	$.ajax({
-	            		type:"get"
-	            		, url: "/host/reservation/schedule"
-	            		, success: function(data) {
-	            			successCallback(data);
-	            		}
-	            	});
-	            }
-	        }); //fullcalendar end
-	      
-	        calendar.render();
-		});
-		
+	document.addEventListener('DOMContentLoaded', function() {
+  		var urlParams = new URL(location.href).searchParams;
+		var schoolId = urlParams.get('schoolId');  
+
+		var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+
+        	eventColor: "#f52a4f",
+            events: function(info, successCallback, failureCallback) {
+            	$.ajax({
+            		url: "/host/reservation/schedule"
+	            	, success: function(data) {
+	                    successCallback(data);
+	                 }
+            	});
+            }
+     		
+        }); 
+      
+        calendar.render();
+      });
+		 
 		
 	        
 	        
