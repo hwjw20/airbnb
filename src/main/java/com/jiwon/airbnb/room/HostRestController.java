@@ -22,7 +22,7 @@ public class HostRestController {
 	@GetMapping("/schedule")
 	public List<ScheduleCalendar> roomSchedule(HttpSession session) {
 		int userId = (Integer) session.getAttribute("userId");
-		List<ScheduleCalendar> list = reservationBO.roomSchedule(userId);
-		return reservationBO.roomSchedule(userId);
+		
+		return reservationBO.getSchedule(userId);
 	}
 }

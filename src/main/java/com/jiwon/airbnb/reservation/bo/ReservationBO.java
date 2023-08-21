@@ -52,6 +52,7 @@ public class ReservationBO {
 			reservationInfo.setReservationId(reservation.getId());
 			reservationInfo.setUserId(userId);
 			reservationInfo.setUserName(userBO.getUserName(userId));
+			reservationInfo.setHeadcount(reservation.getHeadcount());
 			reservationInfo.setRoomId(reservation.getRoomId());
 			reservationInfo.setRoomName(room.getRoomName());
 			reservationInfo.setAddress(room.getAddress());
@@ -80,31 +81,34 @@ public class ReservationBO {
 		return cal.getTime();
 	}
 	
-	public List<ScheduleCalendar> roomSchedule(int userId) {
-		
+	public List<ScheduleCalendar> getSchedule(int userId) {
 		List<ReservationInfo> reservList = this.getReservationList(userId);
-		List<ScheduleCalendar> list = new ArrayList<>();
-		
-		for(ReservationInfo reserv: reservList) {
-			String title = reserv.getUserName();
-			Date end = this.modifyEndDate(reserv.getEndDate());
-			int count = reserv.getHeadcount() - 1;
+		List<ScheduleCalendar> calendarList = new ArrayList<>();
+
+		for(ReservationInfo reserv:reservList) {
+			ScheduleCalendar scheduleCalendar = new ScheduleCalendar();
 			
-			// title은 [user의 이름 + 외 n명], 예약인원이 한 명일 경우 [user의 이름]만 표기
-			if(count != 0) {
-				title += " 외 " + count +"명";
+			String title = "'" + reserv.getUserName() + "'" + " 님";
+			int substractHeadcount = reserv.getHeadcount() - 1;
+			if(substractHeadcount != 0) {
+				title += " 외 " + substractHeadcount + "명"; 
 			}
+			// fullCalendar의 end 날짜가 하루 일찍 끝나는 현상 보정
+			Date end = reserv.getEndDate();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(end);
+			cal.add(Calendar.DATE, 1);
+			end = cal.getTime();
 			
-			ScheduleCalendar schCalendar = new ScheduleCalendar();
-			schCalendar.setId(reserv.getReservationId());
-			schCalendar.setTitle(title);
-			schCalendar.setStart(reserv.getDate());
-			schCalendar.setEnd(end);
-		
-			list.add(schCalendar);
+			scheduleCalendar.setId(reserv.getReservationId());
+			scheduleCalendar.setTitle(title + "의 예약");
+			scheduleCalendar.setStart(reserv.getDate());
+			scheduleCalendar.setEnd(end);
+			
+			calendarList.add(scheduleCalendar);
 		}
 		
-		return list;
+		return calendarList;
 	}
 
 
