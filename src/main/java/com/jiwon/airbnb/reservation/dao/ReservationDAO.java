@@ -20,5 +20,5 @@ public interface ReservationDAO {
 			, @Param("days") int days
 			, @Param("headcount") int headcount);
 	
-//	public List<Reservation> selectReservationsByRoomId(@Param("room"))
+	public List<Reservation> selectReservationByRoomId(@Param("roomId") int roomId);
 }

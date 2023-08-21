@@ -37,7 +37,7 @@
 				<c:when test="${isHost }">
 				<button type="button" class="btn mt-2" onclick="location.href='/host/become_a_host/host/view'">숙소 정보 수정하기</button><br>
 				<h5 class="font-weight-bold mt-5">예약</h5>
-				<div id="calendar" class="mt-3" data-user-id="${userId }" data-room-id="${roomId }"></div>
+				<div id="calendar" class="mt-3" data-room-id="${roomId }"></div>
 				</c:when>
 				<c:otherwise>
 				<button type="button" class="btn float-right" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button><br>
@@ -49,8 +49,7 @@
 	<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	<script>
 	document.addEventListener('DOMContentLoaded', function() {
-  		var urlParams = new URL(location.href).searchParams;
-		var schoolId = urlParams.get('schoolId');  
+		var roomId = $("#calendar").data("room-id");  
 
 		var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
