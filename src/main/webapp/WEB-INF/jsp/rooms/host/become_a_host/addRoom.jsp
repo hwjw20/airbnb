@@ -25,17 +25,16 @@
   	<link rel="stylesheet" href="/static/css/host_style.css" type="text/css">
 </head>
 <body>
-	<div id="addRoomPage">
+	<div id="addRoomPage" class="mt-5">
+		<div class="font-weight-bold">1단계</div>
+		<h2 class="font-weight-bold">숙소 정보를 알려주세요.</h2><br>
 		
-		<div id="typeDiv" class="mt-5">
-		
-			<div class="font-weight-bold">1단계</div>
-			<h2 class="font-weight-bold">숙소 정보를 알려주세요.</h2><br>
+		<div class="mb-4">
 			<div class="d-flex">
 				<i class="bi bi-check-circle"></i>
 				<h4 class="font-weight-bold ml-2">다음 중 숙소를 가장 잘 설명하는 것은 무엇인가요?</h4>
 			</div>
-			<select class="form-select float-right">
+			<select class="custom-select col-6 mt-1 ml-4">
 				<option selected>-- Type --</option>
 				<option value="beach">해변</option>
 				<option value="hanok">한옥</option>
@@ -44,81 +43,120 @@
 				<option value="mansion">주택</option>
 				<option value="apartment">아파트</option>
 			</select>
-			<div class="pt-4">
-				<div class="d-flex">
-					<i class="bi bi-check-circle"></i>
-					<h4 class="font-weight-bold ml-2">게스트가 사용할 숙소 유형은 무엇인가요?</h4>
-				</div>
-				<div class="ml-2">
-					<div class="small mt-3 ml-3">개인실: 게스트는 개인실에서 숙박하지만, 일부 공간은 호스트나 다른 사람과 함께 사용할 수 있습니다.</div>
-					<div class="small mt-3 ml-3">다인실: 게스트가 개인 공간 없이 호스트나 다른 사람과 함께 쓰는 침실이나 공용 공간에서 숙박합니다.</div>
-				</div>
-				<select class="form-select float-right">
-					<option selected>-- Type --</option>
-					<option value="private">개인실</option>
-					<option value="hanok">다인실</option>
-				</select>
-			</div>
-			<div class="pt-4">
-				<div class="d-flex">
-					<i class="bi bi-check-circle"></i>
-					<h4 class="font-weight-bold ml-2">숙소 위치는 어디인가요?</h4>
-				</div>
-				
-				<div id="addressDiv" class="mt-2 ml-4">
-					<input type="text" class="form-control" placeholder="주소" id="addressInput">
-					<input type="text" class="form-control" placeholder="위도" id="latInput">
-					<input type="text" class="form-control" placeholder="경도" id="lngInput">
-				</div>
-			</div>			
-			<div class="pt-4 pb-3">
-				<div class="d-flex">
-					<i class="bi bi-check-circle"></i>
-					<h4 class="font-weight-bold ml-2">숙소 기본정보를 알려주세요.</h4>
-				</div>
-				<div id="addressDiv" class="mt-2 ml-4">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="게스트" id="guestInput">
-						<span class="input-group-text">명</span>
-					</div>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="침대" id="bedInput">
-						<span class="input-group-text">개</span>
-					</div>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="침실" id="bedroomInput">
-						<span class="input-group-text">개</span>
-					</div>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="욕실" id="bathroomInput">
-						<span class="input-group-text">개</span>
-					</div>
-				</div>
-			</div><hr class="mt-5 pb-3">
-					
-			<div class="font-weight-bold">2단계</div>
-			<h2 class="font-weight-bold">숙소 매력을 돋보이게 하세요.</h2><br>
+		</div>
+		<div class="mt-4">
 			<div class="d-flex">
 				<i class="bi bi-check-circle"></i>
-				<h4 class="font-weight-bold ml-2">b&b 사진 추가하기</h4>
+				<h4 class="font-weight-bold ml-2">게스트가 사용할 숙소 유형은 무엇인가요?</h4>
 			</div>
-			<div id="fileInputDiv">
-				<input type="file" id="fileInput" multiple class="d-none" onchange="readURL(this);">
-				<img id="preview" width="200">
-			</div>	
-			
-			<!-- <div class="d-flex justify-content-between">
-				<input type="file" id="fileInput" class="d-none" onchange="readURL(this);">
-				<img id="preview" width="160"/>
-				
-			</div> -->
-			
-			<button type="button" id="uploadBtn" class="btn float-right">등록하기</button><br>
+			<div class="ml-2">
+				<div class="small mt-1 ml-3">개인실: 게스트는 개인실에서 숙박하지만, 일부 공간은 호스트나 다른 사람과 함께 사용할 수 있습니다.</div>
+				<div class="small mt-1 ml-3">다인실: 게스트가 개인 공간 없이 호스트나 다른 사람과 함께 쓰는 침실이나 공용 공간에서 숙박합니다.</div>
+			</div>
+			<select class="custom-select col-6 mt-3 ml-4">
+				<option selected>-- Type --</option>
+				<option value="private">개인실</option>
+				<option value="hanok">다인실</option>
+			</select>
 		</div>
+		<div class="pt-4">
+			<div class="d-flex">
+				<i class="bi bi-check-circle"></i>
+				<h4 class="font-weight-bold ml-2">숙소 위치는 어디인가요?</h4>
+			</div>
+			<button id="addressBtn" type="button" class="btn float-right">상세주소 검색하기</button>
+			<div id="addressDiv" class="mt-2 ml-4">
+				<input type="text" class="form-control" placeholder="주소" id="addressInput">
+				<input type="text" class="form-control" placeholder="위도" id="latInput">
+				<input type="text" class="form-control" placeholder="경도" id="lngInput">
+			</div>
+		</div>			
+		<div class="pt-4 pb-3">
+			<div class="d-flex">
+				<i class="bi bi-check-circle"></i>
+				<h4 class="font-weight-bold ml-2">숙소 기본정보를 알려주세요.</h4>
+			</div>
+			<div id="addressDiv" class="mt-2 ml-4">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="게스트" id="guestInput">
+					<span class="input-group-text">명</span>
+				</div>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="침대" id="bedInput">
+					<span class="input-group-text">개</span>
+				</div>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="침실" id="bedroomInput">
+					<span class="input-group-text">개</span>
+				</div>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="욕실" id="bathroomInput">
+					<span class="input-group-text">개</span>
+				</div>
+			</div>
+			<div class="pt-4">
+				<div class="d-flex">
+					<i class="bi bi-check-circle"></i>
+					<h4 class="font-weight-bold ml-2">셀프 체크인이 가능한가요?</h4>
+				</div>
+				<select class="custom-select col-6 mt-3 ml-4">
+					<option selected>-- Type --</option>
+					<option value="true">셀프 체크인</option>
+					<option value="false">대면 체크인</option>
+				</select>
+			</div>
+			
+		</div><hr class="mt-5 pb-3">
+				
+		<div class="font-weight-bold">2단계</div>
+		<h2 class="font-weight-bold">숙소 매력을 돋보이게 하세요.</h2><br>
+		<div class="d-flex">
+			<i class="bi bi-check-circle"></i>
+			<div>
+				<h4 class="font-weight-bold ml-2">숙소의 이름을 정해주세요.</h4>
+				<input type="text" class="form-control" placeholder="숙소 이름">
+			</div>
+		</div>
+		<div class="d-flex pt-4">
+			<i class="bi bi-check-circle"></i>
+			<div>
+				<h4 class="font-weight-bold ml-2">숙소 소개글을 써주세요.</h4>
+				<textarea rows="5" cols="130" style="resize:none" id="roomDesc" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="d-flex pt-4">
+			<i class="bi bi-check-circle"></i>
+			<h4 class="font-weight-bold ml-2">b&b 사진 추가하기</h4>
+		</div>
+		<div id="fileInputDiv" class="mt-1">
+			<input type="file" id="fileInput" multiple class="d-none" onchange="readURL(this);">
+			<img id="preview" width="200">
+		</div> <hr class="pb-3">
+				
+		<div class="font-weight-bold">3단계</div>
+		<h2 class="font-weight-bold">숙소의 가격을 정해주세요.</h2><br>
 		
+		<div class="d-flex justify-content-center">
+			<div class="input-group col-6">
+				<input type="text" class="form-control">
+				<div class="input-group-append">
+					<span class="input-group-text">/박</span>			
+				</div>
+			</div>
+		</div><br>
+
+		<button type="button" id="uploadBtn" class="btn float-right mt-5 mb-5" style="background-color:#f52a4f; color:white">등록하기</button><br>
+	
 	</div>
 	
 	<script>
+	
+		const btn = document.querySelector("#addressBtn");
+		btn.addEventListener("click", clickHandler);
+		
+		function clickHandler() {
+			window.open("http://map.esran.com");
+		}
 		
 		function readURL(input) {
 			if (input.files && input.files[0]) {
@@ -148,15 +186,16 @@
 					return;
 				}
 				
-				
 				var formData = new FormData();
 				for(let i = 0; i < files.length; i++) {
 					formData.append("file", $("#fileInput")[0].files[i]);
 				}
 				
+				let type = $("#")
+				
 				$.ajax({
-					type:"get"
-					, url:"/room/detail/reservation"
+					type:"post"
+					, url:""
 					, data:formData
 					, enctype:"multipart/form-data"
 					, processData:false
