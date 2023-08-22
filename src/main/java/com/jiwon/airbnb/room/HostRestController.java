@@ -1,6 +1,7 @@
 package com.jiwon.airbnb.room;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -29,5 +30,9 @@ public class HostRestController {
 		int roomId = roomBO.getRoomIdByUserId(userId);
 		
 		return reservationBO.getReservationListByRoomId(roomId);
+	}
+	
+	public Map<String, String> addRoom(HttpSession session) {
+		
 	}
 }
