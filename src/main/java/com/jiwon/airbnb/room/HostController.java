@@ -25,11 +25,14 @@ public class HostController {
 	public String hostmodeView(
 			HttpSession session
 			, Model model) {
-		
 		Integer userId = (Integer)session.getAttribute("userId");
-		model.addAttribute("roomId", roomBO.getRoomIdByUserId(userId));
-		model.addAttribute("email", userBO.getEmailByUserId(userId));
+
 		model.addAttribute("isHost", roomBO.isHost(userId));
+		if(roomBO.isHost(userId)) {
+			model.addAttribute("roomId", roomBO.getRoomIdByUserId(userId));
+		}
+		model.addAttribute("email", userBO.getEmailByUserId(userId));
+		model.addAttribute("userName", userBO.getUserName(userId));
 		
 		return "rooms/host/hostmode";
 	}
@@ -37,7 +40,6 @@ public class HostController {
 	public String hostView(
 			HttpSession session
 			, Model model) {
-		
 		Integer userId = (Integer) session.getAttribute("userId");
 		
 		model.addAttribute("userId", userId);
