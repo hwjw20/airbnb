@@ -69,6 +69,8 @@
 				<input type="text" class="form-control" placeholder="주소" id="addressInput">
 				<input type="text" class="form-control" placeholder="위도" id="latInput">
 				<input type="text" class="form-control" placeholder="경도" id="lngInput">
+				<div>	이미 등록된 숙소 입니다.</div>
+				<button class="btn mt-1">중복확인</button>
 			</div>
 		</div>			
 		<div class="pt-4 pb-3">
@@ -181,7 +183,7 @@
 			$("#uploadBtn").on("click", function() {
 				
 				// 파일이 선택되지 않았을때
-				if($("#fileInput")[0].files.length == 0) {
+				/* if($("#fileInput")[0].files.length == 0) {
 					alert("파일을 선택해주세요");
 					return;
 				}
@@ -189,11 +191,26 @@
 				var formData = new FormData();
 				for(let i = 0; i < files.length; i++) {
 					formData.append("file", $("#fileInput")[0].files[i]);
+				} */
+				
+				let address = $("#addressInput").val();
+				let lat = $("#latInput").val();
+				let lng = $("#lngInput").val();
+				
+				if(address == "") {
+					alert("주소를 입력하세요.");
+				}
+				if(lat == "") {
+					alert("위도를 입력하세요.");
+				}
+				if(lng == "") {
+					alert("경도를 입력하세요.");
+				}
+				if(isNaN(lat && lng)) {
+					alert("위도, 경도는 숫자만 입력 가능합니다.");
 				}
 				
-				let type = $("#")
-				
-				$.ajax({
+				/* $.ajax({
 					type:"post"
 					, url:""
 					, data:formData
@@ -210,7 +227,7 @@
 					, error:function() {
 						alert("숙소 등록 에러");
 					}
-				});s
+				}); */
 				
 				
 			});

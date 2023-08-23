@@ -17,6 +17,11 @@ section {
 	margin:auto;
 	position: relative;
 }
+#sec {
+	width:1200px;
+	height:700px;
+	margin:auto;
+}
 #map {
 	width:800px;
 	height:500px;

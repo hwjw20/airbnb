@@ -121,5 +121,5 @@ public class RoomBO {
 	public int	getRoomIdByUserId(int userId) {
 		return roomDAO.selectRoomIdByUserId(userId);
 	}
-
+	
 }

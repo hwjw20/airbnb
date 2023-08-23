@@ -32,7 +32,7 @@ public class HostRestController {
 		return reservationBO.getReservationListByRoomId(roomId);
 	}
 	
-	public Map<String, String> addRoom(HttpSession session) {
-		
-	}
+//	public Map<String, String> addRoom(HttpSession session) {
+//		
+//	}
 }
