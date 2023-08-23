@@ -34,7 +34,7 @@
 				<i class="bi bi-check-circle"></i>
 				<h4 class="font-weight-bold ml-2">다음 중 숙소를 가장 잘 설명하는 것은 무엇인가요?</h4>
 			</div>
-			<select class="custom-select col-6 mt-1 ml-4">
+			<select id="typeSelect" class="custom-select col-6 mt-1 ml-4">
 				<option selected>-- Type --</option>
 				<option value="beach">해변</option>
 				<option value="hanok">한옥</option>
@@ -53,10 +53,10 @@
 				<div class="small mt-1 ml-3">개인실: 게스트는 개인실에서 숙박하지만, 일부 공간은 호스트나 다른 사람과 함께 사용할 수 있습니다.</div>
 				<div class="small mt-1 ml-3">다인실: 게스트가 개인 공간 없이 호스트나 다른 사람과 함께 쓰는 침실이나 공용 공간에서 숙박합니다.</div>
 			</div>
-			<select class="custom-select col-6 mt-3 ml-4">
-				<option selected>-- Type --</option>
+			<select id="privacySelect" class="custom-select col-6 mt-3 ml-4">
+				<option selected>-- Privacy --</option>
 				<option value="private">개인실</option>
-				<option value="hanok">다인실</option>
+				<option value="multi-person">다인실</option>
 			</select>
 		</div>
 		<div class="pt-4">
@@ -69,8 +69,11 @@
 				<input type="text" class="form-control" placeholder="주소" id="addressInput">
 				<input type="text" class="form-control" placeholder="위도" id="latInput">
 				<input type="text" class="form-control" placeholder="경도" id="lngInput">
-				<div>	이미 등록된 숙소 입니다.</div>
-				<button class="btn mt-1">중복확인</button>
+				<div class="d-flex">
+					<button class="btn mt-1" id="duplicateBtn">중복확인</button>
+					<div id="duplicateDiv" class="d-none text-danger small ml-3 mt-3">이미 등록된 숙소입니다.</div>
+					<div id="availableDiv" class="d-none text-danger small ml-3 mt-3">등록 가능한 숙소입니다.</div>
+				</div>
 			</div>
 		</div>			
 		<div class="pt-4 pb-3">
@@ -80,7 +83,7 @@
 			</div>
 			<div id="addressDiv" class="mt-2 ml-4">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="게스트" id="guestInput">
+					<input type="text" class="form-control" placeholder="게스트" id="headcountInput">
 					<span class="input-group-text">명</span>
 				</div>
 				<div class="input-group">
@@ -102,9 +105,9 @@
 					<h4 class="font-weight-bold ml-2">셀프 체크인이 가능한가요?</h4>
 				</div>
 				<select class="custom-select col-6 mt-3 ml-4">
-					<option selected>-- Type --</option>
-					<option value="true">셀프 체크인</option>
-					<option value="false">대면 체크인</option>
+					<option id="selfcheckinSelect" selected>-- Type --</option>
+					<option value="selfcheckin">셀프 체크인</option>
+					<option value="nSelfcheckin">대면 체크인</option>
 				</select>
 			</div>
 			
@@ -116,14 +119,14 @@
 			<i class="bi bi-check-circle"></i>
 			<div>
 				<h4 class="font-weight-bold ml-2">숙소의 이름을 정해주세요.</h4>
-				<input type="text" class="form-control" placeholder="숙소 이름">
+				<input id="roomNameInput" type="text" class="form-control" placeholder="숙소 이름">
 			</div>
 		</div>
 		<div class="d-flex pt-4">
 			<i class="bi bi-check-circle"></i>
 			<div>
 				<h4 class="font-weight-bold ml-2">숙소 소개글을 써주세요.</h4>
-				<textarea rows="5" cols="130" style="resize:none" id="roomDesc" class="form-control"></textarea>
+				<textarea rows="5" cols="130" style="resize:none" id="roomDescInput" class="form-control"></textarea>
 			</div>
 		</div>
 		<div class="d-flex pt-4">
@@ -140,7 +143,7 @@
 		
 		<div class="d-flex justify-content-center">
 			<div class="input-group col-6">
-				<input type="text" class="form-control">
+				<input id="chargeInput" type="text" class="form-control">
 				<div class="input-group-append">
 					<span class="input-group-text">/박</span>			
 				</div>
@@ -175,6 +178,63 @@
 		}	
 	
 		$(document).ready(function() {
+			var isChecked = false;
+			var isDuplicated = true;
+			
+			$("#latInput").on("input", function() {
+				$("#duplicateDiv").addClass("d-none");
+				$("#available").addClass("d-none");
+			})
+			
+			$("#duplicateBtn").on("click", function() {
+				let address = $("#addressInput").val();
+				let lat = $("#latInput").val();
+				let lng = $("#lngInput").val();
+
+				if(address == "") {
+					alert("주소를 입력하세요.");
+					return;
+				}
+				if(lat == "") {
+					alert("위도를 입력하세요.");
+					return;
+				}
+				if(lng == "") {
+					alert("경도를 입력하세요.");
+					return;
+				}
+				
+				if(isNaN(lat && lng)) {
+					alert("위도, 경도는 숫자만 입력 가능합니다.");
+					return;
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/host/room/is_duplicated"
+					, data:{"lat":lat, "lng":lng}
+					, success:function(data) {
+						isChecked = true;
+						
+						if(data.is_duplicated) { //중복됨
+							isDuplicated = true;
+							
+							$("#duplicateDiv").removeClass("d-none");
+							$("#availableDiv").addClass("d-none");
+						} else { //중복되지 않음
+							isDuplicated = false;
+							
+							$("#duplicateDiv").addClass("d-none");
+							$("#availableDiv").removeClass("d-none");
+						}
+					}
+					, error:function() {
+						alert("숙소 중복 확인 에러");
+					}
+					
+				});
+				
+			});
 			
 			$("#preview").on("click", function() {
 				$("#fileInput").click();
@@ -182,44 +242,60 @@
 			
 			$("#uploadBtn").on("click", function() {
 				
+				let type = $("#typeSelect").val();
+				let privacy = $("#privacySelect").val();
+				let address = $("#addressInput").val();
+				let lat = $("#latInput").val();
+				let lng = $("#lngInput").val();
+				let headcount = $("#headcountInput").val();
+				let bed = $("#bedInput").val();
+				let bedroom = $("#bedroomInput").val();
+				let bathroom = $("#bathroomInput").val();
+				let selfcheckin = $("#selfcheckinSelect").val();
+				let roomName = $("#roomNameInput").val();
+				let roomDesc = $("#roomDescInput").val();
+				let charge = $("#chargeInput").val();
+				
+				if(!isChecked) {
+					alert("숙소 중복 확인을 해주세요.");
+					return;
+				}
+				
 				// 파일이 선택되지 않았을때
-				/* if($("#fileInput")[0].files.length == 0) {
+				if($("#fileInput")[0].files.length == 0) {
 					alert("파일을 선택해주세요");
 					return;
 				}
 				
 				var formData = new FormData();
-				for(let i = 0; i < files.length; i++) {
+				for(let i = 0; i < $("#fileInput")[0].files.length; i++) {
 					formData.append("file", $("#fileInput")[0].files[i]);
-				} */
+				}
+				formData.append("type", type);
+				formData.append("privacy", privacy);
+				formData.append("address", address);
+				formData.append("lat", lat);
+				formData.append("lng", lng);
+				formData.append("headcount", headcount);
+				formData.append("bed", bed);
+				formData.append("bedroom", bedroom);
+				formData.append("bathroom", bathroom);
+				formData.append("selfcheckin", selfcheckin);
+				formData.append("roomName", roomName);
+				formData.append("roomDesc", roomDesc);
+				formData.append("charge", charge);
 				
-				let address = $("#addressInput").val();
-				let lat = $("#latInput").val();
-				let lng = $("#lngInput").val();
-				
-				if(address == "") {
-					alert("주소를 입력하세요.");
-				}
-				if(lat == "") {
-					alert("위도를 입력하세요.");
-				}
-				if(lng == "") {
-					alert("경도를 입력하세요.");
-				}
-				if(isNaN(lat && lng)) {
-					alert("위도, 경도는 숫자만 입력 가능합니다.");
-				}
-				
-				/* $.ajax({
+				$.ajax({
 					type:"post"
-					, url:""
+					, url:"/host/become_a_host/add_room"
 					, data:formData
 					, enctype:"multipart/form-data"
 					, processData:false
 					, contentType:false
 					, success:function(data) {
 						if(data.result == "success") {
-							location.href="rooms/host/hostmode";
+							alert("숙소가 등록 되었습니다.");
+							location.href="/host/become_a_host/view";
 						} else {
 							alert("숙소 등록에 실패했습니다.");
 						}
@@ -227,7 +303,7 @@
 					, error:function() {
 						alert("숙소 등록 에러");
 					}
-				}); */
+				}); 
 				
 				
 			});
