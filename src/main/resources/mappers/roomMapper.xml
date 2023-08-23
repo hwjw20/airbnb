@@ -99,4 +99,14 @@
 		WHERE
 			`userId` = #{userId}
 	</select>
+	
+	<select id="selectCountRoomByLatLng" parameterType="map" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`room`
+		WHERE
+			`lat` = #{lat} 
+			AND `lng` = #{lng}
+	</select>
 </mapper>

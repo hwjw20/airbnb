@@ -115,11 +115,20 @@ public class RoomBO {
 		if(roomDAO.selectCountRoomByUserId(userId) != 0) {
 			return true;
 		}
+		
 		return false;
 	}
 
 	public int	getRoomIdByUserId(int userId) {
 		return roomDAO.selectRoomIdByUserId(userId);
+	}
+	
+	public boolean isRoomDuplicated(double lat, double lng) {
+		if(roomDAO.selectCountRoomByLatLng(lat, lng) != 0) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 }
