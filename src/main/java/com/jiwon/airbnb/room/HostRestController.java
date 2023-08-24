@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jiwon.airbnb.reservation.bo.ReservationBO;
 import com.jiwon.airbnb.room.bo.RoomBO;
@@ -45,6 +46,37 @@ public class HostRestController {
 		
 		Map<String, Boolean> result = new HashMap<>();
 		result.put("isDuplicated", isDuplicated);
+		
+		return result;
+	}
+	
+	// 호스트가 숙소 등록하는 api
+	@PostMapping("/add_room")
+	public Map<String, String> addRoom(
+			@RequestParam("type") int type
+			, @RequestParam("privacy") String privacy
+			, @RequestParam("address") String address
+			, @RequestParam("lat") double lat
+			, @RequestParam("lng") double lng
+			, @RequestParam("headcount") int headcount
+			, @RequestParam("bed") int bed
+			, @RequestParam("bedroom") int bedroom
+			, @RequestParam("bathroom") int bathroom
+			, @RequestParam("selfCheckin") int selfCheckin
+			, @RequestParam("roomName") String roomName
+			, @RequestParam("roomDesc") String roomDesc
+			, @RequestParam("charge") int charge
+			, HttpSession session) {
+		int userId = (int) session.getAttribute("userId");
+		
+		int count = roomBO.addRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, roomName, roomDesc, charge);
+
+		Map<String, String> result = new HashMap<>();
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
 		
 		return result;
 	}

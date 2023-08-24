@@ -16,7 +16,6 @@
 		    , `bathroom`
 		    , `selfCheckin`
 		    , `charge`
-		    , `rating`
 		    , `countReservation`
 		    , `roomName`
 		    , `roomDescription`
@@ -41,7 +40,6 @@
 		    , `bathroom`
 		    , `selfCheckin`
 		    , `charge`
-		    , `rating`
 		    , `countReservation`
 		    , `roomName`
 		    , `roomDescription`
@@ -70,7 +68,6 @@
 		    , `bathroom`
 		    , `selfCheckin`
 		    , `charge`
-		    , `rating`
 		    , `countReservation`
 		    , `roomName`
 		    , `roomDescription`
@@ -109,4 +106,48 @@
 			`lat` = #{lat} 
 			AND `lng` = #{lng}
 	</select>
+	<insert id="insertRoom" parameterType="map">
+		INSERT INTO
+			`room`
+		(
+			`userId`
+			, `type`
+			, `privacy`
+			, `address`
+			, `lat`
+			, `lng`
+			, `headcount`
+			, `bed`
+			, `bedroom`
+			, `bathroom`
+			, `selfCheckin`
+			, `roomName`
+			, `roomDescription`
+			, `countReservation`
+			, `charge`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{type}
+			, #{privacy}
+			, #{address}
+			, #{lat}
+			, #{lng}
+			, #{headcount}
+			, #{bed}
+			, #{bedroom}
+			, #{bathroom}
+			, #{selfCheckin}
+			, #{roomName}
+			, #{roomDesc}
+			, 0
+			, #{charge}
+			, now()
+			, now()
+		)
+		
+	</insert>
 </mapper>

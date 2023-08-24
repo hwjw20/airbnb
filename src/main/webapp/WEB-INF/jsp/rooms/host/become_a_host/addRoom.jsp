@@ -105,7 +105,7 @@
 					<h4 class="font-weight-bold ml-2">셀프 체크인이 가능한가요?</h4>
 				</div>
 				<select class="custom-select col-6 mt-3 ml-4">
-					<option id="selfcheckinSelect" selected>-- Type --</option>
+					<option id="selfCheckinSelect" selected>-- Type --</option>
 					<option value="selfcheckin">셀프 체크인</option>
 					<option value="nSelfcheckin">대면 체크인</option>
 				</select>
@@ -251,27 +251,27 @@
 				let bed = $("#bedInput").val();
 				let bedroom = $("#bedroomInput").val();
 				let bathroom = $("#bathroomInput").val();
-				let selfcheckin = $("#selfcheckinSelect").val();
+				let selfCheckin = $("#selfCheckinSelect").val();
 				let roomName = $("#roomNameInput").val();
 				let roomDesc = $("#roomDescInput").val();
 				let charge = $("#chargeInput").val();
 				
-				if(!isChecked) {
+				/* if(!isChecked) {
 					alert("숙소 중복 확인을 해주세요.");
 					return;
-				}
+				} */
 				
 				// 파일이 선택되지 않았을때
-				if($("#fileInput")[0].files.length == 0) {
+				/* if($("#fileInput")[0].files.length == 0) {
 					alert("파일을 선택해주세요");
 					return;
-				}
+				} */
 				
 				var formData = new FormData();
 				for(let i = 0; i < $("#fileInput")[0].files.length; i++) {
 					formData.append("file", $("#fileInput")[0].files[i]);
 				}
-				formData.append("type", type);
+				/* formData.append("type", type);
 				formData.append("privacy", privacy);
 				formData.append("address", address);
 				formData.append("lat", lat);
@@ -280,22 +280,19 @@
 				formData.append("bed", bed);
 				formData.append("bedroom", bedroom);
 				formData.append("bathroom", bathroom);
-				formData.append("selfcheckin", selfcheckin);
+				formData.append("selfCheckin", selfCheckin);
 				formData.append("roomName", roomName);
 				formData.append("roomDesc", roomDesc);
-				formData.append("charge", charge);
+				formData.append("charge", charge); */
 				
 				$.ajax({
 					type:"post"
-					, url:"/host/become_a_host/add_room"
-					, data:formData
-					, enctype:"multipart/form-data"
-					, processData:false
-					, contentType:false
+					, url:"/host/add_room"
+					, data:{"type":type, "privacy":privacy, "address":address, "lat":lat, "lng":lng, "headcount":headcount, "bed":bed, "bedroom":bedroom, "bathroom":bathroom
+						, "selfCheckin":selfCheckin, "roomName":roomName, "roomDesc":roomDesc, "charge":charge}
 					, success:function(data) {
 						if(data.result == "success") {
-							alert("숙소가 등록 되었습니다.");
-							location.href="/host/become_a_host/view";
+							alert("성공");
 						} else {
 							alert("숙소 등록에 실패했습니다.");
 						}
