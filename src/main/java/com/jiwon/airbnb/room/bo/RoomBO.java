@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.jiwon.airbnb.common.GetDate;
 import com.jiwon.airbnb.room.dao.RoomDAO;
 import com.jiwon.airbnb.room.imagePath.bo.ImagePathBO;
@@ -129,6 +128,12 @@ public class RoomBO {
 		}
 		
 		return false;
+	}
+	
+	public int addRoom(int userId, int type, String privacy, String address, double lat, double lng
+			, int headcount, int bed, int bedroom, int bathroom, int selfCheckin, String roomName, String roomDesc, int charge) {
+		
+		return roomDAO.insertRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, roomName, roomDesc, charge);
 	}
 	
 }

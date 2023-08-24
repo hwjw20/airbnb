@@ -21,4 +21,20 @@ public interface RoomDAO {
 	public int selectRoomIdByUserId(@Param("userId") int userId);
 	
 	public int selectCountRoomByLatLng(@Param("lat") double lat, @Param("lng") double lng);	
+	
+	public int insertRoom(
+			@Param("userId") int userId
+			, @Param("type") int type
+			, @Param("privacy") String privacy
+			, @Param("address") String address
+			, @Param("lat") double lat
+			, @Param("lng") double lng
+			, @Param("headcount") int headcount
+			, @Param("bed") int bed
+			, @Param("bedroom") int bedroom
+			, @Param("bathroom") int bathroom
+			, @Param("selfCheckin") int selfCheckin
+			, @Param("roomName") String roomName
+			, @Param("roomDesc") String roomDesc
+			, @Param("charge") int charge);
 }
