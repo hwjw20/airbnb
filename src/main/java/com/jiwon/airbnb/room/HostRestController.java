@@ -50,7 +50,7 @@ public class HostRestController {
 	}
 	
 	// 호스트가 숙소 등록하는 api
-	@PostMapping("/addRoom")
+	@GetMapping("/room/add")
 	public Map<String, String> addRoom(
 			@RequestParam("type") int type
 			, @RequestParam("privacy") String privacy
@@ -68,7 +68,7 @@ public class HostRestController {
 			, HttpSession session) {
 		int userId = (int) session.getAttribute("userId");
 		
-		int count = roomBO.addRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin,charge, roomName, roomDescription);
+		int count = roomBO.addRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, charge, roomName, roomDescription);
 
 		Map<String, String> result = new HashMap<>();
 		if(count == 1) {

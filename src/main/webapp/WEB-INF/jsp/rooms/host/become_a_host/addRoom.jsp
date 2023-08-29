@@ -104,8 +104,8 @@
 					<i class="bi bi-check-circle"></i>
 					<h4 class="font-weight-bold ml-2">셀프 체크인이 가능한가요?</h4>
 				</div>
-				<select class="custom-select col-6 mt-3 ml-4">
-					<option id="selfCheckinSelect" selected>-- Type --</option>
+				<select id="selfCheckinSelect" class="custom-select col-6 mt-3 ml-4">
+					<option selected>-- Type --</option>
 					<option value=0>셀프 체크인</option>
 					<option value=1>대면 체크인</option>
 				</select>
@@ -211,7 +211,7 @@
 				}
 				
 				$.ajax({
-					type:"post"
+					type:"POST"
 					, url:"/host/room/is_duplicated"
 					, data:{"lat":lat, "lng":lng}
 					, success:function(data) {
@@ -257,7 +257,7 @@
 				let roomDescription = $("#roomDescInput").val();
 				let charge = $("#chargeInput").val();
 				
-				
+				alert(bed + " " + bedroom + " " + bathroom + " " + selfCheckin + " " + roomName + " " + roomDescription + " " + charge);
 				/* if(!isChecked) {
 					alert("숙소 중복 확인을 해주세요.");
 					return;
@@ -276,8 +276,8 @@
 				
 				
 				$.ajax({
-					type:"post"
-					, url:"/host/addRoom"
+					type:"get"
+					, url:"/host/room/add"
 					, data:{"type":type, "privacy":privacy, "address":address, "lat":lat, "lng":lng, "headcount":headcount, 
 						"bed":bed, "bedroom":bedroom, "bathroom":bathroom, "selfCheckin":selfCheckin, "charge":charge, "roomName":roomName, "roomDescription":roomDescription}
 					, success:function(data) {
