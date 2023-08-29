@@ -15,11 +15,11 @@ header {
 section {
 	width:1200px; 
 	margin:auto;
-	position: relative;
+	/* position: relative; */
 }
 #sec {
 	width:1200px;
-	height:700px;
+	/* height:1000px; */
 	margin:auto;
 }
 #map {

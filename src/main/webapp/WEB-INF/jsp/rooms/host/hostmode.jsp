@@ -37,9 +37,7 @@
 				<c:when test="${isHost }">
 					<button type="button" class="btn mt-2" onclick="location.href='/host/become_a_host/host/view'">숙소 정보 수정하기</button><br>
 					<h5 class="font-weight-bold mt-5">예약</h5>
-					<div id="calendar" class="mt-3" data-room-id="${roomId }"></div>
-
-					<div id="calendar"></div>
+					<div id="calendar" class="mt-3 mb-5" data-room-id="${roomId }"></div>
 				</c:when>
 				<c:otherwise>
 					<button type="button" class="btn float-left mt-5 ml-3" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button>
