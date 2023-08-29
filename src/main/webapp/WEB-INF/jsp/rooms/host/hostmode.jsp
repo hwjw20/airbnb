@@ -40,7 +40,9 @@
 					<div id="calendar" class="mt-3 mb-5" data-room-id="${roomId }"></div>
 				</c:when>
 				<c:otherwise>
-					<button type="button" class="btn float-left mt-5 ml-3" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button>
+					<article>
+						<button type="button" class="btn float-left mt-5 ml-3" onclick="location.href='/host/become_a_host/host/view'">숙소 등록하기</button>
+					</article>
 				</c:otherwise>
 			</c:choose>
 		</div>
