@@ -143,7 +143,7 @@
 			, #{selfCheckin}
 			, #{charge}
 			, #{roomName}
-			, #{roomDesc}
+			, #{roomDescription}
 			, 0
 			, now()
 			, now()

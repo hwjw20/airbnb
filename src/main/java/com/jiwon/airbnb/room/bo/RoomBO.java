@@ -130,8 +130,8 @@ public class RoomBO {
 		return false;
 	}
 	
-	public int addRoom(int userId, int type, String privacy, String address, double lat, double lng
-			, int headcount, int bed, int bedroom, int bathroom, int selfCheckin, int charge, String roomName, String roomDescription) {
+	public int addRoom(int userId, int type, String privacy, String address, double lat, double lng, 
+			int headcount, int bed, int bedroom, int bathroom, int selfCheckin, int charge, String roomName, String roomDescription) {
 		
 		return roomDAO.insertRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, charge, roomName, roomDescription);
 	}
