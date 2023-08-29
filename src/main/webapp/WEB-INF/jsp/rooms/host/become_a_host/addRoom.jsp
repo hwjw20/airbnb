@@ -36,12 +36,12 @@
 			</div>
 			<select id="typeSelect" class="custom-select col-6 mt-1 ml-4">
 				<option selected>-- Type --</option>
-				<option value="beach">해변</option>
-				<option value="hanok">한옥</option>
-				<option value="camping">캠핑장</option>
-				<option value="view">최고의 전망</option>
-				<option value="mansion">주택</option>
-				<option value="apartment">아파트</option>
+				<option value=1>해변</option>
+				<option value=2>한옥</option>
+				<option value=3>캠핑장</option>
+				<option value=4>최고의 전망</option>
+				<option value=5>주택</option>
+				<option value=6>아파트</option>
 			</select>
 		</div>
 		<div class="mt-4">
@@ -55,8 +55,8 @@
 			</div>
 			<select id="privacySelect" class="custom-select col-6 mt-3 ml-4">
 				<option selected>-- Privacy --</option>
-				<option value="private">개인실</option>
-				<option value="multi-person">다인실</option>
+				<option value="개인실">개인실</option>
+				<option value="다인실">다인실</option>
 			</select>
 		</div>
 		<div class="pt-4">
@@ -106,8 +106,8 @@
 				</div>
 				<select class="custom-select col-6 mt-3 ml-4">
 					<option id="selfCheckinSelect" selected>-- Type --</option>
-					<option value="selfcheckin">셀프 체크인</option>
-					<option value="nSelfcheckin">대면 체크인</option>
+					<option value=0>셀프 체크인</option>
+					<option value=1>대면 체크인</option>
 				</select>
 			</div>
 			
@@ -178,8 +178,9 @@
 		}	
 	
 		$(document).ready(function() {
+			
 			var isChecked = false;
-			var isDuplicated = true;
+			var duplicateFlag = true;
 			
 			$("#latInput").on("input", function() {
 				$("#duplicateDiv").addClass("d-none");
@@ -216,13 +217,13 @@
 					, success:function(data) {
 						isChecked = true;
 						
-						if(data.is_duplicated) { //중복됨
-							isDuplicated = true;
+						if(data.isDuplicated) { //중복됨
+							duplicateFlag = true;
 							
 							$("#duplicateDiv").removeClass("d-none");
 							$("#availableDiv").addClass("d-none");
 						} else { //중복되지 않음
-							isDuplicated = false;
+							duplicateFlag = false;
 							
 							$("#duplicateDiv").addClass("d-none");
 							$("#availableDiv").removeClass("d-none");
@@ -253,8 +254,9 @@
 				let bathroom = $("#bathroomInput").val();
 				let selfCheckin = $("#selfCheckinSelect").val();
 				let roomName = $("#roomNameInput").val();
-				let roomDesc = $("#roomDescInput").val();
+				let roomDescription = $("#roomDescInput").val();
 				let charge = $("#chargeInput").val();
+				
 				
 				/* if(!isChecked) {
 					alert("숙소 중복 확인을 해주세요.");
@@ -267,29 +269,17 @@
 					return;
 				} */
 				
-				var formData = new FormData();
+				/* var formData = new FormData();
 				for(let i = 0; i < $("#fileInput")[0].files.length; i++) {
 					formData.append("file", $("#fileInput")[0].files[i]);
-				}
-				/* formData.append("type", type);
-				formData.append("privacy", privacy);
-				formData.append("address", address);
-				formData.append("lat", lat);
-				formData.append("lng", lng);
-				formData.append("headcount", headcount);
-				formData.append("bed", bed);
-				formData.append("bedroom", bedroom);
-				formData.append("bathroom", bathroom);
-				formData.append("selfCheckin", selfCheckin);
-				formData.append("roomName", roomName);
-				formData.append("roomDesc", roomDesc);
-				formData.append("charge", charge); */
+				} */
+				
 				
 				$.ajax({
 					type:"post"
-					, url:"/host/add_room"
-					, data:{"type":type, "privacy":privacy, "address":address, "lat":lat, "lng":lng, "headcount":headcount, "bed":bed, "bedroom":bedroom, "bathroom":bathroom
-						, "selfCheckin":selfCheckin, "roomName":roomName, "roomDesc":roomDesc, "charge":charge}
+					, url:"/host/addRoom"
+					, data:{"type":type, "privacy":privacy, "address":address, "lat":lat, "lng":lng, "headcount":headcount, 
+						"bed":bed, "bedroom":bedroom, "bathroom":bathroom, "selfCheckin":selfCheckin, "charge":charge, "roomName":roomName, "roomDescription":roomDescription}
 					, success:function(data) {
 						if(data.result == "success") {
 							alert("성공");

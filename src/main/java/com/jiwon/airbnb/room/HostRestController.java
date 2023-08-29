@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.jiwon.airbnb.reservation.bo.ReservationBO;
 import com.jiwon.airbnb.room.bo.RoomBO;
@@ -51,7 +50,7 @@ public class HostRestController {
 	}
 	
 	// 호스트가 숙소 등록하는 api
-	@PostMapping("/add_room")
+	@PostMapping("/addRoom")
 	public Map<String, String> addRoom(
 			@RequestParam("type") int type
 			, @RequestParam("privacy") String privacy
@@ -63,13 +62,13 @@ public class HostRestController {
 			, @RequestParam("bedroom") int bedroom
 			, @RequestParam("bathroom") int bathroom
 			, @RequestParam("selfCheckin") int selfCheckin
-			, @RequestParam("roomName") String roomName
-			, @RequestParam("roomDesc") String roomDesc
 			, @RequestParam("charge") int charge
+			, @RequestParam("roomName") String roomName
+			, @RequestParam("roomDescription") String roomDescription
 			, HttpSession session) {
 		int userId = (int) session.getAttribute("userId");
 		
-		int count = roomBO.addRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, roomName, roomDesc, charge);
+		int count = roomBO.addRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin,charge, roomName, roomDescription);
 
 		Map<String, String> result = new HashMap<>();
 		if(count == 1) {

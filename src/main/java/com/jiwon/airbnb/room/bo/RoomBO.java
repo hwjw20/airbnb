@@ -131,9 +131,9 @@ public class RoomBO {
 	}
 	
 	public int addRoom(int userId, int type, String privacy, String address, double lat, double lng
-			, int headcount, int bed, int bedroom, int bathroom, int selfCheckin, String roomName, String roomDesc, int charge) {
+			, int headcount, int bed, int bedroom, int bathroom, int selfCheckin, int charge, String roomName, String roomDescription) {
 		
-		return roomDAO.insertRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, roomName, roomDesc, charge);
+		return roomDAO.insertRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, charge, roomName, roomDescription);
 	}
 	
 }
