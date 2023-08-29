@@ -121,10 +121,10 @@
 			, `bedroom`
 			, `bathroom`
 			, `selfCheckin`
+			, `charge`
 			, `roomName`
 			, `roomDescription`
 			, `countReservation`
-			, `charge`
 			, `createdAt`
 			, `updatedAt`
 		)
@@ -141,10 +141,10 @@
 			, #{bedroom}
 			, #{bathroom}
 			, #{selfCheckin}
+			, #{charge}
 			, #{roomName}
 			, #{roomDesc}
 			, 0
-			, #{charge}
 			, now()
 			, now()
 		)

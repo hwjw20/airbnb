@@ -34,7 +34,8 @@ public interface RoomDAO {
 			, @Param("bedroom") int bedroom
 			, @Param("bathroom") int bathroom
 			, @Param("selfCheckin") int selfCheckin
+			, @Param("charge") int charge
 			, @Param("roomName") String roomName
-			, @Param("roomDesc") String roomDesc
-			, @Param("charge") int charge);
+			, @Param("roomDescription") String roomDescription
+			);
 }
