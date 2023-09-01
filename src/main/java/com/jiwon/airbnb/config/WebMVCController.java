@@ -21,6 +21,7 @@ public class WebMVCController implements WebMvcConfigurer{
 		registry.addResourceHandler("/images/**").addResourceLocations("file:///" + FileManagerService.FILE_UPLOAD_PATH + "/");
 	}
 	
+	
 //	@Override
 //	public void addInterceptors(InterceptorRegistry registry) {
 //		registry.addInterceptor(interceptor)

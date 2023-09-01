@@ -29,6 +29,8 @@
 		<div class="font-weight-bold">1단계</div>
 		<h2 class="font-weight-bold">숙소 정보를 알려주세요.</h2><br>
 		
+		<button onclick="location.href='/rooms/popup'" type="button">업로드</button>
+		
 		<div class="mb-4">
 			<div class="d-flex">
 				<i class="bi bi-check-circle"></i>
