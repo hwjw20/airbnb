@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.jiwon.airbnb.common.FileManagerService;
 import com.jiwon.airbnb.room.imagePath.dao.ImagePathDAO;
-import com.jiwon.airbnb.room.imagePath.model.ImagePath;
 
 @Service
 public class ImagePathBO {
@@ -16,5 +17,11 @@ public class ImagePathBO {
 	
 	public List<String> getImagePathByRoomId(int roomId) {
 		return imagePathDAO.selectImagePathByRoomId(roomId);
+	}
+	
+	// test
+	public int addImage(MultipartFile file) {
+		String imagePath = FileManagerService.saveFile(13, file);
+		return imagePathDAO.insertImage(imagePath);
 	}
 }

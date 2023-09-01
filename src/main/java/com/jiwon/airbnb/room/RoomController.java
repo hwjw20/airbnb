@@ -25,6 +25,12 @@ public class RoomController {
 	@Autowired
 	private LikeBO likeBO;
 	
+	//테스트 화면
+	@GetMapping("/popup")
+	public String popupView() {
+		return "rooms/host/become_a_host/popup";
+	}
+	
 	@GetMapping("/list/view")
 	public String roomView(
 			@RequestParam(value="type", required=false) Integer type 

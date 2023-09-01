@@ -11,4 +11,22 @@
 		WHERE
 			`roomId` = #{roomId}
 	</select>
+	
+	<insert id="insertImage" parameterType="string">
+		INSERT INTO
+			`image_path`
+		(
+			`roomId`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUE
+		(
+			11
+			, #{imagePath}
+			, now()
+			, now()
+		)
+	</insert>
 </mapper>
