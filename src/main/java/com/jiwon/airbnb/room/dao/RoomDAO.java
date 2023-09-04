@@ -38,4 +38,6 @@ public interface RoomDAO {
 			, @Param("roomName") String roomName
 			, @Param("roomDescription") String roomDescription
 			);
+	
+	public List<Room> selectRoomBySearchWord(@Param("searchWord") String searchWord);
 }
