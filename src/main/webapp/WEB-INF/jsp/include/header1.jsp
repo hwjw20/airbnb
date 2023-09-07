@@ -60,19 +60,20 @@
 			$(document).ready(function() {
 				
 				$("#searchBtn").on("click", function() {
-					let searchWord = $("#searchInput").val();
+					let keyword = $("#searchInput").val();
 					
 					$.ajax({
 						type:"get"
-						, url:"/room/search"
-						, data:{"searchWord":searchWord}
+						, url:"/rooms/list/view"
+						, data:{"keyword":keyword}
 						, success:function(data) {
-							
+							alert(keyword);
+							location.href="/rooms/list/view?keyword=" + keyword;
 						}
 						, error:function() {
 							alert("검색 에러");
 						}
-					})
+					}) 
 					
 				});
 				

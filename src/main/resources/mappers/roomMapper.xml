@@ -151,8 +151,29 @@
 		
 	</insert>
 	
-	<select id="selectRoomBySearchWord" parameterType="string" resultType="com.jiwon.airbnb.room.model.Room">
+	<select id="selectRoomByKeyword" parameterType="string" resultType="com.jiwon.airbnb.room.model.Room">
 		SELECT
-		 ()
+		 	`id`
+			, `type`
+			, `privacy`
+			, `address`
+			, `lat`
+			, `lng`
+			, `headcount`
+			, `bed`
+			, `bedroom`
+			, `bathroom`
+			, `selfCheckin`
+			, `charge`
+			, `roomName`
+			, `roomDescription`
+			, `countReservation`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`room`
+		WHERE
+			`address` LIKE '%{keyword}%'
+		OR `roomDescription` LIKE '%{keyword}%'
 	</select>
 </mapper>
