@@ -70,6 +70,29 @@ public class RoomBO {
 		return roomInfoList;
 	}
 	
+	public List<RoomInfo> getRoomListByKeyword(String keyword) {
+		List<RoomInfo> roomInfoList = new ArrayList<>();
+		
+		List<Room> roomList = roomDAO.selectRoomByKeyword(keyword);
+		for(Room room:roomList) {
+			RoomInfo roomInfo = new RoomInfo();
+			
+			int roomId = room.getId();
+			List<String> imagePathList = imagePathBO.getImagePathByRoomId(roomId);
+			double rating = reviewBO.getRating(roomId);
+			
+			roomInfo.setRoomId(roomId);
+			roomInfo.setAddress(room.getAddress());
+			roomInfo.setCharge(room.getCharge());
+			roomInfo.setImagePathList(imagePathList);
+			roomInfo.setRating(rating);
+			
+			roomInfoList.add(roomInfo);
+		}
+		
+		return roomInfoList;
+	}
+	
 	public RoomInfo getRoomInfo(int roomId) {
 		Room room = roomDAO.selectRoom(roomId);
 		int userId = room.getUserId();
@@ -136,7 +159,4 @@ public class RoomBO {
 		return roomDAO.insertRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, charge, roomName, roomDescription);
 	}
 	
-	public List<RoomInfo> searchRoomList(String searchWord) {
-		
-	}
 }

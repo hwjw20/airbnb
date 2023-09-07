@@ -34,11 +34,19 @@ public class RoomController {
 	@GetMapping("/list/view")
 	public String roomView(
 			@RequestParam(value="type", required=false) Integer type 
+			, @RequestParam(value="keyword", required=false) String keyword
 			, Model model) {
 		
-		List<RoomInfo> roomList = roomBO.getRoomList(type);
-		
-		model.addAttribute("roomList", roomList);
+		// 검색창에 키워드를 입력했을 때
+		if(keyword != null) {
+//			if((keyword != null) || (keyword != "")) {
+			List<RoomInfo> roomList = roomBO.getRoomListByKeyword(keyword);
+			model.addAttribute("roomList", roomList);
+		} else {
+			// null 이거나 공백일때
+			List<RoomInfo> roomList = roomBO.getRoomList(type);
+			model.addAttribute("roomList", roomList);
+		}
 		
 		return "rooms/main";
 	}

@@ -17,10 +17,10 @@ public class RoomInfo {
 	private int bed;
 	private int bedroom;
 	private int bathroom;
-	private String roomName;
-	private String roomDescription;
 	private int selfCheckin;
 	private int charge;
+	private String roomName;
+	private String roomDescription;
 	private double rating;
 	private int reviewCount;
 	private List<String> imagePathList;
@@ -92,18 +92,6 @@ public class RoomInfo {
 	public void setBathroom(int bathroom) {
 		this.bathroom = bathroom;
 	}
-	public String getRoomName() {
-		return roomName;
-	}
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
-	public String getRoomDescription() {
-		return roomDescription;
-	}
-	public void setRoomDescription(String roomDescription) {
-		this.roomDescription = roomDescription;
-	}
 	public int getSelfCheckin() {
 		return selfCheckin;
 	}
@@ -115,6 +103,18 @@ public class RoomInfo {
 	}
 	public void setCharge(int charge) {
 		this.charge = charge;
+	}
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+	public String getRoomDescription() {
+		return roomDescription;
+	}
+	public void setRoomDescription(String roomDescription) {
+		this.roomDescription = roomDescription;
 	}
 	public double getRating() {
 		return rating;
@@ -140,5 +140,6 @@ public class RoomInfo {
 	public void setSuperHost(boolean superHost) {
 		this.superHost = superHost;
 	}
+	
 	
 }

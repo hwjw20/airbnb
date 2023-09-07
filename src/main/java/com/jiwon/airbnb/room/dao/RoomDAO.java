@@ -39,5 +39,5 @@ public interface RoomDAO {
 			, @Param("roomDescription") String roomDescription
 			);
 	
-	public List<Room> selectRoomBySearchWord(@Param("searchWord") String searchWord);
+	public List<Room> selectRoomByKeyword(@Param("keyword") String keyword);
 }
