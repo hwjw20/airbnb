@@ -151,16 +151,14 @@
 					<button type="button" class="btn form-control mt-4 mb-4 text-white" id="reservBtn" style="background-color:#f52a4f" data-room-id="${room.roomId}" data-room-charge="${room.charge}">예약하기</button>
 				</c:if>
 				<hr>
-				<!-- <div class="d-flex justify-content-between">
-					<b><div>총 합계</div></b>
-					<b><div>₩230,000</div></b>
-				</div> -->
+				
 			</div>
 			
 		</aside>
 		<hr>
-		<div id="map" class="mb-4">
-		</div>
+		
+		<div id="map" class="mb-4"></div>
+		
 	</div>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
@@ -179,7 +177,9 @@
 		});
 		
 		$(document).ready(function() {
-			
+			 $(function(){
+		         $('#datepicker').datepicker();
+		      });
 			
 			$("#unlikeBtn").on("click", function() {
 				let roomId = $(this).data("room-id");
@@ -200,7 +200,7 @@
 					}
 				});
 				
-			})
+			});
 			
 			
 			$("#likeBtn").on("click", function() {
@@ -290,16 +290,17 @@
 					, data:{"roomId":roomId, "date":checkin, "endDate":checkout, "days":days, "headcount":headcount}
 					, success:function(data) {
 						if(data.result == "success") {
-							alert("예약이 완료 되었습니다.");
+							alert("총 금액 : " + charge + "\n예약이 완료 되었습니다.");
 							location.href="/mypage/reservation/view";
 						} else {
-							alert("예약 실패");
+							alert("예약에 실패하였습니다. 다시 시도해 주세요.");
 						}
 					}
 					, error:function() {
 						alert("예약 에러");
 					}
 				});
+				
 			});
 			
 		});

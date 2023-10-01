@@ -18,7 +18,7 @@ public class ReservationRestController {
 	@Autowired
 	private ReservationBO reservationBO;
 	
-	
+	// 숙소 예약하기 api
 	@GetMapping("/room/detail/reservation")
 	public Map<String, String> reservation(
 			@RequestParam("roomId") int roomId

@@ -46,7 +46,7 @@ public class HostRestController {
 	}
 	
 	
-	// 호스트가 숙소 예약 일정 가져오는 api
+	// 호스트가 숙소의 예약 일정 가져오는 api
 	@GetMapping("/reservation/schedule")
 	public List<ScheduleCalendar> roomSchedule(HttpSession session) {
 		int userId = (Integer) session.getAttribute("userId");
