@@ -23,6 +23,7 @@ public class UserRestController {
 	@Autowired
 	private UserBO userBO;
 
+	// 이메일 로그인 api
 	@GetMapping("/signin/email")
 	public Map<String, String> signinEmail(
 			@RequestParam("email") String email
@@ -41,6 +42,7 @@ public class UserRestController {
 		return result;
 	}
 	
+	// 비밀번호 로그인 api
 	@PostMapping("/signin/password")
 	public Map<String, String> signinPw(
 			@RequestParam("email") String email
@@ -64,7 +66,7 @@ public class UserRestController {
 		return result;
 	}
 	
-	
+	// 비밀번호 찾기 api
 	@GetMapping("/find_pw")
 	public Map<String, String> findPw(@RequestParam("email") String email) {
 		int count = userBO.getUserCount(email);
@@ -79,6 +81,7 @@ public class UserRestController {
 		return result;
 	}
 	
+	// 회원가입 api 
 	@PostMapping("/signup")
 	public Map<String, String> signup(
 			@RequestParam("name") String name
@@ -101,6 +104,7 @@ public class UserRestController {
 		return result;
 	}
 	
+	// 회원가입 시 이메일 중복확인 api 
 	@GetMapping("/duplicate_email")
 	public Map<String, Boolean> duplicateEmail(@RequestParam("email") String email) {
 		User user = userBO.getUserByEmail(email);

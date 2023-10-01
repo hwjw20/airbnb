@@ -133,9 +133,10 @@
 			<i class="bi bi-check-circle"></i>
 			<h4 class="font-weight-bold ml-2">b&b 사진 추가하기</h4>
 		</div>
-		<div id="fileInputDiv" class="mt-1">
-			<input type="file" id="fileInput" multiple class="d-none" onchange="readURL(this);">
-			<img id="preview" width="200">
+		
+		<div class="fileInputDiv mt-1">
+			<div>5개 사진 이미지를 업로드 해주세요.</div><br>
+			<input type="file" id="fileInput_1" multiple="multiple">
 		</div> <hr class="pb-3">
 				
 		<div class="font-weight-bold">3단계</div>
@@ -162,20 +163,6 @@
 		function clickHandler() {
 			window.open("http://map.esran.com");
 		}
-		
-		function readURL(input) {
-			if (input.files && input.files[0]) {
-		    	var reader = new FileReader();
-		    	
-		    	reader.onload = function(e) {
-		      		document.getElementById('preview').src = e.target.result;
-		    	};
-		    	
-		    	reader.readAsDataURL(input.files[0]);
-			  } else {
-			  	document.getElementById('preview').src = "";
-			  }
-		}	
 	
 		$(document).ready(function() {
 			

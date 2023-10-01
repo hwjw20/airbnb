@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/room")
 public class RoomRestController {
 
-	public search(@RequestParam("searchWord") String searchWord) {
-		
-	}
+//	public search(@RequestParam("searchWord") String searchWord) {
+//		
+//	}
 }
