@@ -136,7 +136,7 @@
 		
 		<div class="fileInputDiv mt-1">
 			<div>5개 사진 이미지를 업로드 해주세요.</div><br>
-			<input type="file" id="fileInput_1" multiple="multiple">
+			<input type="file" id="fileInput" multiple="multiple">
 		</div> <hr class="pb-3">
 				
 		<div class="font-weight-bold">3단계</div>
@@ -224,10 +224,6 @@
 				
 			});
 			
-			$("#preview").on("click", function() {
-				$("#fileInput").click();
-			});
-			
 			$("#uploadBtn").on("click", function() {
 				
 				let type = $("#typeSelect").val();
@@ -242,9 +238,8 @@
 				let selfCheckin = $("#selfCheckinSelect").val();
 				let roomName = $("#roomNameInput").val();
 				let roomDescription = $("#roomDescInput").val();
-				let charge = $("#chargeInput").val();
+				let charge = $("#chargeInput").val(); 
 				
-				alert(bed + " " + bedroom + " " + bathroom + " " + selfCheckin + " " + roomName + " " + roomDescription + " " + charge);
 				/* if(!isChecked) {
 					alert("숙소 중복 확인을 해주세요.");
 					return;
@@ -261,7 +256,13 @@
 					formData.append("file", $("#fileInput")[0].files[i]);
 				} */
 				
+				var fileInput = document.getElementById("fileInput");
+				var imagePath;
 				
+				var files = fileInput.files;
+				var file;
+				
+				// room 테이블에 숙소 정보 삽입
 				$.ajax({
 					type:"get"
 					, url:"/host/room/add"
@@ -269,7 +270,31 @@
 						"bed":bed, "bedroom":bedroom, "bathroom":bathroom, "selfCheckin":selfCheckin, "charge":charge, "roomName":roomName, "roomDescription":roomDescription}
 					, success:function(data) {
 						if(data.result == "success") {
-							alert("성공");
+							
+							// imagePath 테이블에 이미지 경로 삽입
+							for(var i = 0; i < files.length; i++) {
+								file = files[i];
+								imagePath = file.name;
+								
+								$.ajax({
+									type:"post"
+									, url:"/host/add_imagePath"
+									, data:{"imagePath":imagePath}
+									, success:function(data) {
+										if(data.result == "success") {
+											
+										} else {
+											alert("실패");
+										}
+									}
+									, error:function() {
+										alert("에러");
+									}
+								})
+							}
+							
+							alert("숙소 등록에 성공하였습니다!");
+							location.href="/host/become_a_host/view";
 						} else {
 							alert("숙소 등록에 실패했습니다.");
 						}
@@ -277,7 +302,7 @@
 					, error:function() {
 						alert("숙소 등록 에러");
 					}
-				}); 
+				});
 				
 				
 			});

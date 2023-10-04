@@ -10,6 +10,7 @@ public interface ImagePathDAO {
 
 	public List<String> selectImagePathByRoomId(@Param("roomId") int roomId);
 	
-	//test
-	public int insertImage(@Param("imagePath") String imagePath);
+	public int insertImagePath(
+			@Param("roomId") int roomId
+			, @Param("imagePath") String imagePath);
 }

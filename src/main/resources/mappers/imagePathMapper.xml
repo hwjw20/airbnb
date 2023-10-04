@@ -12,7 +12,7 @@
 			`roomId` = #{roomId}
 	</select>
 	
-	<insert id="insertImage" parameterType="string">
+	<insert id="insertImagePath" parameterType="map">
 		INSERT INTO
 			`image_path`
 		(
@@ -23,7 +23,7 @@
 		)
 		VALUE
 		(
-			11
+			#{roomId}
 			, #{imagePath}
 			, now()
 			, now()
