@@ -40,4 +40,6 @@ public interface RoomDAO {
 			);
 	
 	public List<Room> selectRoomByKeyword(@Param("keyword") String keyword);
+	
+	public int selectLatestRoomId();
 }

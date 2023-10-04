@@ -176,4 +176,14 @@
 			`address` LIKE '%{keyword}%'
 		OR `roomDescription` LIKE '%{keyword}%'
 	</select>
+	
+	<select id="selectLatestRoomId" resultType="int">
+		SELECT
+			`id`
+		FROM
+			`room`
+		ORDER BY
+			`createdAt` desc
+		LIMIT 1
+	</select>
 </mapper>

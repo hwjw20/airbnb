@@ -159,4 +159,8 @@ public class RoomBO {
 		return roomDAO.insertRoom(userId, type, privacy, address, lat, lng, headcount, bed, bedroom, bathroom, selfCheckin, charge, roomName, roomDescription);
 	}
 	
+	public int getLatestRoomId() {
+		return roomDAO.selectLatestRoomId();
+	}
+	
 }
