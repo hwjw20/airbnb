@@ -240,21 +240,17 @@
 				let roomDescription = $("#roomDescInput").val();
 				let charge = $("#chargeInput").val(); 
 				
-				/* if(!isChecked) {
+				// 숙소 중복을 확인하지 않았을 때
+				if(!isChecked) {
 					alert("숙소 중복 확인을 해주세요.");
 					return;
-				} */
+				}
 				
-				// 파일이 선택되지 않았을때
-				/* if($("#fileInput")[0].files.length == 0) {
+				// 파일이 선택되지 않았을 때
+				if($("#fileInput")[0].files.length == 0) {
 					alert("파일을 선택해주세요");
 					return;
-				} */
-				
-				/* var formData = new FormData();
-				for(let i = 0; i < $("#fileInput")[0].files.length; i++) {
-					formData.append("file", $("#fileInput")[0].files[i]);
-				} */
+				}
 				
 				var fileInput = document.getElementById("fileInput");
 				var imagePath;
@@ -296,7 +292,7 @@
 							alert("숙소 등록에 성공하였습니다!");
 							location.href="/host/become_a_host/view";
 						} else {
-							alert("숙소 등록에 실패했습니다.");
+							alert("숙소 등록에 실패했습니다. 다시 시도해주세요.");
 						}
 					}
 					, error:function() {
