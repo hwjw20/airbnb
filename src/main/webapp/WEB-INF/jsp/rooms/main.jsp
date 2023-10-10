@@ -57,7 +57,7 @@
 			</div>
 			
 			<!-- 숙소 리스트 -->
-			<div id="roomList" class="d-flex flex-wrap">
+			<div id="roomList" class="d-flex flex-wrap mt-3">
 				<c:forEach var="room" items="${roomList}">
 				
 				<div class="room">

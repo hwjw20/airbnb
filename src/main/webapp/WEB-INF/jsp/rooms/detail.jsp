@@ -37,7 +37,7 @@
 						<i class="bi bi-star-fill"></i>
 						<div class="ml-1">${room.rating}</div>
 					</div>
-					<a href="/rooms/detail/review?roomId=${room.roomId }" class="ml-2">후기 ${room.reviewCount }개</a>
+					<a href="/rooms/detail/review?roomId=${room.roomId }" class="ml-2" style="text-decoration:underline">후기 ${room.reviewCount }개</a>
 					<div class="ml-1">· ${room.address }</div>
 				</div>
 				
@@ -78,7 +78,7 @@
 					</div>
 				</div>
 			</div>
-			<a href="/rooms/detail/view/photo?roomId=${room.roomId}" class="small mr-3" style="float:right">사진 모두 보기</a>
+			<a href="/rooms/detail/view/photo?roomId=${room.roomId}" class="small mr-3" style="float:right; text-decoration:underline">사진 모두 보기</a>
 		</article>
 		<aside class="d-flex mt-5">
 			<div id="descBox">

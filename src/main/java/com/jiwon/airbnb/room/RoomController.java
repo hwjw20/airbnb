@@ -81,9 +81,16 @@ public class RoomController {
 			, Model model
 			, HttpSession session)	{
 	
-		int userId = (int) session.getAttribute("userId");
+		Integer userId = (Integer) session.getAttribute("userId");
+		boolean isLike;
+		
+		if(userId == null) {
+			isLike = false;
+		} else {
+			userId = (int) session.getAttribute("userId");
+			isLike = likeBO.isLike(userId, roomId);
+		}
 		RoomInfo room = roomBO.getRoomInfo(roomId);
-		boolean isLike = likeBO.isLike(userId, roomId);
 		
 		model.addAttribute("room", room);
 		model.addAttribute("isLike", isLike);

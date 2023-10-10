@@ -3,6 +3,7 @@ package com.jiwon.airbnb.user.bo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jiwon.airbnb.common.EncryptUtils;
 import com.jiwon.airbnb.user.dao.UserDAO;
 import com.jiwon.airbnb.user.model.User;
 
@@ -18,7 +19,9 @@ public class UserBO {
 	}
 	
 	public User getUser(String email, String password) {
-		return userDAO.selectUser(email, password);
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		return userDAO.selectUser(email, encryptPassword);
 	}
 	
 	public int getUserCount(String email) {
@@ -26,7 +29,9 @@ public class UserBO {
 	}
 	
 	public int addUser(String name, String birthday, String phoneNumber, String email, String password) {
-		return userDAO.insertUser(name, birthday, phoneNumber, email, password);
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		return userDAO.insertUser(name, birthday, phoneNumber, email, encryptPassword);
 	}
 	
 	public String getUserName(int userId) {

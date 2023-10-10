@@ -23,7 +23,7 @@
 	<c:import url="/WEB-INF/jsp/include/header2.jsp" />
 	
 	<section>
-		<div id="signinBox">
+		<div id="signinBox" class="mt-5">
 			<div class="container mt-3">
 				<div class="text-center">비밀번호를 잊으셨나요?</div>
 				<hr>
