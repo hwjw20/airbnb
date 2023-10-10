@@ -26,7 +26,7 @@
 	<c:import url="/WEB-INF/jsp/include/header2.jsp" />
 	
 	<section>
-		<div id="signupBox">
+		<div id="signupBox" class="mt-5">
 			<div class="container mt-3">
 				<div class="text-center">회원가입</div>
 				<hr>
