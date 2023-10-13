@@ -163,4 +163,5 @@ public class RoomBO {
 		return roomDAO.selectLatestRoomId();
 	}
 	
+//	public List<Room> 
 }
