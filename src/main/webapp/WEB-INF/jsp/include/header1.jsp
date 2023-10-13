@@ -53,7 +53,8 @@
 				</c:if>
 				
 			</div>
-			<hr>
+			<hr class="mt-4">
+ 			<!-- <hr> -->
 		</header>
 		
 		<script>

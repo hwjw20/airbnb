@@ -25,7 +25,7 @@
 		
 		<section>
 			<!-- 숙소 타입 탭 메뉴 -->
-			<div id="tabMenu" class="d-flex justify-content-around mt-4">
+			<div id="tabMenu" class="d-flex justify-content-around mt-5">
 				<a href="/rooms/list/view">
 					<div class="room-img pl-3"><img src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg" width="30"></div>
 					<div class="small">인기 급상승</div>
