@@ -31,26 +31,19 @@ public class RoomController {
 		return "rooms/host/become_a_host/popup";
 	}
 	
-//	@GetMapping("/list/view")
-//	public String roomView(
-//			@RequestParam(value="type", required=false) Integer type 
-//			, @RequestParam(value="keyword", required=false) String keyword
-//			, Model model) {
-//		
-//		// 검색창에 키워드를 입력했을 때
-//		if(keyword != null) {
-////			if((keyword != null) || (keyword != "")) {
-//			List<RoomInfo> roomList = roomBO.getRoomListByKeyword(keyword);
-//			model.addAttribute("roomList", roomList);
-//		} else {
-//			// null 이거나 공백일때
-//			List<RoomInfo> roomList = roomBO.getRoomList(type);
-//			model.addAttribute("roomList", roomList);
-//		}
-//		
-//		return "rooms/main";
-//	}
+	// 기본 화면
+	@GetMapping("/list/view")
+	public String roomView(
+			@RequestParam(value="type", required=false) Integer type 
+			, Model model) {
+		
+		List<RoomInfo> roomList = roomBO.getRoomList(type);
+		model.addAttribute("roomList", roomList);
+		
+		return "rooms/main";
+	}
 	
+	// 숙소 상세화면
 	@GetMapping("/detail/view")
 	public String roomDetail(
 			@RequestParam("roomId") int roomId
@@ -75,6 +68,7 @@ public class RoomController {
 		return "rooms/detail";
 	}
 	
+	// 숙소 사진 캐러셸 화면
 	@GetMapping("/detail/view/photo")
 	public String detailImgView(
 			@RequestParam("roomId") int roomId
@@ -96,6 +90,17 @@ public class RoomController {
 		model.addAttribute("isLike", isLike);
 		
 		return "rooms/detailImg";
+	}
+	
+	// 숙소 검색어로 검색
+	@GetMapping("/search")
+	public String searchView(
+			@RequestParam("keyword") String keyword, Model model) {
+		List<RoomInfo> roomListByKeyword = roomBO.getRoomListByKeyword(keyword);
+		
+		model.addAttribute("roomListByKeyword", roomListByKeyword);
+		
+		return "rooms/main";
 	}
 
 }

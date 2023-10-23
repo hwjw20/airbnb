@@ -60,22 +60,22 @@
 		<script>
 			$(document).ready(function() {
 				
-				$("#searchBtn").on("click", function() {
+				/* $("#searchBtn").on("click", function() {
 					let keyword = $("#searchInput").val();
 					
 					$.ajax({
-						type:"post"
-						, url:"/rooms/list/view"
+						type:"get"
+						, url:"/rooms/search"
 						, data:{"keyword":keyword}
 						, success:function(data) {
-							alert(keyword);
+							
 						}
 						, error:function() {
 							alert("검색 에러");
 						}
 					}) 
 					
-				});
+				}); */
 				
 			});
 		</script>
