@@ -69,6 +69,7 @@
 							location.href="/rooms/list/view";
 						} else {
 							alert("일치하는 회원이 없습니다.");
+							location.href="/user/signup";
 						}
 					}
 					, error:function() {
@@ -76,6 +77,7 @@
 					}
 				});
 			});
+			
 		});
 	</script>
 </body>
